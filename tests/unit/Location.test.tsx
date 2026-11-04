@@ -1,7 +1,7 @@
-import { render, screen, within } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import { createTranslator } from "next-intl";
 import { describe, expect, it, vi } from "vitest";
-import { messages } from "../utils";
+import { messages, renderWithProviders } from "../utils";
 import { siteConfig } from "@/config/site";
 
 vi.mock("next-intl/server", () => ({
@@ -13,7 +13,7 @@ import { Location } from "@/components/sections/Location";
 
 describe("Location", () => {
   it("hiển thị địa chỉ, giờ mở cửa và link từ site.ts (vi)", async () => {
-    render(await Location({ locale: "vi" }));
+    renderWithProviders(await Location({ locale: "vi" }));
 
     const address = screen.getByText(/93 Trần Thị Nghỉ/).closest("address")!;
     expect(address).toHaveTextContent("Quận Gò Vấp, TP. Hồ Chí Minh");
@@ -30,16 +30,24 @@ describe("Location", () => {
     expect(screen.getByTitle("Bản đồ đường đến Một Ly Café & Matcha")).toHaveAttribute("loading", "lazy");
   });
 
-  it("có khối Đặt món với link Facebook, ẩn GrabFood/ShopeeFood khi chưa có link", async () => {
-    render(await Location({ locale: "vi" }));
+  it("khối Đặt món có nút GrabFood, link Facebook, ẩn ShopeeFood khi chưa có link", async () => {
+    renderWithProviders(await Location({ locale: "vi" }));
     const order = within(document.getElementById("order")!);
+
+    const grab = order.getByRole("link", { name: /Đặt món trên GrabFood/ });
+    // Chưa điền link cửa hàng: mở trang GrabFood chung và nhắc khách tìm tên quán
+    expect(grab).toHaveAttribute("href", siteConfig.delivery.grabfoodFallback);
+    expect(grab).toHaveAttribute("rel", "noopener noreferrer");
+    expect(order.getByText(/tìm “Một Ly”/)).toBeInTheDocument();
+
     expect(order.getByRole("link", { name: /Nhắn tin Facebook/ })).toHaveAttribute("href", siteConfig.social.facebook);
-    expect(order.queryByRole("link", { name: "GrabFood" })).not.toBeInTheDocument();
+    expect(order.queryByRole("link", { name: "ShopeeFood" })).not.toBeInTheDocument();
   });
 
   it("dùng bản dịch tiếng Anh", async () => {
-    render(await Location({ locale: "en" }));
+    renderWithProviders(await Location({ locale: "en" }), { locale: "en" });
     expect(screen.getByText(/Go Vap District, Ho Chi Minh City/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Get directions" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Order on GrabFood/ })).toBeInTheDocument();
   });
 });

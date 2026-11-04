@@ -4,15 +4,17 @@ import type { Locale } from "@/types";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ClockIcon, FacebookIcon, MapPinIcon, PhoneIcon } from "@/components/ui/icons";
+import { GrabFoodButton } from "./GrabFoodButton";
 
 export async function Location({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "location" });
   const { address, hours, delivery, social, map } = siteConfig;
 
-  const deliveryLinks = [
-    { key: "grabfood", href: delivery.grabfood },
-    { key: "shopeefood", href: delivery.shopeefood },
-  ].filter((d) => d.href) as { key: "grabfood" | "shopeefood"; href: string }[];
+  // GrabFood luôn hiện (nút riêng). Các app khác chỉ hiện khi đã điền link trong site.ts.
+  const deliveryLinks = [{ key: "shopeefood", href: delivery.shopeefood }].filter((d) => d.href) as {
+    key: "shopeefood";
+    href: string;
+  }[];
 
   return (
     <section id="location" aria-labelledby="location-title" className="section bg-matcha-50 pb-36">
@@ -74,6 +76,9 @@ export async function Location({ locale }: { locale: Locale }) {
             <div id="order" className="-mx-2 rounded-3xl bg-matcha-900 p-6 text-cream sm:-mx-3">
               <h3 className="text-2xl text-matcha-300">{t("orderTitle")}</h3>
               <p className="mt-1 text-sm text-cream/75">{t("orderDesc")}</p>
+              <div className="mt-5">
+                <GrabFoodButton />
+              </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {deliveryLinks.map((d) => (
                   <a

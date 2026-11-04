@@ -62,9 +62,17 @@ export const siteConfig = {
     facebook: 'https://www.facebook.com/p/M%E1%BB%98T-LY-61577808062423/'
   },
 
-  /** Link đặt hàng qua app. Để trống thì nút tương ứng sẽ ẩn. */
+  /** Link đặt hàng qua app. */
   delivery: {
+    /**
+     * Link cửa hàng trên GrabFood. Lấy trong app Grab: mở trang quán → nút Chia sẻ → Sao chép liên kết
+     * (dạng https://r.grab.com/g/... hoặc https://food.grab.com/vn/vi/restaurant/...).
+     * Trên điện thoại có cài Grab, link này tự mở thẳng app tới trang quán.
+     * Để trống thì nút vẫn hiện, mở trang GrabFood chung và nhắc khách tìm "Một Ly".
+     */
     grabfood: '',
+    grabfoodFallback: 'https://food.grab.com/vn/vi/',
+    /** Để trống thì nút ShopeeFood sẽ ẩn. */
     shopeefood: ''
   },
 

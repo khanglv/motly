@@ -137,7 +137,9 @@
     "orderDesc": "Đặt qua app giao đồ ăn, nhắn tin Facebook, hoặc gọi trước rồi ghé lấy.",
     "grabfood": "GrabFood",
     "shopeefood": "ShopeeFood",
-    "facebook": "Nhắn tin Facebook"
+    "facebook": "Nhắn tin Facebook",
+    "orderGrab": "Đặt món trên GrabFood",
+    "grabHint": "Mở app Grab và tìm “{name}” để đặt món."
   },
   "footer": {
     "tagline": "Matcha, cà phê và bánh ở Gò Vấp.",

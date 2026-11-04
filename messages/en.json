@@ -137,7 +137,9 @@
     "orderDesc": "Order on a delivery app, message us on Facebook, or call ahead and pick up.",
     "grabfood": "GrabFood",
     "shopeefood": "ShopeeFood",
-    "facebook": "Message on Facebook"
+    "facebook": "Message on Facebook",
+    "orderGrab": "Order on GrabFood",
+    "grabHint": "Open the Grab app and search for “{name}”."
   },
   "footer": {
     "tagline": "Matcha, coffee and pastries in Go Vap.",

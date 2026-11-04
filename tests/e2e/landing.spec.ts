@@ -147,3 +147,41 @@ test.describe('nút lên đầu trang', () => {
     await expect(button).toHaveCount(0);
   });
 });
+
+test.describe('đặt món trên GrabFood', () => {
+  // Chặn request ra Grab thật, chỉ kiểm tra trình duyệt điều hướng tới đúng link
+  test.beforeEach(async ({ context }) => {
+    await context.route(/grab\.com/, (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'text/html',
+        body: '<title>Grab</title>'
+      })
+    );
+  });
+
+  test('máy tính: mở GrabFood ở tab mới', async ({ page, context }) => {
+    await page.goto('/vi#order');
+    const popupPromise = context.waitForEvent('page');
+    await page.getByTestId('grabfood-button').click();
+    const popup = await popupPromise;
+    expect(popup.url()).toContain('food.grab.com');
+    await expect(page).toHaveURL(/\/vi#order$/);
+  });
+
+  test.describe('điện thoại', () => {
+    test.use({
+      hasTouch: true,
+      isMobile: true,
+      viewport: { width: 390, height: 844 }
+    });
+
+    test('mở ngay trong tab hiện tại để hệ điều hành chuyển sang app Grab', async ({
+      page
+    }) => {
+      await page.goto('/vi#order');
+      await page.getByTestId('grabfood-button').tap();
+      await page.waitForURL(/food\.grab\.com/);
+    });
+  });
+});
