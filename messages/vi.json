@@ -124,8 +124,6 @@
     "retry": "Thử lại"
   },
   "location": {
-    "eyebrow": "Ghé quán",
-    "title": "Tìm Một Ly ở Gò Vấp",
     "address": "Địa chỉ",
     "hours": "Giờ mở cửa",
     "everyday": "Thứ Hai – Chủ Nhật",
@@ -134,13 +132,20 @@
     "call": "Gọi ngay",
     "mapTitle": "Bản đồ đường đến Một Ly Café & Matcha",
     "orderTitle": "Đặt món",
-    "orderDesc": "Đặt qua app giao đồ ăn, nhắn tin Facebook, hoặc gọi trước rồi ghé lấy.",
-    "grabfood": "GrabFood",
+    "orderDesc": "Đặt qua GrabFood để giao tận nơi, hoặc gọi trước rồi ghé lấy, không phải chờ.",
     "shopeefood": "ShopeeFood",
     "facebook": "Nhắn tin Facebook",
     "orderGrab": "Đặt món trên GrabFood",
     "grabHint": "Điện thoại có cài Grab sẽ mở thẳng trang quán. Trên máy tính, tìm “{name}” trên GrabFood.",
-    "grabHintApp": "Điện thoại có cài Grab sẽ mở thẳng trang quán trong app."
+    "grabHintApp": "Điện thoại có cài Grab sẽ mở thẳng trang quán trong app.",
+    "orderHeadline": "Thèm matcha? Đặt ngay một ly!",
+    "recommended": "Nhanh nhất",
+    "grabDesc": "Giao tận nơi, theo dõi đơn ngay trên app.",
+    "callDesc": "Gọi {phone}, ghé lấy là có.",
+    "facebookDesc": "Nhắn tin đặt trước hoặc hỏi menu.",
+    "shopeeDesc": "Đặt giao hàng qua ShopeeFood.",
+    "pickupBadge": "Mang đi · Giao tận nơi",
+    "visitTitle": "Hoặc ghé quán"
   },
   "footer": {
     "tagline": "Matcha, cà phê và bánh ở Gò Vấp.",

@@ -124,8 +124,6 @@
     "retry": "Try again"
   },
   "location": {
-    "eyebrow": "Visit us",
-    "title": "Find Một Ly in Go Vap",
     "address": "Address",
     "hours": "Opening hours",
     "everyday": "Monday – Sunday",
@@ -134,13 +132,20 @@
     "call": "Call us",
     "mapTitle": "Map to Một Ly Café & Matcha",
     "orderTitle": "Order",
-    "orderDesc": "Order on a delivery app, message us on Facebook, or call ahead and pick up.",
-    "grabfood": "GrabFood",
+    "orderDesc": "Get it delivered with GrabFood, or call ahead and pick it up without the wait.",
     "shopeefood": "ShopeeFood",
     "facebook": "Message on Facebook",
     "orderGrab": "Order on GrabFood",
     "grabHint": "Phones with the Grab app open our store directly. On a computer, search for “{name}” on GrabFood.",
-    "grabHintApp": "Phones with the Grab app open our store directly in the app."
+    "grabHintApp": "Phones with the Grab app open our store directly in the app.",
+    "orderHeadline": "Craving matcha? Order a cup now!",
+    "recommended": "Fastest",
+    "grabDesc": "Delivered to your door, track your order in the app.",
+    "callDesc": "Call {phone} and pick it up.",
+    "facebookDesc": "Message us to order ahead or ask about the menu.",
+    "shopeeDesc": "Order delivery on ShopeeFood.",
+    "pickupBadge": "Takeaway · Delivery",
+    "visitTitle": "Or visit us"
   },
   "footer": {
     "tagline": "Matcha, coffee and pastries in Go Vap.",
