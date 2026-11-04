@@ -8,6 +8,7 @@ import { routing } from '@/i18n/routing';
 import { siteConfig } from '@/config/site';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { QueryProvider } from '@/components/providers/QueryProvider';
 import { MotionProvider } from '@/components/providers/MotionProvider';
 
@@ -101,6 +102,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                 {children}
               </main>
               <Footer locale={locale} />
+              <ScrollToTop />
             </MotionProvider>
           </QueryProvider>
         </NextIntlClientProvider>
