@@ -8,10 +8,10 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "images");
 
 const palettes = {
-  matcha: { bg1: "#E6EDD9", bg2: "#B5C99A", ink: "#2F3D24", drink: "#7A9A4A" },
+  matcha: { bg1: "#E5F7D8", bg2: "#6FCB5E", ink: "#0D3D1F", drink: "#3CAC54" },
   coffee: { bg1: "#F3E9DC", bg2: "#D9C2A7", ink: "#3B2A1E", drink: "#8A5A3B" },
-  bakery: { bg1: "#F7F3EA", bg2: "#EADFC8", ink: "#3A3326", drink: "#C9A66B" },
-  scene: { bg1: "#F7F3EA", bg2: "#B5C99A", ink: "#2F3D24", drink: "#4A6332" },
+  bakery: { bg1: "#FBF8EF", bg2: "#CDF1B2", ink: "#0D3D1F", drink: "#C9A66B" },
+  scene: { bg1: "#A6E27F", bg2: "#187538", ink: "#082A14", drink: "#22984A" },
 };
 
 const escape = (s) =>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Be_Vietnam_Pro, Noto_Serif } from 'next/font/google';
+import { Baloo_2, Be_Vietnam_Pro } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -11,11 +11,11 @@ import { Footer } from '@/components/layout/Footer';
 import { QueryProvider } from '@/components/providers/QueryProvider';
 import { MotionProvider } from '@/components/providers/MotionProvider';
 
-// Dùng Noto Serif thay cho Noto Serif JP: bản JP sinh ~130 KB CSS @font-face (chữ Nhật) chặn render.
-const serif = Noto_Serif({
+// Font tiêu đề nét tròn, hợp với logo vẽ tay; có dấu tiếng Việt.
+const display = Baloo_2({
   subsets: ['latin', 'vietnamese'],
-  style: ['normal', 'italic'],
-  variable: '--font-serif-display',
+  weight: ['600', '700', '800'],
+  variable: '--font-baloo',
   display: 'swap'
 });
 
@@ -36,7 +36,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#f7f3ea'
+  themeColor: '#0d3d1f'
 };
 
 export async function generateMetadata({
@@ -85,7 +85,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const t = await getTranslations({ locale, namespace: 'nav' });
 
   return (
-    <html lang={locale} className={`${serif.variable} ${sans.variable}`}>
+    <html lang={locale} className={`${display.variable} ${sans.variable}`}>
       <body id="top">
         <a
           href="#main"

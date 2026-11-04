@@ -7,6 +7,7 @@ import { getGallery, getMenu, getReviews } from "@/lib/data-service";
 import { queryKeys } from "@/lib/query-keys";
 import { DEFAULT_MENU_FILTER } from "@/store/ui-store";
 import { Hero } from "@/components/sections/Hero";
+import { Marquee } from "@/components/sections/Marquee";
 import { About } from "@/components/sections/About";
 import { Menu } from "@/components/sections/menu/Menu";
 import { Gallery } from "@/components/sections/gallery/Gallery";
@@ -37,6 +38,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <JsonLd data={buildCafeJsonLd(locale, tMeta("description"))} />
       <Hero locale={locale} />
+      <Marquee locale={locale} />
       <About locale={locale} />
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Menu />

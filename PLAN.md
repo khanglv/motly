@@ -227,3 +227,17 @@ tests/{unit, e2e}
 - [ ] Kiểm tra lại địa chỉ, số điện thoại, giờ mở cửa trong `src/config/site.ts` (lấy từ bản tóm tắt do AI tạo).
 - [ ] Đọc lại nội dung giới thiệu trong `messages/vi.json` và `messages/en.json` cho đúng giọng của quán.
 - [ ] Khi có domain: đặt `NEXT_PUBLIC_SITE_URL` trên Vercel, gửi sitemap lên Google Search Console.
+
+## Đợt 2: Redesign theo logo (04/11/2026)
+
+- **Logo thật:** `public/images/logo.jpg` → `scripts/process-logo.mjs` tách nền tạo `logo.png`, `logo-light.png` (nét kem cho nền xanh), favicon `src/app/icon.png` + `apple-icon.png` (đầu gấu).
+- **Màu:** bảng màu mới dựng quanh màu xanh trong logo `#3CAC54`: nền chính xanh đậm `#0D3D1F`, điểm nhấn xanh tươi `#6FCB5E`, hồng `#F6A8BB`. Token trong `globals.css` và `_tokens.scss`.
+- **Font tiêu đề:** Baloo 2 (nét tròn, hợp logo vẽ tay, có dấu tiếng Việt), thay Noto Serif.
+- **Design/animation mới** (đều tắt khi bật "giảm chuyển động"):
+  - Hero nền xanh đậm: chữ hiện từng từ, nét gợn sóng tự vẽ, bọt matcha bay lên, khung ảnh "giọt matcha" biến hình, huy hiệu chữ xoay với mặt gấu, sticker nổi, sóng chạy ở đáy.
+  - Hai dải chữ chạy ngược chiều (tên món).
+  - Giới thiệu: logo dán như sticker, thẻ tính năng nghiêng kiểu sticker, phần "Ba bước, một ly matcha".
+  - Menu: viên nền trượt theo tab, thẻ món nghiêng 3D theo con trỏ + ánh sáng lướt, món xuất hiện kiểu lò xo.
+  - Gallery nền xanh đậm, ảnh kiểu polaroid nghiêng. Review dạng chồng thẻ kéo để lật.
+  - Header trong suốt trên hero, thanh tiến trình cuộn. Footer có câu lớn "Một ly matcha nhé?".
+- **Kiểm tra:** lint, typecheck, 39 unit test, 8 E2E pass. Lighthouse local: desktop 98 / 100 / 100, mobile Performance 91, Accessibility 100.

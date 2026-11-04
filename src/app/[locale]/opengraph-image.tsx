@@ -37,8 +37,8 @@ export default async function OpenGraphImage({
         justifyContent: 'center',
         padding: '80px',
         background:
-          'linear-gradient(135deg, #E6EDD9 0%, #F7F3EA 60%, #B5C99A 100%)',
-        color: '#2F3D24'
+          'linear-gradient(135deg, #0D3D1F 0%, #187538 65%, #3CAC54 100%)',
+        color: '#FBF8EF'
       }}
     >
       <div
@@ -46,7 +46,7 @@ export default async function OpenGraphImage({
           display: 'flex',
           fontSize: 28,
           letterSpacing: 8,
-          color: '#4A6332'
+          color: '#A6E27F'
         }}
       >
         {'CAFÉ & MATCHA · GÒ VẤP'}
@@ -66,7 +66,7 @@ export default async function OpenGraphImage({
           display: 'flex',
           fontSize: 44,
           marginTop: 16,
-          color: '#4A6332'
+          color: '#A6E27F'
         }}
       >
         {tagline}
@@ -76,7 +76,7 @@ export default async function OpenGraphImage({
           display: 'flex',
           fontSize: 28,
           marginTop: 48,
-          color: '#545B4C'
+          color: '#CDF1B2'
         }}
       >
         {info}

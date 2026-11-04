@@ -18,14 +18,14 @@ function MenuSkeleton({ label }: { label: string }) {
     <div
       role="status"
       aria-live="polite"
-      className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3"
     >
       <span className="sr-only">{label}</span>
       {Array.from({ length: 6 }, (_, i) => (
         <div
           key={i}
           data-testid="menu-skeleton"
-          className="overflow-hidden rounded-card ring-1 ring-matcha-100"
+          className="overflow-hidden rounded-card bg-cream ring-2 ring-matcha-100"
         >
           <div className={clsx(decor.shimmer, 'aspect-square')} />
           <div className="space-y-3 p-5">
@@ -61,19 +61,28 @@ function MenuGrid({ category }: { category: MenuFilter }) {
       layout={!reduceMotion}
       aria-busy={isPlaceholderData}
       className={clsx(
-        'grid gap-6 transition-opacity sm:grid-cols-2 lg:grid-cols-3',
+        'grid gap-7 transition-opacity sm:grid-cols-2 lg:grid-cols-3',
         isPlaceholderData && 'opacity-60'
       )}
     >
       <AnimatePresence mode="popLayout" initial={false}>
-        {data.map((item) => (
+        {data.map((item, i) => (
           <m.li
             key={item.id}
             layout={!reduceMotion}
-            initial={reduceMotion ? false : { opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={reduceMotion ? undefined : { opacity: 0, scale: 0.97 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
+            initial={
+              reduceMotion
+                ? false
+                : { opacity: 0, y: 30, rotate: i % 2 ? 3 : -3 }
+            }
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            exit={reduceMotion ? undefined : { opacity: 0, scale: 0.9 }}
+            transition={{
+              type: 'spring',
+              stiffness: 260,
+              damping: 24,
+              delay: reduceMotion ? 0 : (i % 6) * 0.05
+            }}
           >
             <MenuCard item={item} />
           </m.li>
@@ -85,11 +94,16 @@ function MenuGrid({ category }: { category: MenuFilter }) {
 
 export function Menu() {
   const t = useTranslations('menu');
+  const reduceMotion = useReducedMotion();
   const activeCategory = useUIStore((s) => s.activeCategory);
   const setActiveCategory = useUIStore((s) => s.setActiveCategory);
 
   return (
-    <section id="menu" aria-labelledby="menu-title" className="section">
+    <section
+      id="menu"
+      aria-labelledby="menu-title"
+      className="section relative bg-matcha-50"
+    >
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -107,17 +121,38 @@ export function Menu() {
         >
           <Tabs.List
             aria-label={t('filterLabel')}
-            className="mx-auto mb-10 flex w-fit max-w-full gap-1 overflow-x-auto rounded-full bg-matcha-100/70 p-1.5"
+            className="mx-auto mb-12 flex w-fit max-w-full gap-1 overflow-x-auto rounded-full bg-matcha-900 p-1.5 shadow-soft"
           >
-            {MENU_FILTERS.map((f) => (
-              <Tabs.Trigger
-                key={f}
-                value={f}
-                className="shrink-0 rounded-full px-5 py-2 text-sm text-ink-soft transition-colors hover:text-matcha-900 data-[state=active]:bg-cream data-[state=active]:text-matcha-900 data-[state=active]:shadow-sm"
-              >
-                {t(`tabs.${f}`)}
-              </Tabs.Trigger>
-            ))}
+            {MENU_FILTERS.map((f) => {
+              const active = f === activeCategory;
+              return (
+                <Tabs.Trigger
+                  key={f}
+                  value={f}
+                  className={clsx(
+                    'relative shrink-0 rounded-full px-5 py-2.5 font-display text-base font-semibold transition-colors sm:px-6',
+                    active
+                      ? 'text-matcha-950'
+                      : 'text-matcha-200 hover:text-cream'
+                  )}
+                >
+                  {/* Viên nền trượt theo tab đang chọn */}
+                  {active && (
+                    <m.span
+                      aria-hidden
+                      layoutId="menu-tab-pill"
+                      className="absolute inset-0 rounded-full bg-matcha-400"
+                      transition={
+                        reduceMotion
+                          ? { duration: 0 }
+                          : { type: 'spring', stiffness: 400, damping: 32 }
+                      }
+                    />
+                  )}
+                  <span className="relative">{t(`tabs.${f}`)}</span>
+                </Tabs.Trigger>
+              );
+            })}
           </Tabs.List>
 
           {/* Chỉ render nội dung của tab đang chọn; giữ cùng một MenuGrid để

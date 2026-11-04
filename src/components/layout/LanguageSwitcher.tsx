@@ -29,7 +29,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
     <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger
         className={clsx(
-          'btn-ghost gap-1.5 px-3 py-2 data-[state=open]:bg-matcha-100',
+          // Màu chữ/nền do nơi dùng truyền vào qua className (header đang dùng nền xanh đậm)
+          'btn gap-1.5 px-3 py-2 hover:translate-y-0',
           isPending && 'opacity-60',
           className
         )}

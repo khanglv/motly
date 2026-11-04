@@ -32,7 +32,9 @@
     "ctaCall": "Call us",
     "ctaOrder": "Order on app",
     "hours": "Open daily {opens} – {closes}",
-    "imageAlt": "A matcha latte from Một Ly"
+    "imageAlt": "A matcha latte from Một Ly",
+    "badge": "Matcha · Một Ly · Go Vap · ",
+    "sticker": "Whisked to order!"
   },
   "about": {
     "eyebrow": "About Một Ly",
@@ -54,6 +56,27 @@
         "desc": "A few small seats out front to slow down for a moment."
       }
     }
+  },
+  "ritual": {
+    "eyebrow": "How a cup is made",
+    "title": "Three steps, one cup",
+    "steps": {
+      "sift": {
+        "title": "Sift",
+        "desc": "Finely sift the matcha so there are no lumps."
+      },
+      "whisk": {
+        "title": "Whisk",
+        "desc": "Whisk in an M shape until a fine foam forms."
+      },
+      "pour": {
+        "title": "Pour and enjoy",
+        "desc": "Pour over cold milk, add salted cream if you like."
+      }
+    }
+  },
+  "marquee": {
+    "items": "Matcha Latte|Salted Cream Matcha|Coconut Matcha|Strawberry Matcha|Milk Coffee|Bạc Xỉu|Matcha Cookie|Takeaway · Delivery"
   },
   "menu": {
     "eyebrow": "Menu",
@@ -123,7 +146,8 @@
     "follow": "Follow us",
     "facebook": "Facebook",
     "rights": "© {year} Một Ly Café & Matcha.",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "bigText": "Matcha, anyone?"
   },
   "notFound": {
     "title": "Page not found",

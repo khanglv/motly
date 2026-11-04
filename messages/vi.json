@@ -32,7 +32,9 @@
     "ctaCall": "Gọi ngay",
     "ctaOrder": "Đặt qua app",
     "hours": "Mở cửa {opens} – {closes} mỗi ngày",
-    "imageAlt": "Ly matcha latte của Một Ly"
+    "imageAlt": "Ly matcha latte của Một Ly",
+    "badge": "Matcha · Một Ly · Gò Vấp · ",
+    "sticker": "Đánh tay mỗi ly!"
   },
   "about": {
     "eyebrow": "Về Một Ly",
@@ -54,6 +56,27 @@
         "desc": "Vài chiếc ghế nhỏ trước quán để ngồi thong thả."
       }
     }
+  },
+  "ritual": {
+    "eyebrow": "Một ly ra đời thế nào",
+    "title": "Ba bước, một ly matcha",
+    "steps": {
+      "sift": {
+        "title": "Rây bột",
+        "desc": "Rây mịn bột matcha để không vón cục."
+      },
+      "whisk": {
+        "title": "Đánh tan",
+        "desc": "Đánh theo hình chữ M tới khi nổi bọt mịn."
+      },
+      "pour": {
+        "title": "Rót và thưởng thức",
+        "desc": "Rót lên sữa lạnh, thêm kem muối nếu bạn thích."
+      }
+    }
+  },
+  "marquee": {
+    "items": "Matcha Latte|Matcha Kem Muối|Matcha Dừa|Matcha Dâu|Cà Phê Sữa|Bạc Xỉu|Cookie Matcha|Mang đi · Giao app"
   },
   "menu": {
     "eyebrow": "Menu",
@@ -123,7 +146,8 @@
     "follow": "Theo dõi",
     "facebook": "Facebook",
     "rights": "© {year} Một Ly Café & Matcha.",
-    "backToTop": "Lên đầu trang"
+    "backToTop": "Lên đầu trang",
+    "bigText": "Một ly matcha nhé?"
   },
   "notFound": {
     "title": "Không tìm thấy trang",
