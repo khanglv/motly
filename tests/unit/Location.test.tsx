@@ -35,8 +35,9 @@ describe("Location", () => {
     const order = within(document.getElementById("order")!);
 
     const grab = order.getByRole("link", { name: /Đặt món trên GrabFood/ });
-    // Chưa điền link cửa hàng: mở trang GrabFood chung và nhắc khách tìm tên quán
-    expect(grab).toHaveAttribute("href", siteConfig.delivery.grabfoodFallback);
+    // href là link web (dự phòng khi chưa có JS); khi bấm, JS mở app Grab bằng mã cửa hàng
+    expect(grab).toHaveAttribute("href", siteConfig.delivery.grabfood.webUrl);
+    expect(grab).toHaveAttribute("data-merchant-id", "5-C733R4BJRCBCJE");
     expect(grab).toHaveAttribute("rel", "noopener noreferrer");
     expect(order.getByText(/tìm “Một Ly”/)).toBeInTheDocument();
 

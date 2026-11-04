@@ -64,14 +64,22 @@ export const siteConfig = {
 
   /** Link đặt hàng qua app. */
   delivery: {
-    /**
-     * Link cửa hàng trên GrabFood. Lấy trong app Grab: mở trang quán → nút Chia sẻ → Sao chép liên kết
-     * (dạng https://r.grab.com/g/... hoặc https://food.grab.com/vn/vi/restaurant/...).
-     * Trên điện thoại có cài Grab, link này tự mở thẳng app tới trang quán.
-     * Để trống thì nút vẫn hiện, mở trang GrabFood chung và nhắc khách tìm "Một Ly".
-     */
-    grabfood: '',
-    grabfoodFallback: 'https://food.grab.com/vn/vi/',
+    grabfood: {
+      /**
+       * Mã cửa hàng trên GrabFood, lấy từ deep link của quán:
+       * grab://open?screenType=GRABFOOD&merchantIDs=5-C733R4BJRCBCJE
+       * Trên điện thoại có cài Grab, nút sẽ mở thẳng app tới trang quán.
+       */
+      merchantId: '5-C733R4BJRCBCJE',
+      /**
+       * Trang web của quán trên food.grab.com, dùng cho máy tính hoặc điện thoại chưa cài Grab.
+       * Chưa có link chính xác nên đang dùng trang GrabFood chung (kèm dòng nhắc tìm tên quán).
+       * Khi có link dạng https://food.grab.com/vn/vi/restaurant/<ten-quan>-delivery/5-C733R4BJRCBCJE
+       * thì dán vào đây và đặt webUrlIsStorePage = true để ẩn dòng nhắc.
+       */
+      webUrl: 'https://food.grab.com/vn/vi/',
+      webUrlIsStorePage: false
+    },
     /** Để trống thì nút ShopeeFood sẽ ẩn. */
     shopeefood: ''
   },

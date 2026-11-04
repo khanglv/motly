@@ -148,40 +148,41 @@ test.describe('nút lên đầu trang', () => {
   });
 });
 
-test.describe('đặt món trên GrabFood', () => {
+test.describe("đặt món trên GrabFood", () => {
   // Chặn request ra Grab thật, chỉ kiểm tra trình duyệt điều hướng tới đúng link
   test.beforeEach(async ({ context }) => {
     await context.route(/grab\.com/, (route) =>
-      route.fulfill({
-        status: 200,
-        contentType: 'text/html',
-        body: '<title>Grab</title>'
-      })
+      route.fulfill({ status: 200, contentType: "text/html", body: "<title>Grab</title>" }),
     );
   });
 
-  test('máy tính: mở GrabFood ở tab mới', async ({ page, context }) => {
-    await page.goto('/vi#order');
-    const popupPromise = context.waitForEvent('page');
-    await page.getByTestId('grabfood-button').click();
+  test("máy tính: mở GrabFood web ở tab mới", async ({ page, context }) => {
+    await page.goto("/vi#order");
+    const popupPromise = context.waitForEvent("page");
+    await page.getByTestId("grabfood-button").click();
     const popup = await popupPromise;
-    expect(popup.url()).toContain('food.grab.com');
+    expect(popup.url()).toContain("food.grab.com");
     await expect(page).toHaveURL(/\/vi#order$/);
   });
 
-  test.describe('điện thoại', () => {
+  test.describe("điện thoại", () => {
     test.use({
       hasTouch: true,
       isMobile: true,
-      viewport: { width: 390, height: 844 }
+      viewport: { width: 390, height: 844 },
+      userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148",
     });
 
-    test('mở ngay trong tab hiện tại để hệ điều hành chuyển sang app Grab', async ({
-      page
-    }) => {
-      await page.goto('/vi#order');
-      await page.getByTestId('grabfood-button').tap();
-      await page.waitForURL(/food\.grab\.com/);
+    // URL grab:// được kiểm tra ở tests/unit/grab.test.ts; trình duyệt test không có app Grab
+    // nên ở đây kiểm tra trang tự chuyển sang GrabFood web sau khi thử mở app.
+    test("thử mở app Grab, chưa cài app thì chuyển sang GrabFood web", async ({ page }) => {
+      await page.goto("/vi#order");
+      const started = Date.now();
+      await page.getByTestId("grabfood-button").tap();
+      // Điều hướng grab:// bị Chromium huỷ (ERR_ABORTED) vì không có app, nên theo dõi URL thay vì waitForURL
+      await expect.poll(() => page.url(), { timeout: 6000 }).toContain("food.grab.com");
+      // Chuyển sang web phải chờ một lúc để app kịp mở
+      expect(Date.now() - started).toBeGreaterThan(1000);
     });
   });
 });

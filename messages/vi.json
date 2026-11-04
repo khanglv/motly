@@ -139,7 +139,8 @@
     "shopeefood": "ShopeeFood",
     "facebook": "Nhắn tin Facebook",
     "orderGrab": "Đặt món trên GrabFood",
-    "grabHint": "Mở app Grab và tìm “{name}” để đặt món."
+    "grabHint": "Điện thoại có cài Grab sẽ mở thẳng trang quán. Trên máy tính, tìm “{name}” trên GrabFood.",
+    "grabHintApp": "Điện thoại có cài Grab sẽ mở thẳng trang quán trong app."
   },
   "footer": {
     "tagline": "Matcha, cà phê và bánh ở Gò Vấp.",

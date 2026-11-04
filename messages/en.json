@@ -139,7 +139,8 @@
     "shopeefood": "ShopeeFood",
     "facebook": "Message on Facebook",
     "orderGrab": "Order on GrabFood",
-    "grabHint": "Open the Grab app and search for “{name}”."
+    "grabHint": "Phones with the Grab app open our store directly. On a computer, search for “{name}” on GrabFood.",
+    "grabHintApp": "Phones with the Grab app open our store directly in the app."
   },
   "footer": {
     "tagline": "Matcha, coffee and pastries in Go Vap.",

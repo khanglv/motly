@@ -223,7 +223,9 @@ tests/{unit, e2e}
 - [ ] Thay ảnh hero, giới thiệu, 14 ảnh món và 8 ảnh gallery (xem `public/images/README.md`).
 - [ ] Xác nhận tên món, mô tả và **giá** trong `src/data/menu.ts` (hiện là dữ liệu mẫu).
 - [ ] Thay **đánh giá mẫu** trong `src/data/reviews.ts` bằng đánh giá thật của khách (có sự đồng ý).
-- [ ] Điền link cửa hàng GrabFood vào `delivery.grabfood` trong `src/config/site.ts` (app Grab → trang quán → Chia sẻ → Sao chép liên kết). Chưa điền thì nút "Đặt món trên GrabFood" mở trang GrabFood chung. Link ShopeeFood (nếu có) điền vào `delivery.shopeefood`.
+- [x] Mã cửa hàng GrabFood: `5-C733R4BJRCBCJE` (trong `src/config/site.ts` → `delivery.grabfood`).
+- [ ] Nếu có link web của quán trên food.grab.com, dán vào `delivery.grabfood.webUrl` và đặt `webUrlIsStorePage: true`.
+- [ ] Link ShopeeFood (nếu có) điền vào `delivery.shopeefood`.
 - [ ] Kiểm tra lại địa chỉ, số điện thoại, giờ mở cửa trong `src/config/site.ts` (lấy từ bản tóm tắt do AI tạo).
 - [ ] Đọc lại nội dung giới thiệu trong `messages/vi.json` và `messages/en.json` cho đúng giọng của quán.
 - [ ] Khi có domain: đặt `NEXT_PUBLIC_SITE_URL` trên Vercel, gửi sitemap lên Google Search Console.
