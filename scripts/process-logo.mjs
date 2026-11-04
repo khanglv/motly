@@ -6,6 +6,8 @@
 //   public/images/logo-light.png  nét đen đổi thành màu kem (dùng trên nền xanh đậm)
 //   src/app/icon.png              favicon: đầu gấu
 //   src/app/apple-icon.png        icon khi thêm vào màn hình iPhone
+//   src/app/favicon.ico           favicon 16/32/48px cho request mặc định /favicon.ico
+import { writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
@@ -130,5 +132,42 @@ for (const [file, size] of [
     .png()
     .toFile(join(root, file));
 }
+
+// favicon.ico: trình duyệt luôn tự gọi /favicon.ico, nên cần file thật.
+// File ICO chứa sẵn các ảnh PNG 16/32/48px (định dạng mọi trình duyệt hiện đại đều đọc được).
+const icoSizes = [16, 32, 48];
+const icoImages = [];
+for (const size of icoSizes) {
+  const inner = Math.round(size * 0.9);
+  const face = await sharp(headPng).resize(inner, inner).toBuffer();
+  icoImages.push(
+    await sharp(circle(size))
+      .composite([{ input: face, gravity: 'center' }])
+      .png()
+      .toBuffer()
+  );
+}
+const header = Buffer.alloc(6);
+header.writeUInt16LE(0, 0); // reserved
+header.writeUInt16LE(1, 2); // type: icon
+header.writeUInt16LE(icoImages.length, 4);
+let offset = 6 + 16 * icoImages.length;
+const entries = icoImages.map((png, i) => {
+  const e = Buffer.alloc(16);
+  e.writeUInt8(icoSizes[i], 0); // width
+  e.writeUInt8(icoSizes[i], 1); // height
+  e.writeUInt8(0, 2); // palette
+  e.writeUInt8(0, 3); // reserved
+  e.writeUInt16LE(1, 4); // color planes
+  e.writeUInt16LE(32, 6); // bits per pixel
+  e.writeUInt32LE(png.length, 8);
+  e.writeUInt32LE(offset, 12);
+  offset += png.length;
+  return e;
+});
+writeFileSync(
+  join(root, 'src/app/favicon.ico'),
+  Buffer.concat([header, ...entries, ...icoImages])
+);
 
 console.log('Logo đã xử lý:', region);
