@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "title": "Một Ly Café & Matcha | Matcha & cà phê tại Gò Vấp",
+    "description": "Quán café & matcha nhỏ tại 93 Trần Thị Nghỉ, Gò Vấp, TP.HCM. Matcha latte, matcha kem muối, cà phê và bánh. Mang đi, giao qua app. Mở cửa 08:00 – 21:30 mỗi ngày.",
+    "ogAlt": "Một Ly Café & Matcha – matcha và cà phê tại Gò Vấp"
+  },
+  "nav": {
+    "skip": "Bỏ qua tới nội dung chính",
+    "main": "Điều hướng chính",
+    "home": "Trang chủ Một Ly",
+    "about": "Giới thiệu",
+    "menu": "Menu",
+    "gallery": "Hình ảnh",
+    "reviews": "Đánh giá",
+    "location": "Liên hệ",
+    "order": "Đặt món",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu"
+  },
+  "language": {
+    "label": "Ngôn ngữ",
+    "change": "Đổi ngôn ngữ, hiện tại: {current}",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "hero": {
+    "eyebrow": "Café & Matcha · Gò Vấp",
+    "title": "Một ly matcha,",
+    "titleHighlight": "cho ngày dịu lại.",
+    "subtitle": "Matcha pha theo từng ly, cà phê đậm vị và vài món bánh ăn kèm. Ghé mang đi, đặt qua app, hoặc ngồi lại góc nhỏ trước quán.",
+    "ctaMenu": "Xem menu",
+    "ctaCall": "Gọi ngay",
+    "ctaOrder": "Đặt qua app",
+    "hours": "Mở cửa {opens} – {closes} mỗi ngày",
+    "imageAlt": "Ly matcha latte của Một Ly"
+  },
+  "about": {
+    "eyebrow": "Về Một Ly",
+    "title": "Nhỏ thôi, nhưng làm kỹ từng ly",
+    "p1": "Một Ly là quán café & matcha nhỏ trên đường Trần Thị Nghỉ, Gò Vấp. Món chính của quán là matcha: chát thanh, ngọt dịu và béo vừa đủ.",
+    "p2": "Quán chủ yếu phục vụ mang đi và giao qua app, tiện ghé lấy trên đường đi học, đi làm. Nếu chưa vội, bạn có thể ngồi lại ở góc nhỏ ngoài trời trước quán.",
+    "imageAlt": "Mặt tiền quán Một Ly ở Gò Vấp",
+    "features": {
+      "takeaway": {
+        "title": "Mang đi",
+        "desc": "Gọi trước để ly được pha sẵn khi bạn tới."
+      },
+      "delivery": {
+        "title": "Giao qua app",
+        "desc": "Đặt trên các app giao đồ ăn quen thuộc."
+      },
+      "outdoor": {
+        "title": "Góc ngồi ngoài trời",
+        "desc": "Vài chiếc ghế nhỏ trước quán để ngồi thong thả."
+      }
+    }
+  },
+  "menu": {
+    "eyebrow": "Menu",
+    "title": "Matcha là món chính",
+    "subtitle": "Ngoài matcha còn có cà phê và bánh ăn kèm. Giá có thể thay đổi, vui lòng xem trên app hoặc hỏi tại quán.",
+    "filterLabel": "Lọc menu theo danh mục",
+    "tabs": {
+      "all": "Tất cả",
+      "matcha": "Matcha",
+      "coffee": "Cà phê",
+      "bakery": "Bánh"
+    },
+    "tags": {
+      "signature": "Signature",
+      "best-seller": "Bán chạy",
+      "new": "Mới"
+    },
+    "loading": "Đang tải menu…",
+    "empty": "Chưa có món nào trong mục này.",
+    "error": "Không tải được menu.",
+    "retry": "Thử lại"
+  },
+  "gallery": {
+    "eyebrow": "Hình ảnh",
+    "title": "Một chút không khí ở Một Ly",
+    "subtitle": "Những ly matcha, góc quán và khoảnh khắc thường ngày.",
+    "open": "Phóng to ảnh: {alt}",
+    "dialogTitle": "Thư viện ảnh",
+    "close": "Đóng",
+    "prev": "Ảnh trước",
+    "next": "Ảnh sau",
+    "counter": "{current} / {total}",
+    "error": "Không tải được ảnh.",
+    "retry": "Thử lại"
+  },
+  "reviews": {
+    "eyebrow": "Khách nói gì",
+    "title": "Được khách quen yêu thích",
+    "rating": "{rating} trên 5 sao",
+    "prev": "Đánh giá trước",
+    "next": "Đánh giá tiếp theo",
+    "goTo": "Xem đánh giá {index}",
+    "via": "qua {source}",
+    "error": "Không tải được đánh giá.",
+    "retry": "Thử lại"
+  },
+  "location": {
+    "eyebrow": "Ghé quán",
+    "title": "Tìm Một Ly ở Gò Vấp",
+    "address": "Địa chỉ",
+    "hours": "Giờ mở cửa",
+    "everyday": "Thứ Hai – Chủ Nhật",
+    "phone": "Điện thoại",
+    "directions": "Chỉ đường",
+    "call": "Gọi ngay",
+    "mapTitle": "Bản đồ đường đến Một Ly Café & Matcha",
+    "orderTitle": "Đặt món",
+    "orderDesc": "Đặt qua app giao đồ ăn, nhắn tin Facebook, hoặc gọi trước rồi ghé lấy.",
+    "grabfood": "GrabFood",
+    "shopeefood": "ShopeeFood",
+    "facebook": "Nhắn tin Facebook"
+  },
+  "footer": {
+    "tagline": "Matcha, cà phê và bánh ở Gò Vấp.",
+    "contact": "Liên hệ",
+    "hours": "Giờ mở cửa",
+    "follow": "Theo dõi",
+    "facebook": "Facebook",
+    "rights": "© {year} Một Ly Café & Matcha.",
+    "backToTop": "Lên đầu trang"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "description": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
+    "back": "Về trang chủ"
+  }
+}

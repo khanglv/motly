@@ -1,0 +1,63 @@
+import type { ReviewRecord } from "@/types";
+
+/**
+ * ĐÁNH GIÁ MẪU, chưa phải đánh giá thật của khách.
+ * Thay bằng đánh giá thật (có sự đồng ý của khách) trước khi đưa website lên mạng.
+ */
+export const reviews: ReviewRecord[] = [
+  {
+    id: "r1",
+    author: "Minh Anh",
+    rating: 5,
+    content: {
+      vi: "Matcha latte đậm vị trà, không bị ngọt gắt. Ghé lấy trên đường đi làm rất tiện.",
+      en: "The matcha latte has a real tea flavor and isn't overly sweet. Super convenient to grab on my way to work.",
+    },
+    date: "2026-09-12",
+    source: "Google",
+  },
+  {
+    id: "r2",
+    author: "Hoàng Long",
+    rating: 5,
+    content: {
+      vi: "Matcha kem muối là món phải thử. Lớp kem mặn mặn béo béo rất hợp.",
+      en: "The salted cream matcha is a must-try. The salty, creamy top pairs perfectly.",
+    },
+    date: "2026-08-28",
+    source: "Facebook",
+  },
+  {
+    id: "r3",
+    author: "Thu Trang",
+    rating: 4,
+    content: {
+      vi: "Quán nhỏ xinh, nhân viên dễ thương. Mong quán có thêm vài chỗ ngồi.",
+      en: "A cute little shop with friendly staff. I wish there were a few more seats.",
+    },
+    date: "2026-08-03",
+    source: "Google",
+  },
+  {
+    id: "r4",
+    author: "Quốc Bảo",
+    rating: 5,
+    content: {
+      vi: "Đặt qua app mà matcha vẫn ngon, đóng gói cẩn thận. Cookie matcha cũng rất ổn.",
+      en: "Ordered through the app and the matcha was still great, carefully packed. The matcha cookie is good too.",
+    },
+    date: "2026-07-19",
+    source: "Google",
+  },
+  {
+    id: "r5",
+    author: "Ngọc Hân",
+    rating: 5,
+    content: {
+      vi: "Matcha dừa uống mát, thơm. Giá hợp lý cho sinh viên.",
+      en: "The coconut matcha is fragrant and refreshing. Fair prices for students.",
+    },
+    date: "2026-07-02",
+    source: "Facebook",
+  },
+];

@@ -1,0 +1,20 @@
+// Design tokens cho SCSS. Giữ đồng bộ với @theme trong globals.css.
+$matcha-900: #2f3d24;
+$matcha-700: #4a6332;
+$matcha-500: #7a9a4a;
+$matcha-300: #b5c99a;
+$matcha-100: #e6edd9;
+$cream: #f7f3ea;
+$cream-dark: #ede6d6;
+$ink: #1f241b;
+$sakura: #e8b4b8;
+
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

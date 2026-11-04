@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "title": "Một Ly Café & Matcha | Matcha & coffee in Go Vap",
+    "description": "A small café & matcha shop at 93 Tran Thi Nghi, Go Vap, Ho Chi Minh City. Matcha latte, salted cream matcha, coffee and pastries. Takeaway and delivery. Open daily 08:00 – 21:30.",
+    "ogAlt": "Một Ly Café & Matcha – matcha and coffee in Go Vap"
+  },
+  "nav": {
+    "skip": "Skip to main content",
+    "main": "Main navigation",
+    "home": "Một Ly home",
+    "about": "About",
+    "menu": "Menu",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "location": "Visit us",
+    "order": "Order",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "language": {
+    "label": "Language",
+    "change": "Change language, current: {current}",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "hero": {
+    "eyebrow": "Café & Matcha · Go Vap",
+    "title": "One cup of matcha,",
+    "titleHighlight": "to slow the day down.",
+    "subtitle": "Matcha made cup by cup, bold Vietnamese coffee and a few pastries on the side. Grab it to go, order on your delivery app, or stay a while at our little front-porch corner.",
+    "ctaMenu": "See the menu",
+    "ctaCall": "Call us",
+    "ctaOrder": "Order on app",
+    "hours": "Open daily {opens} – {closes}",
+    "imageAlt": "A matcha latte from Một Ly"
+  },
+  "about": {
+    "eyebrow": "About Một Ly",
+    "title": "Small shop, carefully made cups",
+    "p1": "Một Ly is a small café & matcha shop on Tran Thi Nghi Street in Go Vap. Matcha is our main thing: gently bitter, softly sweet and just creamy enough.",
+    "p2": "We mostly serve takeaway and delivery, so it's easy to grab a cup on your way to school or work. If you're not in a hurry, take a seat at the little outdoor corner in front of the shop.",
+    "imageAlt": "The Một Ly shopfront in Go Vap",
+    "features": {
+      "takeaway": {
+        "title": "Takeaway",
+        "desc": "Call ahead and your drink will be ready when you arrive."
+      },
+      "delivery": {
+        "title": "Delivery apps",
+        "desc": "Order on the food delivery apps you already use."
+      },
+      "outdoor": {
+        "title": "Outdoor corner",
+        "desc": "A few small seats out front to slow down for a moment."
+      }
+    }
+  },
+  "menu": {
+    "eyebrow": "Menu",
+    "title": "Matcha comes first",
+    "subtitle": "Besides matcha we also serve coffee and pastries. Prices may change, please check the delivery app or ask in store.",
+    "filterLabel": "Filter menu by category",
+    "tabs": {
+      "all": "All",
+      "matcha": "Matcha",
+      "coffee": "Coffee",
+      "bakery": "Bakery"
+    },
+    "tags": {
+      "signature": "Signature",
+      "best-seller": "Best seller",
+      "new": "New"
+    },
+    "loading": "Loading menu…",
+    "empty": "No items in this category yet.",
+    "error": "Couldn't load the menu.",
+    "retry": "Try again"
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "A little taste of Một Ly",
+    "subtitle": "Matcha cups, corners of the shop and everyday moments.",
+    "open": "Enlarge image: {alt}",
+    "dialogTitle": "Photo gallery",
+    "close": "Close",
+    "prev": "Previous image",
+    "next": "Next image",
+    "counter": "{current} / {total}",
+    "error": "Couldn't load the photos.",
+    "retry": "Try again"
+  },
+  "reviews": {
+    "eyebrow": "What guests say",
+    "title": "Loved by our regulars",
+    "rating": "{rating} out of 5 stars",
+    "prev": "Previous review",
+    "next": "Next review",
+    "goTo": "Show review {index}",
+    "via": "via {source}",
+    "error": "Couldn't load reviews.",
+    "retry": "Try again"
+  },
+  "location": {
+    "eyebrow": "Visit us",
+    "title": "Find Một Ly in Go Vap",
+    "address": "Address",
+    "hours": "Opening hours",
+    "everyday": "Monday – Sunday",
+    "phone": "Phone",
+    "directions": "Get directions",
+    "call": "Call us",
+    "mapTitle": "Map to Một Ly Café & Matcha",
+    "orderTitle": "Order",
+    "orderDesc": "Order on a delivery app, message us on Facebook, or call ahead and pick up.",
+    "grabfood": "GrabFood",
+    "shopeefood": "ShopeeFood",
+    "facebook": "Message on Facebook"
+  },
+  "footer": {
+    "tagline": "Matcha, coffee and pastries in Go Vap.",
+    "contact": "Contact",
+    "hours": "Opening hours",
+    "follow": "Follow us",
+    "facebook": "Facebook",
+    "rights": "© {year} Một Ly Café & Matcha.",
+    "backToTop": "Back to top"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "back": "Back to home"
+  }
+}

@@ -1,0 +1,96 @@
+@use 'sass:color';
+@use 'tokens' as *;
+
+// Texture giấy washi: vân sợi nhẹ bằng gradient, không cần ảnh.
+.washi {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.55;
+    background-image:
+      repeating-linear-gradient(
+        115deg,
+        rgba($matcha-900, 0.025) 0 1px,
+        transparent 1px 7px
+      ),
+      repeating-linear-gradient(
+        25deg,
+        rgba($matcha-900, 0.02) 0 1px,
+        transparent 1px 11px
+      ),
+      radial-gradient(circle at 20% 10%, rgba(#fff, 0.7), transparent 45%);
+  }
+}
+
+// Vòng tròn enso (thiền) trang trí ở hero
+.enso {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba($matcha-500, 0.35);
+  border-right-color: transparent;
+  transform: rotate(-30deg);
+  pointer-events: none;
+}
+
+// Đường cong mềm ở đáy hero
+.heroCurve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 80px;
+  pointer-events: none;
+  background: $cream;
+  clip-path: ellipse(75% 100% at 50% 100%);
+
+  @media (min-width: $bp-md) {
+    height: 120px;
+  }
+}
+
+// Khung ảnh bo kiểu vòm (arch)
+.arch {
+  border-radius: 999px 999px 1.5rem 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgba($matcha-900, 0.45);
+}
+
+// Chữ "抹茶" dọc trang trí
+.verticalKanji {
+  writing-mode: vertical-rl;
+  letter-spacing: 0.4em;
+  color: rgba($matcha-700, 0.18);
+  user-select: none;
+  pointer-events: none;
+}
+
+// Skeleton shimmer
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    $cream-dark 0%,
+    color.adjust($cream-dark, $lightness: 4%) 50%,
+    $cream-dark 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

@@ -1,9 +1,11 @@
 # Implementation Plan - Landing page "Một Ly Café & Matcha"
 
 ## Problem Statement
+
 Quán chưa có website. Cần một landing page song ngữ vi/en để giới thiệu quán, menu lấy matcha làm chủ đạo, gallery, review, địa chỉ và kênh liên hệ. Quán chủ yếu bán mang đi và qua app giao đồ ăn, nên trang cần làm nổi bật nút gọi điện, chỉ đường và link đặt hàng qua app.
 
 ## Requirements
+
 - Các section: Header (logo, menu điều hướng, nút đổi ngôn ngữ), Hero, Giới thiệu, Menu đầy đủ có lọc theo Matcha / Cà phê / Bánh, Gallery có lightbox, Review của khách, Địa chỉ và giờ mở cửa kèm bản đồ, Footer.
 - Dữ liệu: mock API bằng Route Handlers của Next.js (`/api/menu`, `/api/reviews`, `/api/gallery`), gọi qua React Query + `fetch`.
 - Ngôn ngữ: `next-intl`, đổi ngôn ngữ theo URL (`/vi`, `/en`). Mặc định là `vi`, vào `/` sẽ được chuyển sang `/vi`.
@@ -18,6 +20,7 @@ Quán chưa có website. Cần một landing page song ngữ vi/en để giới 
 - Stack: Next.js 15 (App Router), TypeScript, pnpm, Tailwind, Radix UI, SCSS, Zustand, React Query, Framer Motion, Vitest + Testing Library, Playwright. Deploy lên Vercel.
 
 ## Background
+
 - Hiện project chỉ có `README.md` (Tech: Next.js, Zustand, React Query, Tailwind, Radix, SCSS, thư viện animation, gọi API bằng fetch).
 - `next-intl` hỗ trợ App Router với segment `[locale]`, middleware để chuyển hướng ngôn ngữ, và `getTranslations` cho Server Components. Nhờ đó tạo được metadata và thẻ `hreflang` riêng cho từng ngôn ngữ.
 - Bản đồ dùng iframe Google Maps `https://maps.google.com/maps?q=<địa chỉ đã encode>&output=embed`, không cần API key. Nút "Chỉ đường" mở `https://www.google.com/maps/dir/?api=1&destination=<địa chỉ đã encode>`.
@@ -45,6 +48,7 @@ flowchart LR
 ```
 
 Cấu trúc thư mục:
+
 ```
 PLAN.md
 public/images/{logo.svg, hero/, about/, menu/, gallery/, og/, README.md}
@@ -68,7 +72,7 @@ tests/{unit, e2e}
 
 ## Task Breakdown
 
-- [ ] **Task 1: Khởi tạo project và tạo `PLAN.md`**
+- [x] **Task 1: Khởi tạo project và tạo `PLAN.md`**
   - Mục tiêu: có một project Next.js chạy được, đủ công cụ, và lưu plan này trong repo.
   - Hướng dẫn:
     - Chạy `create-next-app` với TypeScript, App Router, Tailwind, ESLint, thư mục `src/`, dùng pnpm. Tạo trong thư mục hiện tại và giữ lại `README.md` cùng `PLAN.md`.
@@ -79,7 +83,7 @@ tests/{unit, e2e}
   - Test: viết một smoke test Vitest để kiểm tra setup test chạy được.
   - Demo: `pnpm dev` mở được trang mặc định, `pnpm test` pass.
 
-- [ ] **Task 2: Design tokens, font, logo và ảnh placeholder**
+- [x] **Task 2: Design tokens, font, logo và ảnh placeholder**
   - Mục tiêu: chốt hệ thống màu, chữ và tài sản hình ảnh.
   - Hướng dẫn:
     - Định nghĩa màu trong Tailwind theme: `matcha-900/700/500/300/100`, `cream`, `ink`, `sakura` (màu nhấn nhẹ).
@@ -92,7 +96,7 @@ tests/{unit, e2e}
   - Test: không có test logic, kiểm tra bằng mắt.
   - Demo: trang tạm hiển thị logo, bảng màu và mẫu font.
 
-- [ ] **Task 3: i18n với `next-intl` và layout chung**
+- [x] **Task 3: i18n với `next-intl` và layout chung**
   - Mục tiêu: chạy được `/vi` và `/en`, vào `/` thì chuyển sang `/vi`.
   - Hướng dẫn:
     - Tạo `routing.ts` (locales `['vi','en']`, mặc định `vi`), `request.ts`, `navigation.ts` và `middleware.ts`. Middleware bỏ qua `/api`, `_next` và file tĩnh.
@@ -108,7 +112,7 @@ tests/{unit, e2e}
     - E2E: vào `/` thì chuyển sang `/vi`; đổi ngôn ngữ thì URL thành `/en` và text đổi theo.
   - Demo: đổi qua lại vi/en trên Header và Footer.
 
-- [ ] **Task 4: Các section tĩnh (Hero, Giới thiệu, Địa chỉ)**
+- [x] **Task 4: Các section tĩnh (Hero, Giới thiệu, Địa chỉ)**
   - Mục tiêu: có trang đọc được, chưa cần dữ liệu từ API.
   - Hướng dẫn:
     - Hero: tiêu đề nhấn mạnh matcha, các nút CTA "Xem menu" (anchor `#menu`), "Gọi ngay" (`tel:+84388738680`) và "Đặt qua app", dùng `next/image` có `priority`.
@@ -121,7 +125,7 @@ tests/{unit, e2e}
     - Unit test kiểm tra Location render đúng địa chỉ và link `tel:` / chỉ đường từ `site.ts`.
   - Demo: trang `/vi` có Hero, Giới thiệu và Địa chỉ, responsive, có animation nhẹ.
 
-- [ ] **Task 5: Mock API và data layer**
+- [x] **Task 5: Mock API và data layer**
   - Mục tiêu: có các API trả dữ liệu song ngữ.
   - Hướng dẫn:
     - Định nghĩa types `MenuItem` (id, category `'matcha'|'coffee'|'bakery'`, name/description `{vi,en}`, price theo VND, image, tags như `signature`/`best-seller`), `Review` (author, rating 1–5, content `{vi,en}`, date), `GalleryImage` (src, alt `{vi,en}`, width, height).
@@ -134,7 +138,7 @@ tests/{unit, e2e}
   - Test: unit test từng handler (lọc đúng danh mục, đúng ngôn ngữ, trả 400 khi input sai).
   - Demo: `curl "localhost:3000/api/menu?locale=en&category=matcha"` trả JSON tiếng Anh.
 
-- [ ] **Task 6: React Query, Zustand và section Menu**
+- [x] **Task 6: React Query, Zustand và section Menu**
   - Mục tiêu: menu hoạt động đầy đủ với bộ lọc.
   - Hướng dẫn:
     - Tạo `query-client.ts` và `QueryProvider` (client component) đặt trong layout.
@@ -151,7 +155,7 @@ tests/{unit, e2e}
     - E2E: lọc theo "Bánh".
   - Demo: lọc menu theo danh mục ở cả hai ngôn ngữ.
 
-- [ ] **Task 7: Gallery có lightbox và Review**
+- [x] **Task 7: Gallery có lightbox và Review**
   - Mục tiêu: hoàn thiện các section còn lại.
   - Hướng dẫn:
     - Gallery: lưới kiểu masonry (CSS columns), bấm ảnh thì mở Radix Dialog. Lightbox chuyển ảnh bằng phím ←/→ và nút, trạng thái ảnh đang mở lưu trong `lightboxIndex` của store.
@@ -164,7 +168,7 @@ tests/{unit, e2e}
     - E2E: mở lightbox từ gallery.
   - Demo: trang có đủ mọi section.
 
-- [ ] **Task 8: SEO, accessibility và hiệu năng**
+- [x] **Task 8 (Lighthouse mobile Performance chưa đạt 90, xem Ghi chú triển khai): SEO, accessibility và hiệu năng**
   - Mục tiêu: trang sẵn sàng lên mạng.
   - Hướng dẫn:
     - Thêm JSON-LD `CafeOrCoffeeShop` lấy dữ liệu từ `site.ts` (address, openingHoursSpecification, telephone, sameAs).
@@ -176,7 +180,7 @@ tests/{unit, e2e}
     - Chạy Lighthouse thủ công, mục tiêu ≥ 90 cho Performance, Accessibility và SEO.
   - Demo: `pnpm build && pnpm start`, chạy Lighthouse và xem điểm.
 
-- [ ] **Task 9: Hoàn thiện và chuẩn bị deploy**
+- [x] **Task 9: Hoàn thiện và chuẩn bị deploy**
   - Mục tiêu: kết thúc và bàn giao.
   - Hướng dẫn:
     - Đảm bảo lint, test và build đều pass.
@@ -186,6 +190,40 @@ tests/{unit, e2e}
   - Demo: bản build production chạy local, sẵn sàng import vào Vercel.
 
 ## Giả định
+
 - Menu và giá là dữ liệu giả.
 - Link GrabFood/ShopeeFood để trống cho người dùng điền.
 - Trang không có form liên hệ, khách liên hệ qua nút gọi điện và Facebook.
+
+## Kết quả kiểm tra (04/11/2026)
+
+- `pnpm lint`, `pnpm typecheck`: sạch.
+- `pnpm test`: 39 unit test pass (messages, LanguageSwitcher, Reveal, Location, API routes, store, useMenu, Menu, Lightbox, Reviews/Stars).
+- `pnpm test:e2e`: 8 test pass (redirect `/` → `/vi`, đổi ngôn ngữ, 404 đã dịch, lọc menu Bánh, lightbox, JSON-LD + hreflang + canonical, sitemap/robots, skip link).
+- Lighthouse (build production, localhost):
+
+  |                          | Performance | Accessibility | Best Practices | SEO |
+  | ------------------------ | ----------- | ------------- | -------------- | --- |
+  | Desktop                  | 98          | 100           | 100            | 100 |
+  | Mobile (giả lập 4G chậm) | 77          | 100           | 100            | 100 |
+
+## Ghi chú triển khai (khác với plan ban đầu)
+
+- **Font tiêu đề:** dùng Noto Serif thay cho Noto Serif JP. Shippori Mincho không có dấu tiếng Việt; Noto Serif JP sinh ~130 KB CSS chặn render (mobile LCP chậm). Chữ trang trí "抹茶" dùng font hệ thống.
+- **Prefetch phía server:** `page.tsx` prefetch menu (tab Matcha), gallery, review rồi truyền xuống React Query bằng `HydrationBoundary`, nên HTML có sẵn nội dung (tốt cho SEO, không nháy skeleton). Các tab menu khác gọi `/api/menu` bằng `fetch` trên client.
+- **Framer Motion** dùng `LazyMotion` + `m` (tải tính năng sau), giảm First Load JS của trang từ 204 KB xuống 176 KB.
+- **Đổi ngôn ngữ** không tự đoán theo trình duyệt (`localeDetection: false`): vào `/` luôn sang `/vi`.
+- **Ảnh Open Graph** tạo tự động bằng `src/app/[locale]/opengraph-image.tsx` thay cho thư mục `public/images/og/`.
+- **Lighthouse mobile 77:** LCP giả lập ~5s, phần lớn là "render delay" khi giả lập CPU chậm 4 lần, chạy trên server local chưa có CDN. Hướng cải thiện tiếp: deploy lên Vercel (CDN, HTTP/2) rồi đo lại bằng PageSpeed Insights; dùng ảnh hero thật dạng `.jpg/.webp` (Next.js tự chuyển AVIF và resize); nếu cần nữa thì bỏ hiệu ứng Reveal ở section đầu màn hình.
+- **Mạng có proxy SSL:** build cần `NODE_OPTIONS=--use-system-ca` để tải Google Fonts (xem README).
+
+## Việc chủ quán cần làm
+
+- [ ] Thay logo thật (`public/images/logo.svg`) và favicon (`src/app/icon.svg`).
+- [ ] Thay ảnh hero, giới thiệu, 14 ảnh món và 8 ảnh gallery (xem `public/images/README.md`).
+- [ ] Xác nhận tên món, mô tả và **giá** trong `src/data/menu.ts` (hiện là dữ liệu mẫu).
+- [ ] Thay **đánh giá mẫu** trong `src/data/reviews.ts` bằng đánh giá thật của khách (có sự đồng ý).
+- [ ] Điền link GrabFood / ShopeeFood trong `src/config/site.ts` (`delivery`).
+- [ ] Kiểm tra lại địa chỉ, số điện thoại, giờ mở cửa trong `src/config/site.ts` (lấy từ bản tóm tắt do AI tạo).
+- [ ] Đọc lại nội dung giới thiệu trong `messages/vi.json` và `messages/en.json` cho đúng giọng của quán.
+- [ ] Khi có domain: đặt `NEXT_PUBLIC_SITE_URL` trên Vercel, gửi sitemap lên Google Search Console.

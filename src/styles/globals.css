@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens - Một Ly Café & Matcha
+ * Giữ đồng bộ với src/styles/_tokens.scss
+ */
+@theme {
+  --color-matcha-900: #2f3d24;
+  --color-matcha-700: #4a6332;
+  --color-matcha-500: #7a9a4a;
+  --color-matcha-300: #b5c99a;
+  --color-matcha-100: #e6edd9;
+  --color-cream: #f7f3ea;
+  --color-cream-dark: #ede6d6;
+  --color-ink: #1f241b;
+  --color-ink-soft: #545b4c;
+  --color-sakura: #e8b4b8;
+
+  --font-serif: var(--font-serif-display), 'Noto Serif', Georgia, serif;
+  --font-sans: var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --shadow-soft: 0 10px 30px -12px rgb(47 61 36 / 0.25);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif text-matcha-900;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-matcha-700;
+  }
+  ::selection {
+    @apply bg-matcha-300 text-matcha-900;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    /* Đảm bảo nội dung luôn hiện khi người dùng tắt animation, kể cả trước khi JS chạy */
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+}
+@utility section {
+  @apply py-20 sm:py-28;
+}
+@utility eyebrow {
+  @apply text-xs font-medium tracking-[0.25em] text-matcha-700 uppercase;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors duration-200 disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-matcha-700 text-cream hover:bg-matcha-900;
+}
+@utility btn-outline {
+  @apply btn border border-matcha-700 text-matcha-900 hover:bg-matcha-100;
+}
+@utility btn-ghost {
+  @apply btn text-matcha-900 hover:bg-matcha-100;
+}
