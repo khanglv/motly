@@ -29,7 +29,7 @@ pnpm test:e2e       # E2E test (Playwright), lần đầu chạy: pnpm exec play
 | Đường dẫn                                        | Nội dung                                                                                    |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------- |
 | `src/config/site.ts`                             | Tên quán, địa chỉ, giờ mở cửa, SĐT, Facebook, link GrabFood/ShopeeFood, đường dẫn logo/hero |
-| `src/data/menu.ts` · `reviews.ts` · `gallery.ts` | Dữ liệu menu, đánh giá, gallery (song ngữ)                                                  |
+| `src/data/menu.ts` · `featured.ts` · `reviews.ts` · `gallery.ts` | Dữ liệu menu, đánh giá, gallery (song ngữ)                                                  |
 | `messages/vi.json` · `en.json`                   | Toàn bộ chữ trên giao diện                                                                  |
 | `src/app/api/*`                                  | Mock API: `/api/menu?locale=&category=`, `/api/reviews?locale=`, `/api/gallery?locale=`     |
 | `src/lib/data-service.ts`                        | Lớp đọc dữ liệu dùng chung cho API và prefetch phía server                                  |
@@ -43,6 +43,8 @@ pnpm test:e2e       # E2E test (Playwright), lần đầu chạy: pnpm exec play
 **Thay ảnh và logo:** xem [`public/images/README.md`](public/images/README.md). Tóm tắt: chép ảnh mới vào `public/images/...` rồi sửa đường dẫn ở `src/config/site.ts` (logo, hero, about), `src/data/menu.ts` (ảnh món) hoặc `src/data/gallery.ts` (nhớ sửa `width`/`height`).
 
 **Sửa thông tin quán:** chỉ cần sửa `src/config/site.ts`. Header, footer, section Liên hệ, bản đồ, JSON-LD (Google) đều đọc từ file này. Điền `delivery.grabfood` / `delivery.shopeefood` thì nút đặt hàng tương ứng sẽ tự hiện.
+
+**Menu nổi bật:** sửa `src/data/featured.ts` (dữ liệu mẫu, sau này nhập từ CMS). Mỗi mục trỏ tới một món qua `menuItemId` và có tiêu đề, câu chuyện, điểm nổi bật, nhãn, màu thẻ (`matcha` / `sakura` / `cream`), thứ tự `order`, bật/tắt `active`, thời gian chạy `startsAt` / `endsAt`. API: `/api/featured?locale=`. Khi có CMS, chỉ cần đổi thân hàm `getFeatured()` trong `src/lib/data-service.ts`.
 
 **Sửa menu:** thêm/sửa phần tử trong `src/data/menu.ts`. Mỗi món có `name` và `description` cho cả `vi` và `en`, `price` tính bằng VND, `tags` là `signature`, `best-seller` hoặc `new`.
 

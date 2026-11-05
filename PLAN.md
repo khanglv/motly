@@ -243,3 +243,9 @@ tests/{unit, e2e}
   - Gallery nền xanh đậm, ảnh kiểu polaroid nghiêng. Review dạng chồng thẻ kéo để lật.
   - Header trong suốt trên hero, thanh tiến trình cuộn. Footer có câu lớn "Một ly matcha nhé?".
 - **Kiểm tra:** lint, typecheck, 39 unit test, 8 E2E pass. Lighthouse local: desktop 98 / 100 / 100, mobile Performance 91, Accessibility 100.
+
+## Menu nổi bật (05/11/2026)
+- Section mới "Menu nổi bật" giữa Giới thiệu và Menu: thẻ lớn cho món đang chọn (ảnh, tiêu đề quảng bá, câu chuyện, điểm nổi bật, giá, nút "Xem trong menu" / "Đặt ngay") và danh sách bên cạnh để chọn món.
+- Dữ liệu mẫu: `src/data/featured.ts`, kiểu `FeaturedRecord` thiết kế sẵn như một collection CMS (menuItemId, headline, story, highlights, badge, image, theme, order, active, startsAt, endsAt).
+- API `/api/featured?locale=`, hook `useFeatured`, prefetch phía server như các section khác. Không có mục nào đang chạy thì ẩn cả section.
+- [ ] Khi có CMS: thay thân `getFeatured()` trong `src/lib/data-service.ts` bằng gọi CMS (nhớ giữ lọc active/thời gian nếu CMS không tự lọc).

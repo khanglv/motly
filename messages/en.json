@@ -78,6 +78,17 @@
   "marquee": {
     "items": "Matcha Latte|Salted Cream Matcha|Coconut Matcha|Strawberry Matcha|Milk Coffee|Bạc Xỉu|Matcha Cookie|Takeaway · Delivery"
   },
+  "featured": {
+    "eyebrow": "Featured",
+    "title": "Một Ly recommends",
+    "subtitle": "Our most-loved cups and this season’s new drinks.",
+    "listLabel": "Choose a featured drink",
+    "viewMenu": "See in menu",
+    "order": "Order now",
+    "loading": "Loading featured drinks…",
+    "error": "Couldn’t load featured drinks.",
+    "retry": "Try again"
+  },
   "menu": {
     "eyebrow": "Menu",
     "title": "Matcha comes first",
