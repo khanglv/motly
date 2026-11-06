@@ -23,6 +23,12 @@
   --color-ink: #1a1f10;
   --color-ink-soft: #545a45;
   --color-accent: #e8b4b8;
+  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
+  --color-surface: #d3dca4;
+  --color-surface-deep: #bcc97f;
+  --color-on-surface: #1f2a0c;
+  --color-on-surface-soft: #424d2c;
+  --color-surface-accent: #4a5e20;
 }
 
 /* Bạc hà: xanh ngọc mát */
@@ -43,6 +49,12 @@
   --color-ink: #0b1f1b;
   --color-ink-soft: #45605a;
   --color-accent: #ffc48c;
+  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
+  --color-surface: #ade3d3;
+  --color-surface-deep: #8bd3be;
+  --color-on-surface: #0b2e28;
+  --color-on-surface-soft: #2b4f47;
+  --color-surface-accent: #155f51;
 }
 
 /* Hojicha: trà rang, nâu ấm */
@@ -63,6 +75,12 @@
   --color-ink: #22160f;
   --color-ink-soft: #5e4c40;
   --color-accent: #9cc16a;
+  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
+  --color-surface: #e6cdad;
+  --color-surface-deep: #d6b48c;
+  --color-on-surface: #2f1d13;
+  --color-on-surface-soft: #5a4232;
+  --color-surface-accent: #71452b;
 }
 
 /* Sakura: hồng anh đào, nhấn xanh matcha */
@@ -83,4 +101,10 @@
   --color-ink: #2a0f17;
   --color-ink-soft: #6a4a53;
   --color-accent: #9ed27a;
+  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
+  --color-surface: #f7c7d2;
+  --color-surface-deep: #f0a9ba;
+  --color-on-surface: #43101f;
+  --color-on-surface-soft: #6b3343;
+  --color-surface-accent: #952a4a;
 }

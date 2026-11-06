@@ -77,7 +77,7 @@ export async function Location({ locale }: { locale: Locale }) {
             id="order"
             className={clsx(
               decor.grain,
-              'relative overflow-hidden rounded-[2.5rem] bg-matcha-900 px-6 py-12 text-cream shadow-soft sm:px-12 sm:py-14'
+              'relative overflow-hidden rounded-[2.5rem] bg-surface px-6 py-12 text-on-surface shadow-soft sm:px-12 sm:py-14'
             )}
           >
             <Bubbles />
@@ -100,25 +100,25 @@ export async function Location({ locale }: { locale: Locale }) {
                   subtitle={t('orderDesc')}
                 />
                 <ul className="mt-6 flex flex-wrap gap-2 text-sm">
-                  <li className="inline-flex items-center gap-2 rounded-full bg-cream/10 px-3.5 py-1.5 ring-1 ring-cream/15">
+                  <li className="inline-flex items-center gap-2 rounded-full bg-white/40 px-3.5 py-1.5 ring-1 ring-on-surface/10">
                     <ClockIcon
                       width={16}
                       height={16}
-                      className="text-matcha-400"
+                      className="text-surface-accent"
                     />
                     {hours.opens} – {hours.closes}
                   </li>
-                  <li className="inline-flex items-center gap-2 rounded-full bg-cream/10 px-3.5 py-1.5 ring-1 ring-cream/15">
+                  <li className="inline-flex items-center gap-2 rounded-full bg-white/40 px-3.5 py-1.5 ring-1 ring-on-surface/10">
                     <BagIcon
                       width={16}
                       height={16}
-                      className="text-matcha-400"
+                      className="text-surface-accent"
                     />
                     {t('pickupBadge')}
                   </li>
                 </ul>
                 <Image
-                  src={siteConfig.images.logoLight}
+                  src={siteConfig.images.logo}
                   alt=""
                   width={siteConfig.images.logoSize.width}
                   height={siteConfig.images.logoSize.height}

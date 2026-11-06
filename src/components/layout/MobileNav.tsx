@@ -20,7 +20,7 @@ export function MobileNav() {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
-        className="btn p-2.5 text-cream hover:translate-y-0 hover:bg-cream/10 md:hidden"
+        className="btn p-2.5 text-on-surface hover:translate-y-0 hover:bg-white/40 md:hidden"
         aria-label={t('openMenu')}
       >
         <MenuIcon width={24} height={24} />
@@ -39,7 +39,7 @@ export function MobileNav() {
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount aria-describedby={undefined}>
               <m.div
-                className="fixed inset-y-0 right-0 z-50 flex w-[86%] max-w-sm flex-col overflow-hidden bg-matcha-900 p-6 text-cream shadow-soft"
+                className="fixed inset-y-0 right-0 z-50 flex w-[86%] max-w-sm flex-col overflow-hidden bg-surface p-6 text-on-surface shadow-soft"
                 initial={reduceMotion ? { opacity: 0 } : { x: '100%' }}
                 animate={reduceMotion ? { opacity: 1 } : { x: 0 }}
                 exit={reduceMotion ? { opacity: 0 } : { x: '100%' }}
@@ -55,7 +55,7 @@ export function MobileNav() {
                     {siteConfig.shortName}
                   </Dialog.Title>
                   <Image
-                    src={siteConfig.images.logoLight}
+                    src={siteConfig.images.logo}
                     alt={siteConfig.name}
                     width={siteConfig.images.logoSize.width}
                     height={siteConfig.images.logoSize.height}
@@ -63,7 +63,7 @@ export function MobileNav() {
                     className="h-14 w-auto"
                   />
                   <Dialog.Close
-                    className="btn p-2.5 text-cream hover:translate-y-0 hover:bg-cream/10"
+                    className="btn p-2.5 text-on-surface hover:translate-y-0 hover:bg-white/40"
                     aria-label={t('closeMenu')}
                   >
                     <CloseIcon width={24} height={24} />
@@ -87,9 +87,9 @@ export function MobileNav() {
                         <a
                           href={`/${locale}#${item.id}`}
                           onClick={() => setOpen(false)}
-                          className="flex items-baseline gap-3 rounded-2xl px-3 py-2.5 font-display text-4xl font-bold text-cream hover:bg-cream/10 hover:text-matcha-300"
+                          className="flex items-baseline gap-3 rounded-2xl px-3 py-2.5 font-display text-4xl font-bold text-on-surface hover:bg-white/40 hover:text-surface-accent"
                         >
-                          <span className="font-sans text-xs font-semibold text-matcha-400">
+                          <span className="font-sans text-xs font-semibold text-surface-accent">
                             0{i + 1}
                           </span>
                           {t(item.labelKey)}
@@ -109,7 +109,7 @@ export function MobileNav() {
                   </a>
                   <a
                     href={`tel:${siteConfig.phone}`}
-                    className="btn-outline-light w-full py-3.5 text-base"
+                    className="btn-outline w-full py-3.5 text-base"
                   >
                     <PhoneIcon width={18} height={18} />
                     {siteConfig.phoneDisplay}

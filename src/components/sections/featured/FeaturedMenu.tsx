@@ -18,11 +18,11 @@ import { formatPrice } from '../menu/MenuCard';
 /** Màu của thẻ nổi bật theo `theme` (chọn trong CMS) */
 const THEME: Record<FeaturedTheme, { card: string; accent: string; chip: string; blob: string; muted: string }> = {
   matcha: {
-    card: 'bg-matcha-900 text-cream',
-    accent: 'text-matcha-300',
-    chip: 'bg-cream/10 text-cream ring-1 ring-cream/20',
+    card: 'bg-surface text-on-surface',
+    accent: 'text-surface-accent',
+    chip: 'bg-white/45 text-on-surface ring-1 ring-on-surface/10',
     blob: 'bg-matcha-400',
-    muted: 'text-cream/75'
+    muted: 'text-on-surface-soft'
   },
   sakura: {
     card: 'bg-accent text-matcha-950',
@@ -146,12 +146,7 @@ export function FeaturedMenu() {
                           <a
                             href="#menu"
                             onClick={() => setActiveCategory(current.item.category)}
-                            className={clsx(
-                              'btn border-2 px-5 py-3',
-                              current.theme === 'matcha'
-                                ? 'border-cream/40 text-cream hover:bg-cream/10'
-                                : 'border-matcha-950/30 text-matcha-950 hover:bg-white/30'
-                            )}
+                            className="btn border-2 border-matcha-950/30 px-5 py-3 text-matcha-950 hover:bg-white/30"
                           >
                             {t('viewMenu')}
                           </a>

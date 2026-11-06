@@ -33,7 +33,7 @@ export function Gallery() {
       aria-labelledby="gallery-title"
       className={clsx(
         decor.grain,
-        'section relative overflow-hidden bg-matcha-900 pt-32 pb-36'
+        'section relative overflow-hidden bg-surface pt-32 pb-36'
       )}
     >
       {/* Sóng trên nối từ section Menu (màu matcha-50) */}

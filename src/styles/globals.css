@@ -27,6 +27,12 @@
   --color-ink: #0c1d12;
   --color-ink-soft: #46574a;
   --color-accent: #f6a8bb;
+  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
+  --color-surface: #bcd88f;
+  --color-surface-deep: #a3c773;
+  --color-on-surface: #14321c;
+  --color-on-surface-soft: #2f4f33;
+  --color-surface-accent: #1f5d2d;
 
   --font-display: var(--font-baloo), 'Baloo 2', system-ui, sans-serif;
   --font-sans: var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif;

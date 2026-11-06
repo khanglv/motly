@@ -255,3 +255,9 @@ tests/{unit, e2e}
 - 5 tông chủ đạo: matcha, uji, mint, hojicha, sakura. Chọn trong `src/config/site.ts` → `theme`; bộ chọn xem trước hiện khi `pnpm dev` hoặc `NEXT_PUBLIC_THEME_PREVIEW=1`.
 - Màu nhấn phụ đổi tên token `sakura` → `accent` (mỗi tông có màu nhấn riêng). SCSS và bóng đổ dùng biến CSS nên đổi theo tông.
 - Test `tests/unit/themes.test.ts` kiểm tra mỗi tông khai báo đủ biến màu.
+
+## Nền sáng kiểu matcha latte (06/11/2026)
+- Thêm token `surface` cho các mảng nền lớn (hero, gallery, đặt món, footer, header, menu mobile, thẻ nổi bật màu matcha): `--color-surface`, `surface-deep`, `on-surface`, `on-surface-soft`, `surface-accent`. Mỗi tông có bộ riêng trong globals.css / themes.css.
+- Nền đổi từ xanh đậm sang xanh matcha nhạt (tông matcha: #bcd88f), chữ trên nền chuyển sang màu đậm. Logo dùng bản nét đen.
+- Các chi tiết nhỏ (nút tab menu, nút lên đầu trang, avatar review…) vẫn giữ màu đậm để tạo điểm nhấn.
+- Lighthouse mobile (local): Performance 95, Accessibility 100.

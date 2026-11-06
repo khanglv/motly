@@ -37,7 +37,7 @@ export async function Hero({ locale }: { locale: Locale }) {
       aria-labelledby="hero-title"
       className={clsx(
         decor.grain,
-        'relative -mt-16 overflow-hidden bg-matcha-900 pt-16 text-cream sm:-mt-20 sm:pt-20'
+        'relative -mt-16 overflow-hidden bg-surface pt-16 text-on-surface sm:-mt-20 sm:pt-20'
       )}
     >
       {/* vầng sáng */}
@@ -45,7 +45,7 @@ export async function Hero({ locale }: { locale: Locale }) {
         aria-hidden
         className={clsx(
           decor.glow,
-          'top-[-10%] left-[-10%] h-[28rem] w-[28rem] bg-matcha-600/50'
+          'top-[-10%] left-[-10%] h-[28rem] w-[28rem] bg-white/60'
         )}
       />
       <span
@@ -59,26 +59,26 @@ export async function Hero({ locale }: { locale: Locale }) {
 
       <div className="container-page relative grid items-center gap-14 pt-10 pb-36 md:grid-cols-[1.15fr_0.85fr] md:pt-16 md:pb-44">
         <div className="relative z-10">
-          <p className="eyebrow bg-cream/10 text-matcha-200 ring-1 ring-cream/15 motion-safe:animate-fade-up">
-            <Leaf className="h-3.5 w-3.5 text-matcha-400" />
+          <p className="eyebrow bg-white/40 text-on-surface-soft ring-1 ring-on-surface/10 motion-safe:animate-fade-up">
+            <Leaf className="h-3.5 w-3.5 text-surface-accent" />
             {t('eyebrow')}
           </p>
 
           <h1
             id="hero-title"
-            className="mt-6 text-5xl text-cream sm:text-6xl lg:text-7xl"
+            className="mt-6 text-5xl text-on-surface sm:text-6xl lg:text-7xl"
           >
             <Words text={t('title')} />
-            <span className="relative mt-1 block text-matcha-400">
+            <span className="relative mt-1 block text-surface-accent">
               <span className="relative inline-block">
                 <Words text={t('titleHighlight')} start={titleWords} />
-                <Squiggle className="text-matcha-300/70" />
+                <Squiggle className="text-surface-accent/60" />
               </span>
             </span>
           </h1>
 
           <p
-            className="mt-7 max-w-lg text-base leading-relaxed text-cream/75 motion-safe:animate-fade-up sm:text-lg"
+            className="mt-7 max-w-lg text-base leading-relaxed text-on-surface-soft motion-safe:animate-fade-up sm:text-lg"
             style={{ '--delay': '0.55s' } as CSSProperties}
           >
             {t('subtitle')}
@@ -93,14 +93,14 @@ export async function Hero({ locale }: { locale: Locale }) {
             </a>
             <a
               href={`tel:${siteConfig.phone}`}
-              className="btn-outline-light px-6 py-3.5 text-base"
+              className="btn-outline px-6 py-3.5 text-base"
             >
               <PhoneIcon width={18} height={18} />
               {t('ctaCall')}
             </a>
             <a
               href="#order"
-              className="group inline-flex items-center gap-1.5 px-2 py-3 text-sm font-semibold text-matcha-200 hover:text-cream"
+              className="group inline-flex items-center gap-1.5 px-2 py-3 text-sm font-semibold text-on-surface-soft hover:text-on-surface"
             >
               {t('ctaOrder')}
               <span
@@ -113,7 +113,7 @@ export async function Hero({ locale }: { locale: Locale }) {
           </div>
 
           <p
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-cream/10 px-4 py-2 text-sm text-matcha-100 ring-1 ring-cream/15 motion-safe:animate-fade-up"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/40 px-4 py-2 text-sm text-on-surface-soft ring-1 ring-on-surface/10 motion-safe:animate-fade-up"
             style={{ '--delay': '0.85s' } as CSSProperties}
           >
             <span className="relative flex h-2.5 w-2.5">
@@ -173,13 +173,13 @@ export async function Hero({ locale }: { locale: Locale }) {
             {t('sticker')}
           </span>
           <Leaf
-            className="absolute -top-8 left-8 h-14 w-14 text-matcha-400 motion-safe:animate-float-slow"
+            className="absolute -top-8 left-8 h-14 w-14 text-surface-accent motion-safe:animate-float-slow"
             style={{ '--r0': '-20deg', '--r1': '-5deg' } as CSSProperties}
           />
           <span
             aria-hidden
             lang="ja"
-            className="absolute -right-2 bottom-16 font-display text-5xl font-extrabold text-matcha-400/30 [writing-mode:vertical-rl] sm:-right-14 sm:text-6xl"
+            className="absolute -right-2 bottom-16 font-display text-5xl font-extrabold text-on-surface/10 [writing-mode:vertical-rl] sm:-right-14 sm:text-6xl"
           >
             抹茶
           </span>

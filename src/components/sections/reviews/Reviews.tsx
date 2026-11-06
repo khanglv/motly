@@ -158,7 +158,7 @@ export function Reviews() {
                     <blockquote className="mt-5 font-display text-2xl leading-snug font-semibold text-matcha-950 sm:text-3xl">
                       “{current.content}”
                     </blockquote>
-                    <figcaption className="mt-7 flex items-center justify-center gap-3 text-sm text-matcha-950/75">
+                    <figcaption className="mt-7 flex items-center justify-center gap-3 text-sm text-matcha-950/90">
                       <span
                         aria-hidden
                         className="grid h-10 w-10 place-items-center rounded-full bg-matcha-900 font-display text-lg font-bold text-matcha-300"

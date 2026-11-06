@@ -23,7 +23,7 @@ function ScrollProgress() {
   return (
     <m.div
       aria-hidden
-      className="absolute inset-x-0 bottom-0 h-[3px] origin-left bg-gradient-to-r from-matcha-500 via-matcha-400 to-matcha-300"
+      className="absolute inset-x-0 bottom-0 h-[3px] origin-left bg-linear-to-r from-matcha-500 via-matcha-400 to-matcha-300"
       style={{ scaleX: reduceMotion ? scrollYProgress : scaleX }}
     />
   );
@@ -48,9 +48,9 @@ export function Header() {
   return (
     <header
       className={clsx(
-        'sticky top-0 z-40 text-cream transition-[background-color,box-shadow,backdrop-filter] duration-300',
+        'sticky top-0 z-40 text-on-surface transition-[background-color,box-shadow,backdrop-filter] duration-300',
         solid
-          ? 'bg-matcha-900/90 shadow-[0_10px_30px_-15px_rgb(0_0_0/0.5)] backdrop-blur-md'
+          ? 'bg-surface/90 shadow-[0_10px_30px_-15px_rgb(0_0_0/0.5)] backdrop-blur-md'
           : 'bg-transparent'
       )}
     >
@@ -61,7 +61,7 @@ export function Header() {
           className="group shrink-0 rounded-lg transition-[rotate] duration-300 hover:-rotate-3 motion-reduce:transition-none"
         >
           <Image
-            src={siteConfig.images.logoLight}
+            src={siteConfig.images.logo}
             alt={siteConfig.name}
             width={siteConfig.images.logoSize.width}
             height={siteConfig.images.logoSize.height}
@@ -72,12 +72,12 @@ export function Header() {
         </Link>
 
         <nav aria-label={t('main')} className="hidden md:block">
-          <ul className="flex items-center gap-1 rounded-full bg-cream/5 p-1 ring-1 ring-cream/10">
+          <ul className="flex items-center gap-1 rounded-full bg-white/40 p-1 ring-1 ring-on-surface/10">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
                 <a
                   href={`/${locale}#${item.id}`}
-                  className="block rounded-full px-4 py-2 text-sm font-medium text-matcha-100 transition-colors hover:bg-cream/10 hover:text-cream"
+                  className="block rounded-full px-4 py-2 text-sm font-medium text-on-surface-soft transition-colors hover:bg-white/40 hover:text-on-surface"
                 >
                   {t(item.labelKey)}
                 </a>
@@ -87,7 +87,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
-          <LanguageSwitcher className="text-cream hover:bg-cream/10 data-[state=open]:bg-cream/10" />
+          <LanguageSwitcher className="text-on-surface hover:bg-white/40 data-[state=open]:bg-white/40" />
           <a
             href={`/${locale}#order`}
             className="btn-fresh hidden px-5 py-2.5 md:inline-flex"

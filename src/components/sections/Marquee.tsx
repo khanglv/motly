@@ -48,7 +48,7 @@ export async function Marquee({ locale }: { locale: Locale }) {
       <Band
         items={items}
         reverse
-        className="relative z-10 -mx-4 -rotate-[1.5deg] bg-matcha-900 py-3 text-cream"
+        className="relative z-10 -mx-4 -rotate-[1.5deg] bg-surface py-3 text-on-surface"
       />
       <Band
         items={items}
