@@ -1,54 +1,69 @@
 import clsx from 'clsx';
 import decor from '@/styles/decor.module.scss';
 
-/** Chổi tre đánh matcha (chasen), vẽ nét */
-function Chasen({ className }: { className?: string }) {
+/**
+ * Vòng ensō (円相) vẽ bằng một nét cọ, chừa khoảng hở như nét thư pháp thiền.
+ * Viền nét hơi nhoè nhờ filter displacement. Tự vẽ khi tải trang.
+ */
+export function Enso({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 80 200" fill="none" className={className} aria-hidden>
-      <rect
-        x="30"
-        y="0"
-        width="20"
-        height="78"
-        rx="6"
-        fill="var(--color-accent)"
-        stroke="var(--color-matcha-900)"
-        strokeWidth="3"
-      />
-      <path
-        d="M22 78h36l14 112H8z"
-        fill="var(--color-cream)"
-        stroke="var(--color-matcha-900)"
-        strokeWidth="3"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M20 190l6-112M30 190l3-112M40 190V78M50 190l-3-112M60 190l-6-112"
-        stroke="var(--color-matcha-900)"
-        strokeOpacity=".55"
-        strokeWidth="2"
-      />
+    <svg
+      aria-hidden
+      viewBox="0 0 200 200"
+      fill="none"
+      className={clsx(decor.enso, className)}
+    >
+      <defs>
+        <filter id="enso-brush" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.05"
+            numOctaves="2"
+            seed="7"
+          />
+          <feDisplacementMap in="SourceGraphic" scale="3" />
+        </filter>
+      </defs>
+      <g filter="url(#enso-brush)" stroke="currentColor" strokeLinecap="round">
+        {/* Nét chính: bắt đầu ở góc trên phải, đi theo chiều kim đồng hồ ~320° */}
+        <path
+          d="M140 30.7A80 80 0 1 1 86.1 21.2"
+          strokeWidth="9"
+          pathLength={1}
+          className="motion-safe:animate-draw-slow"
+        />
+      </g>
     </svg>
   );
 }
 
-/**
- * Bát matcha nhìn từ trên xuống + chổi tre: vật trang trí đặt cạnh ảnh ly ở hero.
- * Vành gốm màu kem, mặt matcha có lớp bọt mịn. Màu theo tông đang chọn.
- * Truyền `className` có `absolute` để đặt vị trí; mặc định là `relative`.
- */
-export function MatchaBowl({ className }: { className?: string }) {
+/** Con dấu hanko màu son, khắc chữ 一杯 ("một ly") */
+export function Hanko({ className }: { className?: string }) {
   return (
-    <div aria-hidden className={clsx('aspect-square', className ?? 'relative')}>
-      <div className={clsx(decor.matchaBowl, 'absolute inset-0 rounded-full')}>
-        <div
-          className={clsx(
-            decor.matchaFoam,
-            'absolute inset-[11%] rounded-full'
-          )}
-        />
-      </div>
-      <Chasen className="absolute -top-[18%] -right-[14%] w-[30%] rotate-[24deg] drop-shadow-md" />
-    </div>
+    <span
+      aria-hidden
+      lang="ja"
+      className={clsx(
+        decor.hanko,
+        'grid place-items-center rounded-md font-serif font-bold text-cream [writing-mode:vertical-rl]',
+        className
+      )}
+    >
+      一杯
+    </span>
+  );
+}
+
+/** Dải sóng seigaiha (青海波) mờ ở chân hero, phai dần lên trên */
+export function Seigaiha({ className }: { className?: string }) {
+  return (
+    <div
+      aria-hidden
+      className={clsx(
+        decor.seigaiha,
+        'pointer-events-none absolute inset-x-0',
+        className
+      )}
+    />
   );
 }

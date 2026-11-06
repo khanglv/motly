@@ -295,3 +295,10 @@ tests/{unit, e2e}
 - Ảnh hero đặt trong khung cửa vòm, phía sau có một vòm lệch màu `surface-deep`. Bát matcha đặt trước góc dưới bên trái. Bỏ huy hiệu xoay và chiếc lá bay.
 - Header luôn có nền kem với chữ đậm, menu là link chữ có gạch chân khi rê chuột (bỏ khung viên thuốc). Header không còn trong suốt đè lên hero.
 - Bỏ mái hiên sọc: nhìn giống hàng răng, rối mắt. Hero chỉ còn nền matcha trơn với khung cửa vòm và bát matcha. Header có viền dưới mảnh.
+
+## Hero kiểu Nhật
+
+- Nền giấy kem (washi) thay cho nền xanh. Chân hero là dải sóng seigaiha (青海波) mờ dần, vẽ bằng CSS.
+- Ảnh đặt trong khung tranh viền trắng, có chú thích "Đánh tay mỗi ly". Phía sau là vòng ensō (円相) vẽ một nét cọ, tự vẽ khi tải trang (tắt khi bật giảm chuyển động).
+- Thêm chữ dọc 抹茶一杯 ("một ly matcha") cạnh khung và con dấu hanko son khắc 一杯. Eyebrow thành dòng chữ thưa có gạch ngang, bỏ nét gạch lượn dưới tiêu đề.
+- Bỏ bát matcha, chổi tre và lớp sóng chạy cũ ở hero.

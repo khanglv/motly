@@ -55,6 +55,7 @@
     calc(var(--i, 0) * 70ms + 80ms) both;
   --animate-fade-up: fade-up 0.9s var(--ease-out-expo) var(--delay, 0s) both;
   --animate-draw: draw 1.1s ease-out 0.9s both;
+  --animate-draw-slow: draw 1.8s cubic-bezier(0.65, 0, 0.35, 1) 0.2s both;
   --animate-blob: blob 14s ease-in-out infinite;
   --animate-wiggle: wiggle 0.5s ease-in-out;
 

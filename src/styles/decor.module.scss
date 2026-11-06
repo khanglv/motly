@@ -109,26 +109,32 @@
   }
 }
 
-// ---------- Nền hero ----------
-
-
-
-// Bát gốm: vành màu kem, đổ bóng mềm
-.matchaBowl {
-  background: radial-gradient(circle at 35% 30%, $cream 0%, $cream-dark 70%, color-mix(in srgb, $cream-dark 80%, $ink) 100%);
-  box-shadow:
-    0 40px 80px -30px color-mix(in srgb, $matcha-950 45%, transparent),
-    inset 0 -10px 30px color-mix(in srgb, $matcha-950 12%, transparent);
+// ---------- Hero kiểu Nhật ----------
+.enso path {
+  stroke-dasharray: 1;
 }
 
-// Mặt matcha: xanh đậm ở mép, bọt nhạt ở giữa, lấm tấm bọt nhỏ
-.matchaFoam {
-  background:
-    radial-gradient(ellipse 38% 30% at 40% 36%, color-mix(in srgb, $matcha-100 90%, transparent), transparent 70%),
-    radial-gradient(ellipse 30% 22% at 62% 64%, color-mix(in srgb, $matcha-100 55%, transparent), transparent 70%),
-    radial-gradient(circle at 70% 30%, color-mix(in srgb, $matcha-100 70%, transparent) 0 3px, transparent 4px),
-    radial-gradient(circle at 30% 66%, color-mix(in srgb, $matcha-100 60%, transparent) 0 2px, transparent 3px),
-    radial-gradient(circle at 56% 20%, color-mix(in srgb, $matcha-100 60%, transparent) 0 2px, transparent 3px),
-    radial-gradient(circle at 45% 42%, $matcha-200 0%, $matcha-300 35%, $matcha-500 72%, $matcha-700 100%);
-  box-shadow: inset 0 8px 24px color-mix(in srgb, $matcha-950 30%, transparent);
+// Con dấu son: đỏ son (shu-iro), viền trong mảnh, mép hơi loang
+.hanko {
+  background: #b5452f;
+  box-shadow:
+    inset 0 0 0 3px #b5452f,
+    inset 0 0 0 4.5px color-mix(in srgb, $cream 55%, transparent),
+    0 6px 14px -6px rgb(0 0 0 / 0.35);
+  letter-spacing: 0.08em;
+}
+
+// Sóng seigaiha: các vòng cung đồng tâm xếp lớp, màu theo tông matcha
+.seigaiha {
+  $bg: $cream;
+  $line: color-mix(in srgb, $matcha-500 30%, $cream);
+  height: 7rem;
+  background-image:
+    radial-gradient(circle at 100% 150%, $bg 24%, $line 24% 28%, $bg 28% 36%, $line 36% 40%, transparent 40%),
+    radial-gradient(circle at 0 150%, $bg 24%, $line 24% 28%, $bg 28% 36%, $line 36% 40%, transparent 40%),
+    radial-gradient(circle at 50% 100%, $line 10%, $bg 10% 23%, $line 23% 30%, $bg 30% 43%, $line 43% 50%, $bg 50% 63%, $line 63% 71%, transparent 71%),
+    radial-gradient(circle at 100% 50%, $line 5%, $bg 5% 15%, $line 15% 20%, $bg 20% 29%, $line 29% 34%, $bg 34% 44%, $line 44% 49%, transparent 49%),
+    radial-gradient(circle at 0 50%, $line 5%, $bg 5% 15%, $line 15% 20%, $bg 20% 29%, $line 29% 34%, $bg 34% 44%, $line 44% 49%, transparent 49%);
+  background-size: 64px 32px;
+  mask-image: linear-gradient(to top, #000 10%, transparent);
 }

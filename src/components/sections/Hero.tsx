@@ -5,8 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import { siteConfig } from '@/config/site';
 import type { Locale } from '@/types';
 import { ClockIcon, PhoneIcon } from '@/components/ui/icons';
-import { Leaf, Squiggle, Waves } from '@/components/ui/decor';
-import { MatchaBowl } from './HeroBackdrop';
+import { Enso, Hanko, Seigaiha } from './HeroBackdrop';
 import decor from '@/styles/decor.module.scss';
 
 /** Tách câu thành từng từ để hiện lần lượt (CSS animation, không cần JS) */
@@ -32,32 +31,29 @@ export async function Hero({ locale }: { locale: Locale }) {
       aria-labelledby="hero-title"
       className={clsx(
         decor.grain,
-        'relative isolate overflow-hidden bg-surface text-on-surface'
+        'relative isolate overflow-hidden bg-cream text-ink'
       )}
     >
 
-      <div className="container-page relative grid items-center gap-14 pt-12 pb-36 md:grid-cols-[1.15fr_0.85fr] md:pt-20 md:pb-44">
+      <div className="container-page relative grid items-center gap-16 pt-14 pb-32 md:grid-cols-[1.1fr_0.9fr] md:pt-20 md:pb-40">
         <div className="relative z-10">
-          <p className="eyebrow bg-white/40 text-on-surface-soft ring-1 ring-on-surface/10 motion-safe:animate-fade-up">
-            <Leaf className="h-3.5 w-3.5 text-surface-accent" />
+          <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.3em] text-matcha-700 uppercase motion-safe:animate-fade-up">
+            <span aria-hidden className="h-px w-10 bg-matcha-600" />
             {t('eyebrow')}
           </p>
 
           <h1
             id="hero-title"
-            className="mt-6 text-5xl text-on-surface sm:text-6xl lg:text-7xl"
+            className="mt-7 text-5xl text-ink sm:text-6xl lg:text-7xl"
           >
             <Words text={t('title')} />
-            <span className="relative mt-1 block text-surface-accent">
-              <span className="relative inline-block">
-                <Words text={t('titleHighlight')} start={titleWords} />
-                <Squiggle className="text-surface-accent/60" />
-              </span>
+            <span className="mt-1 block text-matcha-700">
+              <Words text={t('titleHighlight')} start={titleWords} />
             </span>
           </h1>
 
           <p
-            className="mt-7 max-w-lg text-base leading-relaxed text-on-surface-soft motion-safe:animate-fade-up sm:text-lg"
+            className="mt-7 max-w-lg text-base leading-relaxed text-ink-soft motion-safe:animate-fade-up sm:text-lg"
             style={{ '--delay': '0.55s' } as CSSProperties}
           >
             {t('subtitle')}
@@ -79,7 +75,7 @@ export async function Hero({ locale }: { locale: Locale }) {
             </a>
             <a
               href="#order"
-              className="group inline-flex items-center gap-1.5 px-2 py-3 text-sm font-semibold text-on-surface-soft hover:text-on-surface"
+              className="group inline-flex items-center gap-1.5 px-2 py-3 text-sm font-semibold text-ink-soft hover:text-ink"
             >
               {t('ctaOrder')}
               <span
@@ -92,7 +88,7 @@ export async function Hero({ locale }: { locale: Locale }) {
           </div>
 
           <p
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/40 px-4 py-2 text-sm text-on-surface-soft ring-1 ring-on-surface/10 motion-safe:animate-fade-up"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm text-ink-soft ring-1 ring-ink/10 motion-safe:animate-fade-up"
             style={{ '--delay': '0.85s' } as CSSProperties}
           >
             <span className="relative flex h-2.5 w-2.5">
@@ -107,41 +103,39 @@ export async function Hero({ locale }: { locale: Locale }) {
           </p>
         </div>
 
-        {/* Ảnh hero trong khung cửa vòm của quán, bát matcha đặt phía trước */}
-        <div className="relative mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md">
-          <div
+        {/* Ảnh hero kiểu Nhật: khung tranh trên giấy, vòng ensō phía sau, chữ dọc và con dấu */}
+        <div className="relative mx-auto w-full max-w-[17rem] sm:max-w-sm md:max-w-md">
+          <Enso className="absolute -top-[14%] -right-[24%] -z-10 aspect-square w-[100%] text-matcha-500/70" />
+
+          <p
             aria-hidden
-            className="absolute inset-0 translate-x-4 translate-y-4 rounded-t-full rounded-b-[2rem] bg-surface-deep sm:translate-x-6 sm:translate-y-6"
-          />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-[2rem] bg-matcha-700 shadow-lift ring-8 ring-cream">
-            <Image
-              src={siteConfig.images.hero}
-              alt={t('imageAlt')}
-              fill
-              priority
-              sizes="(min-width: 768px) 28rem, 90vw"
-              className="object-cover"
-            />
+            lang="ja"
+            className="absolute top-2 -left-12 hidden font-serif text-xl tracking-[0.6em] text-ink/60 [writing-mode:vertical-rl] sm:block lg:-left-16"
+          >
+            抹茶一杯
+          </p>
+
+          <div className="bg-white p-2.5 shadow-lift sm:p-3">
+            <div className="relative aspect-[4/5] overflow-hidden bg-matcha-100">
+              <Image
+                src={siteConfig.images.hero}
+                alt={t('imageAlt')}
+                fill
+                priority
+                sizes="(min-width: 768px) 28rem, 80vw"
+                className="object-cover"
+              />
+            </div>
+            <p className="pt-3 pb-1 text-center text-xs font-semibold tracking-[0.25em] text-ink-soft uppercase sm:text-sm">
+              {t('sticker')}
+            </p>
           </div>
 
-          <MatchaBowl className="absolute -bottom-10 -left-8 z-10 w-32 sm:-bottom-14 sm:-left-24 sm:w-44" />
-
-          <span
-            className="absolute top-10 -right-3 rounded-2xl bg-accent px-4 py-2 font-display text-lg font-bold text-matcha-950 shadow-soft motion-safe:animate-float sm:-right-8"
-            style={
-              {
-                '--r0': '8deg',
-                '--r1': '2deg',
-                transform: 'rotate(6deg)'
-              } as CSSProperties
-            }
-          >
-            {t('sticker')}
-          </span>
+          <Hanko className="absolute -right-4 -bottom-5 h-14 w-14 -rotate-6 text-lg sm:-right-7 sm:-bottom-7 sm:h-[4.5rem] sm:w-[4.5rem] sm:text-2xl" />
         </div>
       </div>
 
-      <Waves className="bottom-0" />
+      <Seigaiha className="bottom-0" />
     </section>
   );
 }
