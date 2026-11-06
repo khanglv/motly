@@ -319,3 +319,8 @@ tests/{unit, e2e}
 
 - Tên chính thức: "Một Ly Cafe's và Matcha" (`siteConfig.name`). Đã thay ở tiêu đề trang, mô tả chia sẻ, ảnh OG, bản đồ, footer, trang 404 và JSON-LD.
 - Dòng đầu hero hiển thị đủ tên, giữ nguyên chữ hoa/thường (không viết hoa toàn bộ).
+
+## Menu điều hướng trên mobile
+
+- Ngăn kéo dùng nền giấy `paper` như hero, bỏ bọt trang trí. Mục menu cỡ chữ vừa (2xl thay 4xl), mỗi dòng có số thứ tự, mũi tên và đường kẻ mảnh ngăn cách.
+- Thêm giờ mở cửa và địa chỉ phía trên hai nút "Đặt món" và gọi điện.

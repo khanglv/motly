@@ -6,13 +6,20 @@ import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { useUIStore } from '@/store/ui-store';
 import { siteConfig } from '@/config/site';
-import { CloseIcon, MenuIcon, PhoneIcon } from '@/components/ui/icons';
-import { Bubbles } from '@/components/ui/decor';
+import {
+  ClockIcon,
+  CloseIcon,
+  MapPinIcon,
+  MenuIcon,
+  PhoneIcon
+} from '@/components/ui/icons';
+import type { Locale } from '@/types';
 import { NAV_ITEMS } from './nav-items';
 
 export function MobileNav() {
   const t = useTranslations('nav');
-  const locale = useLocale();
+  const tHero = useTranslations('hero');
+  const locale = useLocale() as Locale;
   const reduceMotion = useReducedMotion();
   const open = useUIStore((s) => s.mobileNavOpen);
   const setOpen = useUIStore((s) => s.setMobileNavOpen);
@@ -39,7 +46,7 @@ export function MobileNav() {
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount aria-describedby={undefined}>
               <m.div
-                className="fixed inset-y-0 right-0 z-50 flex w-[86%] max-w-sm flex-col overflow-hidden bg-surface p-6 text-on-surface shadow-soft"
+                className="fixed inset-y-0 right-0 z-50 flex w-[88%] max-w-sm flex-col overflow-y-auto bg-paper px-6 pt-4 pb-6 text-ink shadow-lift"
                 initial={reduceMotion ? { opacity: 0 } : { x: '100%' }}
                 animate={reduceMotion ? { opacity: 1 } : { x: 0 }}
                 exit={reduceMotion ? { opacity: 0 } : { x: '100%' }}
@@ -49,8 +56,7 @@ export function MobileNav() {
                   ease: [0.22, 1, 0.36, 1]
                 }}
               >
-                <Bubbles />
-                <div className="relative flex items-center justify-between">
+                <div className="flex items-center justify-between border-b border-ink/10 pb-4">
                   <Dialog.Title className="sr-only">
                     {siteConfig.shortName}
                   </Dialog.Title>
@@ -60,18 +66,18 @@ export function MobileNav() {
                     width={siteConfig.images.logoSize.width}
                     height={siteConfig.images.logoSize.height}
                     sizes="80px"
-                    className="h-14 w-auto"
+                    className="h-11 w-auto"
                   />
                   <Dialog.Close
-                    className="btn p-2.5 text-on-surface hover:translate-y-0 hover:bg-white/40"
+                    className="btn -mr-2 p-2.5 text-ink hover:translate-y-0 hover:bg-matcha-100"
                     aria-label={t('closeMenu')}
                   >
                     <CloseIcon width={24} height={24} />
                   </Dialog.Close>
                 </div>
 
-                <nav aria-label={t('main')} className="relative mt-10">
-                  <ul className="space-y-1">
+                <nav aria-label={t('main')} className="mt-2">
+                  <ul className="divide-y divide-ink/10">
                     {NAV_ITEMS.map((item, i) => (
                       <m.li
                         key={item.id}
@@ -87,29 +93,48 @@ export function MobileNav() {
                         <a
                           href={`/${locale}#${item.id}`}
                           onClick={() => setOpen(false)}
-                          className="flex items-baseline gap-3 rounded-2xl px-3 py-2.5 font-display text-4xl font-bold text-on-surface hover:bg-white/40 hover:text-surface-accent"
+                          className="group flex items-center gap-4 py-4 font-display text-2xl font-semibold text-ink transition-colors hover:text-matcha-700"
                         >
-                          <span className="font-sans text-xs font-semibold text-surface-accent">
+                          <span className="w-6 font-sans text-xs font-semibold tabular-nums text-matcha-700">
                             0{i + 1}
                           </span>
-                          {t(item.labelKey)}
+                          <span className="flex-1">{t(item.labelKey)}</span>
+                          <span
+                            aria-hidden
+                            className="text-lg text-ink/40 transition-transform group-hover:translate-x-1 group-hover:text-matcha-700 motion-reduce:transition-none"
+                          >
+                            →
+                          </span>
                         </a>
                       </m.li>
                     ))}
                   </ul>
                 </nav>
 
-                <div className="relative mt-auto space-y-3">
+                <div className="mt-auto space-y-3 pt-8">
+                  <ul className="mb-5 space-y-2 text-sm text-ink-soft">
+                    <li className="flex items-start gap-2.5">
+                      <ClockIcon width={16} height={16} className="mt-0.5 shrink-0 text-matcha-700" />
+                      {tHero('hours', {
+                        opens: siteConfig.hours.opens,
+                        closes: siteConfig.hours.closes
+                      })}
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <MapPinIcon width={16} height={16} className="mt-0.5 shrink-0 text-matcha-700" />
+                      {siteConfig.address.lines[locale][0]}
+                    </li>
+                  </ul>
                   <a
                     href={`/${locale}#order`}
                     onClick={() => setOpen(false)}
-                    className="btn-fresh w-full py-3.5 text-base"
+                    className="btn-fresh w-full py-3 text-base"
                   >
                     {t('order')}
                   </a>
                   <a
                     href={`tel:${siteConfig.phone}`}
-                    className="btn-outline w-full py-3.5 text-base"
+                    className="btn-outline w-full py-3 text-base"
                   >
                     <PhoneIcon width={18} height={18} />
                     {siteConfig.phoneDisplay}
