@@ -16,7 +16,7 @@ const mapQuery =
   '93 Trần Thị Nghỉ, Phường Hạnh Thông, Gò Vấp, Thành phố Hồ Chí Minh';
 
 export const siteConfig = {
-  name: 'Một Ly Café & Matcha',
+  name: "Một Ly Cafe's và Matcha",
   /**
    * Tông màu chủ đạo: 'matcha' | 'uji' | 'matcha-butter' | 'avocado' | 'butter'.
    * Xem trước các tông: chạy `pnpm dev`, dùng bộ chọn tông ở góc dưới bên trái.

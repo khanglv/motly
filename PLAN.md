@@ -314,3 +314,8 @@ tests/{unit, e2e}
   - Xanh bơ: xanh vỏ bơ ngả olive, giấy màu ruột bơ, nhấn nâu hạt bơ.
   - Bơ & matcha: vàng bơ chủ đạo, giấy vàng bơ đậm, nút xanh matcha.
 - Đã kiểm tra 25 cặp chữ/nền chính ở cả 5 tông, tất cả ≥ 4.5:1.
+
+## Tên quán
+
+- Tên chính thức: "Một Ly Cafe's và Matcha" (`siteConfig.name`). Đã thay ở tiêu đề trang, mô tả chia sẻ, ảnh OG, bản đồ, footer, trang 404 và JSON-LD.
+- Dòng đầu hero hiển thị đủ tên, giữ nguyên chữ hoa/thường (không viết hoa toàn bộ).

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "Một Ly Café & Matcha | Matcha & cà phê tại Gò Vấp",
+    "title": "Một Ly Cafe's và Matcha | Matcha & cà phê tại Gò Vấp",
     "description": "Quán café & matcha nhỏ tại 93 Trần Thị Nghỉ, Gò Vấp, TP.HCM. Matcha latte, matcha kem muối, cà phê và bánh. Mang đi, giao qua app. Mở cửa 08:00 – 21:30 mỗi ngày.",
-    "ogAlt": "Một Ly Café & Matcha – matcha và cà phê tại Gò Vấp"
+    "ogAlt": "Một Ly Cafe's và Matcha – matcha và cà phê tại Gò Vấp"
   },
   "nav": {
     "skip": "Bỏ qua tới nội dung chính",
@@ -24,7 +24,7 @@
     "en": "English"
   },
   "hero": {
-    "eyebrow": "Café & Matcha · Gò Vấp",
+    "eyebrow": "Một Ly Cafe's và Matcha · Gò Vấp",
     "title": "Một ly matcha,",
     "titleHighlight": "cho ngày dịu lại.",
     "subtitle": "Matcha pha theo từng ly, cà phê đậm vị và vài món bánh ăn kèm. Ghé mang đi, đặt qua app, hoặc ngồi lại góc nhỏ trước quán.",
@@ -140,7 +140,7 @@
     "phone": "Điện thoại",
     "directions": "Chỉ đường",
     "call": "Gọi ngay",
-    "mapTitle": "Bản đồ đường đến Một Ly Café & Matcha",
+    "mapTitle": "Bản đồ đường đến Một Ly Cafe's và Matcha",
     "orderTitle": "Đặt món",
     "orderDesc": "Đặt qua GrabFood để giao tận nơi, hoặc gọi trước rồi ghé lấy, không phải chờ.",
     "shopeefood": "ShopeeFood",
@@ -163,7 +163,7 @@
     "hours": "Giờ mở cửa",
     "follow": "Theo dõi",
     "facebook": "Facebook",
-    "rights": "© {year} Một Ly Café & Matcha.",
+    "rights": "© {year} Một Ly Cafe's và Matcha.",
     "backToTop": "Lên đầu trang",
     "bigText": "Một ly matcha nhé?"
   },

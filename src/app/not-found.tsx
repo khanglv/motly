@@ -9,7 +9,7 @@ export default function GlobalNotFound() {
           <h1 className="font-display text-3xl text-matcha-900">404</h1>
           <p>Không tìm thấy trang · Page not found</p>
           <Link href="/" className="btn-primary">
-            Một Ly Café &amp; Matcha
+            Một Ly Cafe&apos;s và Matcha
           </Link>
         </div>
       </body>

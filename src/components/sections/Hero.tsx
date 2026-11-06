@@ -36,7 +36,7 @@ export async function Hero({ locale }: { locale: Locale }) {
     >
       <div className="container-page relative grid items-center gap-16 pt-14 pb-24 md:grid-cols-[1.1fr_0.9fr] md:pt-20 md:pb-28">
         <div className="relative z-10">
-          <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.3em] text-matcha-700 uppercase motion-safe:animate-fade-up">
+          <p className="flex items-center gap-3 text-sm font-semibold tracking-[0.12em] text-matcha-700 motion-safe:animate-fade-up">
             <span aria-hidden className="h-px w-10 bg-matcha-600" />
             {t('eyebrow')}
           </p>

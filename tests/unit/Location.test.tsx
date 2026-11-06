@@ -27,7 +27,7 @@ describe("Location", () => {
     expect(directions.getAttribute("href")).toContain("destination=93%20Tr%E1%BA%A7n%20Th%E1%BB%8B%20Ngh%E1%BB%89");
     expect(directions).toHaveAttribute("rel", "noopener noreferrer");
 
-    expect(screen.getByTitle("Bản đồ đường đến Một Ly Café & Matcha")).toHaveAttribute("loading", "lazy");
+    expect(screen.getByTitle("Bản đồ đường đến Một Ly Cafe's và Matcha")).toHaveAttribute("loading", "lazy");
   });
 
   it("khối Đặt món có nút GrabFood, link Facebook, ẩn ShopeeFood khi chưa có link", async () => {

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "Một Ly Café & Matcha | Matcha & coffee in Go Vap",
+    "title": "Một Ly Cafe's và Matcha | Matcha & coffee in Go Vap",
     "description": "A small café & matcha shop at 93 Tran Thi Nghi, Go Vap, Ho Chi Minh City. Matcha latte, salted cream matcha, coffee and pastries. Takeaway and delivery. Open daily 08:00 – 21:30.",
-    "ogAlt": "Một Ly Café & Matcha – matcha and coffee in Go Vap"
+    "ogAlt": "Một Ly Cafe's và Matcha – matcha and coffee in Go Vap"
   },
   "nav": {
     "skip": "Skip to main content",
@@ -24,7 +24,7 @@
     "en": "English"
   },
   "hero": {
-    "eyebrow": "Café & Matcha · Go Vap",
+    "eyebrow": "Một Ly Cafe's và Matcha · Go Vap",
     "title": "One cup of matcha,",
     "titleHighlight": "to slow the day down.",
     "subtitle": "Matcha made cup by cup, bold Vietnamese coffee and a few pastries on the side. Grab it to go, order on your delivery app, or stay a while at our little front-porch corner.",
@@ -140,7 +140,7 @@
     "phone": "Phone",
     "directions": "Get directions",
     "call": "Call us",
-    "mapTitle": "Map to Một Ly Café & Matcha",
+    "mapTitle": "Map to Một Ly Cafe's và Matcha",
     "orderTitle": "Order",
     "orderDesc": "Get it delivered with GrabFood, or call ahead and pick it up without the wait.",
     "shopeefood": "ShopeeFood",
@@ -163,7 +163,7 @@
     "hours": "Opening hours",
     "follow": "Follow us",
     "facebook": "Facebook",
-    "rights": "© {year} Một Ly Café & Matcha.",
+    "rights": "© {year} Một Ly Cafe's và Matcha.",
     "backToTop": "Back to top",
     "bigText": "Matcha, anyone?"
   },

@@ -6,7 +6,7 @@ import { siteConfig } from '@/config/site';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'Một Ly Café & Matcha';
+export const alt = siteConfig.name;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -45,11 +45,11 @@ export default async function OpenGraphImage({
         style={{
           display: 'flex',
           fontSize: 28,
-          letterSpacing: 8,
+          letterSpacing: 2,
           color: '#A6E27F'
         }}
       >
-        {'CAFÉ & MATCHA · GÒ VẤP'}
+        {`${siteConfig.name} · ${locale === 'vi' ? 'Gò Vấp' : 'Go Vap'}`}
       </div>
       <div
         style={{
