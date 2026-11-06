@@ -245,33 +245,46 @@ tests/{unit, e2e}
 - **Kiểm tra:** lint, typecheck, 39 unit test, 8 E2E pass. Lighthouse local: desktop 98 / 100 / 100, mobile Performance 91, Accessibility 100.
 
 ## Menu nổi bật (05/11/2026)
+
 - Section mới "Menu nổi bật" giữa Giới thiệu và Menu: thẻ lớn cho món đang chọn (ảnh, tiêu đề quảng bá, câu chuyện, điểm nổi bật, giá, nút "Xem trong menu" / "Đặt ngay") và danh sách bên cạnh để chọn món.
 - Dữ liệu mẫu: `src/data/featured.ts`, kiểu `FeaturedRecord` thiết kế sẵn như một collection CMS (menuItemId, headline, story, highlights, badge, image, theme, order, active, startsAt, endsAt).
 - API `/api/featured?locale=`, hook `useFeatured`, prefetch phía server như các section khác. Không có mục nào đang chạy thì ẩn cả section.
 - [ ] Khi có CMS: thay thân `getFeatured()` trong `src/lib/data-service.ts` bằng gọi CMS (nhớ giữ lọc active/thời gian nếu CMS không tự lọc).
 
 ## Tông màu (06/11/2026)
+
 - Làm nhạt nền xanh đậm của tông mặc định: matcha-900 #0d3d1f → #1b552d, matcha-950 #082a14 → #123d20.
 - 5 tông chủ đạo: matcha, uji, mint, hojicha, sakura. Chọn trong `src/config/site.ts` → `theme`; bộ chọn xem trước hiện khi `pnpm dev` hoặc `NEXT_PUBLIC_THEME_PREVIEW=1`.
 - Màu nhấn phụ đổi tên token `sakura` → `accent` (mỗi tông có màu nhấn riêng). SCSS và bóng đổ dùng biến CSS nên đổi theo tông.
 - Test `tests/unit/themes.test.ts` kiểm tra mỗi tông khai báo đủ biến màu.
 
 ## Nền sáng kiểu matcha latte (06/11/2026)
+
 - Thêm token `surface` cho các mảng nền lớn (hero, gallery, đặt món, footer, header, menu mobile, thẻ nổi bật màu matcha): `--color-surface`, `surface-deep`, `on-surface`, `on-surface-soft`, `surface-accent`. Mỗi tông có bộ riêng trong globals.css / themes.css.
 - Nền đổi từ xanh đậm sang xanh matcha nhạt (tông matcha: #bcd88f), chữ trên nền chuyển sang màu đậm. Logo dùng bản nét đen.
 - Các chi tiết nhỏ (nút tab menu, nút lên đầu trang, avatar review…) vẫn giữ màu đậm để tạo điểm nhấn.
 - Lighthouse mobile (local): Performance 95, Accessibility 100.
 
 ## Màu trend, bố cục và bảng menu tổng quan (06/11/2026)
+
 - Tông mặc định đổi sang matcha dịu theo xu hướng 2026: xanh xô thơm/pistachio, kem sữa yến mạch và nâu mocha (cặp "matcha + Mocha Mousse"). Màu chính #74A662, nền mảng lớn #DCE9CF, nền trang #F8F5EC, nhấn #D6B48F.
 - Bỏ viền đen 2px và bóng đổ cứng kiểu sticker, thay bằng bóng mềm (`shadow-soft`, `shadow-lift`) và viền mảnh.
 - Bố cục mới: Hero → dải chữ → Món nổi bật → Menu → Giới thiệu → Hình ảnh → Đánh giá → Đặt món. Thanh điều hướng đổi thứ tự theo.
 - Menu thành bảng tổng quan (menu board): mặc định tab "Tất cả", 3 cột Matcha / Cà phê / Bánh, mỗi món một dòng gọn (ảnh nhỏ, tên, giá dạng 45k, mô tả 1 dòng, nhãn). Bỏ thẻ món lớn `MenuCard`.
 
 ## Đổi 3 tông cuối sang matcha + bơ (06/11/2026)
+
 - Bỏ `mint`, `hojicha`, `sakura`. Thêm `matcha-butter` (Matcha bơ sữa: matcha chủ đạo, nền vàng bơ), `avocado` (Xanh bơ: xanh vỏ quả bơ, nền màu ruột bơ), `butter` (Bơ & matcha: vàng bơ chủ đạo, nhấn matcha).
 - Đã kiểm tra tương phản các cặp màu chính (nút, chữ phụ, chữ nhấn, giá, nhãn) đều ≥ 4.5:1.
 
 ## Nền hero mới (06/11/2026)
+
 - `src/components/sections/HeroBackdrop.tsx`: nền nhiều lớp theo tông màu: mesh gradient trôi chậm, lưới chấm mờ dần, đĩa matcha lớn sau ly với vòng gợn sóng lan ra, chữ "MATCHA · MỘT LY" khổng lồ dạng viền trượt theo cuộn, parallax nhẹ theo chuột.
 - Bỏ vầng sáng, bọt bay và chữ 抹茶 dọc cũ trong hero. Mọi chuyển động tắt khi bật "giảm chuyển động".
+
+## Nền hero v2, bỏ dải chữ chạy
+
+- Bỏ hẳn dải chữ chạy (`Marquee`, `VelocityMarquee`) giữa Hero và Món nổi bật.
+- Bỏ nền hero nhiều lớp động (mesh, lưới chấm, gợn sóng, chữ khổng lồ, parallax). Thay bằng nền tĩnh: hoạ tiết icon của quán (`public/images/pattern-cafe.svg`: ly mang đi, hạt cà phê, lá trà, chổi tre, bát, bánh) lặp như giấy gói, mờ dần về phía chữ.
+- Thêm `MatchaBowl` cạnh ảnh ly: bát matcha nhìn từ trên với lớp bọt và chổi tre (chasen). Màu bọt lấy theo tông đang chọn.
+- Lighthouse mobile (local): Performance 82–86, Accessibility 100. LCP là đoạn mô tả hero do hiệu ứng hiện chữ có độ trễ 0.55s. Desktop: Performance 99.

@@ -111,48 +111,29 @@
 
 // ---------- Nền hero ----------
 
-// Mesh gradient từ màu của tông đang chọn
-.mesh {
-  background-color: $surface;
-  background-image:
-    radial-gradient(at 12% 18%, $cream 0, transparent 42%),
-    radial-gradient(at 88% 22%, $matcha-300 0, transparent 46%),
-    radial-gradient(at 72% 92%, $accent 0, transparent 44%),
-    radial-gradient(at 8% 88%, $matcha-200 0, transparent 40%),
-    radial-gradient(at 50% 50%, $surface-deep 0, transparent 60%);
-  will-change: transform;
+// Hoạ tiết icon café lặp (mask từ public/images/pattern-cafe.svg). Lớp bọc ngoài làm mờ dần.
+.cafePattern {
+  background-color: color-mix(in srgb, $matcha-700 13%, transparent);
+  mask: url("/images/pattern-cafe.svg") 0 0 / 260px 260px repeat;
+  -webkit-mask: url("/images/pattern-cafe.svg") 0 0 / 260px 260px repeat;
 }
 
-// Lưới chấm mờ dần ra mép
-.dots {
-  background-image: radial-gradient(color-mix(in srgb, $on-surface 16%, transparent) 1.2px, transparent 1.4px);
-  background-size: 22px 22px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 75%);
+// Bát gốm: vành màu kem, đổ bóng mềm
+.matchaBowl {
+  background: radial-gradient(circle at 35% 30%, $cream 0%, $cream-dark 70%, color-mix(in srgb, $cream-dark 80%, $ink) 100%);
+  box-shadow:
+    0 40px 80px -30px color-mix(in srgb, $matcha-950 45%, transparent),
+    inset 0 -10px 30px color-mix(in srgb, $matcha-950 12%, transparent);
 }
 
-// Vòng gợn sóng lan ra
-.ripple {
-  border: 2px solid color-mix(in srgb, $matcha-600 60%, transparent);
-  box-shadow: 0 0 0 6px color-mix(in srgb, $matcha-300 18%, transparent);
-  transform: scale(0.35);
-  opacity: 0;
-
-  @include motion-safe {
-    animation: ripple 6.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
-  }
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(0.35);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
+// Mặt matcha: xanh đậm ở mép, bọt nhạt ở giữa, lấm tấm bọt nhỏ
+.matchaFoam {
+  background:
+    radial-gradient(ellipse 38% 30% at 40% 36%, color-mix(in srgb, $matcha-100 90%, transparent), transparent 70%),
+    radial-gradient(ellipse 30% 22% at 62% 64%, color-mix(in srgb, $matcha-100 55%, transparent), transparent 70%),
+    radial-gradient(circle at 70% 30%, color-mix(in srgb, $matcha-100 70%, transparent) 0 3px, transparent 4px),
+    radial-gradient(circle at 30% 66%, color-mix(in srgb, $matcha-100 60%, transparent) 0 2px, transparent 3px),
+    radial-gradient(circle at 56% 20%, color-mix(in srgb, $matcha-100 60%, transparent) 0 2px, transparent 3px),
+    radial-gradient(circle at 45% 42%, $matcha-200 0%, $matcha-300 35%, $matcha-500 72%, $matcha-700 100%);
+  box-shadow: inset 0 8px 24px color-mix(in srgb, $matcha-950 30%, transparent);
 }

@@ -6,7 +6,7 @@ import { siteConfig } from '@/config/site';
 import type { Locale } from '@/types';
 import { ClockIcon, PhoneIcon } from '@/components/ui/icons';
 import { Leaf, SpinningBadge, Squiggle, Waves } from '@/components/ui/decor';
-import { HeroBackdrop } from './HeroBackdrop';
+import { HeroBackdrop, MatchaBowl } from './HeroBackdrop';
 import decor from '@/styles/decor.module.scss';
 
 /** Tách câu thành từng từ để hiện lần lượt (CSS animation, không cần JS) */
@@ -110,11 +110,9 @@ export async function Hero({ locale }: { locale: Locale }) {
 
         {/* Ảnh hero trong khung "giọt matcha" biến hình */}
         <div className="relative mx-auto w-full max-w-sm md:max-w-md">
-          <div
-            aria-hidden
-            className="absolute inset-0 translate-x-4 translate-y-5 rotate-6 bg-matcha-400 [border-radius:58%_42%_52%_48%/46%_56%_44%_54%] motion-safe:animate-blob"
-          />
-          <div className="relative aspect-[4/5] overflow-hidden bg-matcha-700 ring-4 ring-cream/90 [border-radius:58%_42%_52%_48%/46%_56%_44%_54%] motion-safe:animate-blob">
+          {/* Bát matcha + chổi tre đặt cạnh ly */}
+          <MatchaBowl className="absolute -right-6 -bottom-8 z-10 w-36 sm:-right-16 sm:w-48" />
+          <div className="relative aspect-[4/5] overflow-hidden bg-matcha-700 shadow-lift ring-8 ring-cream [border-radius:58%_42%_52%_48%/46%_56%_44%_54%] motion-safe:animate-blob">
             <Image
               src={siteConfig.images.hero}
               alt={t('imageAlt')}

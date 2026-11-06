@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="260" viewBox="0 0 260 260" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Hoạ tiết lặp kiểu giấy gói của quán: ly mang đi, hạt cà phê, lá trà, chổi đánh matcha, bát matcha, croissant.
+       Dùng làm mask-image nên màu nét không quan trọng; màu thật lấy theo tông. -->
+  <!-- ly mang đi có ống hút -->
+  <g transform="translate(26 24) rotate(-8)">
+    <path d="M4 14h36l-4 40H8z"/>
+    <path d="M2 8h40v6H2z"/>
+    <path d="M28 8l6-14"/>
+    <path d="M7 30h30"/>
+  </g>
+  <!-- hạt cà phê -->
+  <g transform="translate(150 30) rotate(25)">
+    <ellipse cx="12" cy="16" rx="11" ry="15"/>
+    <path d="M12 2c-5 8 5 20 0 28"/>
+  </g>
+  <!-- lá trà -->
+  <g transform="translate(206 88) rotate(-30)">
+    <path d="M0 30C0 12 12 2 32 0c-2 20-14 30-32 30z"/>
+    <path d="M2 28C12 18 20 10 28 4"/>
+  </g>
+  <!-- chổi tre đánh matcha (chasen) -->
+  <g transform="translate(96 96) rotate(12)">
+    <path d="M14 0h8v22h-8z"/>
+    <path d="M10 22h16l6 30H4z"/>
+    <path d="M10 52l-2-30M18 52V22M26 52l2-30"/>
+  </g>
+  <!-- bát matcha -->
+  <g transform="translate(18 156)">
+    <path d="M0 10h52c0 18-10 28-26 28S0 28 0 10z"/>
+    <path d="M18 38v6h16v-6"/>
+    <path d="M10 10c6-6 26-6 32 0"/>
+  </g>
+  <!-- croissant -->
+  <g transform="translate(160 170) rotate(-12)">
+    <path d="M2 24C6 8 24 0 34 0s28 8 32 24c-8 4-16-2-18-8-4 6-10 8-14 8s-10-2-14-8c-2 6-10 12-18 8z"/>
+    <path d="M24 4l4 14M44 4l-4 14"/>
+  </g>
+  <!-- hạt cà phê nhỏ -->
+  <g transform="translate(114 214) rotate(-40)">
+    <ellipse cx="8" cy="11" rx="7" ry="10"/>
+    <path d="M8 1c-3 6 3 14 0 20"/>
+  </g>
+  <!-- lá nhỏ -->
+  <g transform="translate(228 210) rotate(40)">
+    <path d="M0 18C0 7 7 1 20 0c-1 12-8 18-20 18z"/>
+  </g>
+</svg>
