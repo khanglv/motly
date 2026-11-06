@@ -76,7 +76,8 @@
     }
   },
   "marquee": {
-    "items": "Matcha Latte|Salted Cream Matcha|Coconut Matcha|Strawberry Matcha|Milk Coffee|Bạc Xỉu|Matcha Cookie|Takeaway · Delivery"
+    "items": "Matcha Latte|Salted Cream Matcha|Coconut Matcha|Strawberry Matcha|Milk Coffee|Bạc Xỉu|Matcha Cookie|Takeaway · Delivery",
+    "words": "Whisked to order|Takeaway|Delivery|Daily 8:00 – 21:30|Go Vap"
   },
   "featured": {
     "eyebrow": "Featured",

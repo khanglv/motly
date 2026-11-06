@@ -45,8 +45,6 @@
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Animation chỉ được gắn qua biến thể motion-safe: (tôn trọng "giảm chuyển động") */
-  --animate-marquee: marquee 38s linear infinite;
-  --animate-marquee-reverse: marquee 46s linear infinite reverse;
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 9s ease-in-out infinite;
   --animate-spin-slow: spin 18s linear infinite;
@@ -60,14 +58,6 @@
   --animate-blob: blob 14s ease-in-out infinite;
   --animate-wiggle: wiggle 0.5s ease-in-out;
 
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
   @keyframes float {
     0%,
     100% {

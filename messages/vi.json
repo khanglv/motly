@@ -76,7 +76,8 @@
     }
   },
   "marquee": {
-    "items": "Matcha Latte|Matcha Kem Muối|Matcha Dừa|Matcha Dâu|Cà Phê Sữa|Bạc Xỉu|Cookie Matcha|Mang đi · Giao app"
+    "items": "Matcha Latte|Matcha Kem Muối|Matcha Dừa|Matcha Dâu|Cà Phê Sữa|Bạc Xỉu|Cookie Matcha|Mang đi · Giao app",
+    "words": "Matcha đánh tay|Mang đi|Giao tận nơi|Mỗi ngày 8:00 – 21:30|Gò Vấp"
   },
   "featured": {
     "eyebrow": "Menu nổi bật",
