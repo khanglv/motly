@@ -34,7 +34,7 @@ export function formatPrice(price: number, locale: 'vi' | 'en') {
 const TAG_STYLE = {
   signature: 'bg-matcha-900 text-matcha-300 -rotate-3',
   'best-seller': 'bg-matcha-400 text-matcha-950 rotate-2',
-  new: 'bg-sakura text-matcha-950 -rotate-2'
+  new: 'bg-accent text-matcha-950 -rotate-2'
 } as const;
 
 export function MenuCard({ item }: { item: MenuItem }) {
@@ -96,7 +96,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
                 <li
                   key={tag}
                   className={clsx(
-                    'rounded-full px-3 py-1 font-display text-xs font-bold tracking-wide shadow-[2px_2px_0_0_rgb(8_42_20/0.6)]',
+                    'rounded-full px-3 py-1 font-display text-xs font-bold tracking-wide shadow-[2px_2px_0_0_color-mix(in_srgb,var(--color-matcha-950)_60%,transparent)]',
                     TAG_STYLE[tag]
                   )}
                 >

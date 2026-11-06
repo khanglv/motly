@@ -25,7 +25,7 @@ const THEME: Record<FeaturedTheme, { card: string; accent: string; chip: string;
     muted: 'text-cream/75'
   },
   sakura: {
-    card: 'bg-sakura text-matcha-950',
+    card: 'bg-accent text-matcha-950',
     accent: 'text-matcha-800',
     chip: 'bg-white/50 text-matcha-950 ring-1 ring-matcha-950/10',
     blob: 'bg-cream',

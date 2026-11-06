@@ -1,0 +1,86 @@
+/*
+ * 5 tông màu chủ đạo. Đổi tông: src/config/site.ts → theme.
+ * Tông "matcha" là mặc định, khai báo trong @theme ở globals.css.
+ * Mỗi tông ghi đè cùng một bộ biến, nên toàn bộ giao diện (Tailwind + SCSS) đổi theo.
+ * Danh sách tông cho code: src/config/themes.ts (giữ đồng bộ với file này).
+ */
+
+/* Uji: matcha truyền thống, xanh rêu ngả vàng */
+[data-theme='uji'] {
+  --color-matcha-950: #24300f;
+  --color-matcha-900: #39491f;
+  --color-matcha-800: #435622;
+  --color-matcha-700: #536a25;
+  --color-matcha-600: #66802c;
+  --color-matcha-500: #7f9a3a;
+  --color-matcha-400: #9cb554;
+  --color-matcha-300: #bccd7c;
+  --color-matcha-200: #d8e2ae;
+  --color-matcha-100: #ebf0d6;
+  --color-matcha-50: #f6f8ec;
+  --color-cream: #faf7ee;
+  --color-cream-dark: #ede7d4;
+  --color-ink: #1a1f10;
+  --color-ink-soft: #545a45;
+  --color-accent: #e8b4b8;
+}
+
+/* Bạc hà: xanh ngọc mát */
+[data-theme='mint'] {
+  --color-matcha-950: #0b2e28;
+  --color-matcha-900: #16483f;
+  --color-matcha-800: #17564a;
+  --color-matcha-700: #186b5b;
+  --color-matcha-600: #1a856f;
+  --color-matcha-500: #26a488;
+  --color-matcha-400: #47bfa2;
+  --color-matcha-300: #7dd8c0;
+  --color-matcha-200: #b0ead9;
+  --color-matcha-100: #d6f5ec;
+  --color-matcha-50: #effbf8;
+  --color-cream: #fbfaf5;
+  --color-cream-dark: #ebe8dc;
+  --color-ink: #0b1f1b;
+  --color-ink-soft: #45605a;
+  --color-accent: #ffc48c;
+}
+
+/* Hojicha: trà rang, nâu ấm */
+[data-theme='hojicha'] {
+  --color-matcha-950: #2f1d13;
+  --color-matcha-900: #523525;
+  --color-matcha-800: #643f2a;
+  --color-matcha-700: #7a4b2f;
+  --color-matcha-600: #965f37;
+  --color-matcha-500: #b07544;
+  --color-matcha-400: #c68f61;
+  --color-matcha-300: #d8b28c;
+  --color-matcha-200: #e8d1b8;
+  --color-matcha-100: #f4e9dc;
+  --color-matcha-50: #fbf6f1;
+  --color-cream: #fcf8f2;
+  --color-cream-dark: #f0e6d8;
+  --color-ink: #22160f;
+  --color-ink-soft: #5e4c40;
+  --color-accent: #9cc16a;
+}
+
+/* Sakura: hồng anh đào, nhấn xanh matcha */
+[data-theme='sakura'] {
+  --color-matcha-950: #43101f;
+  --color-matcha-900: #6f2440;
+  --color-matcha-800: #862846;
+  --color-matcha-700: #a12d4f;
+  --color-matcha-600: #c23a60;
+  --color-matcha-500: #db5577;
+  --color-matcha-400: #e97a95;
+  --color-matcha-300: #f2a5b7;
+  --color-matcha-200: #f8ccd7;
+  --color-matcha-100: #fbe5ea;
+  --color-matcha-50: #fdf3f5;
+  --color-cream: #fffaf8;
+  --color-cream-dark: #f6eae6;
+  --color-ink: #2a0f17;
+  --color-ink-soft: #6a4a53;
+  --color-accent: #9ed27a;
+}

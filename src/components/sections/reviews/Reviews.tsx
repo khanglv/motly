@@ -21,7 +21,7 @@ const SWIPE_THRESHOLD = 60;
 const CARD_TONES = [
   'bg-matcha-400',
   'bg-cream',
-  'bg-sakura',
+  'bg-accent',
   'bg-matcha-200',
   'bg-cream'
 ];

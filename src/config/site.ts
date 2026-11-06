@@ -1,4 +1,5 @@
 import type { Localized } from '@/types';
+import type { ThemeId } from './themes';
 
 /**
  * Thông tin quán. Sửa ở đây là toàn bộ website cập nhật theo.
@@ -16,6 +17,11 @@ const mapQuery =
 
 export const siteConfig = {
   name: 'Một Ly Café & Matcha',
+  /**
+   * Tông màu chủ đạo: 'matcha' | 'uji' | 'mint' | 'hojicha' | 'sakura'.
+   * Xem trước các tông: chạy `pnpm dev`, dùng bộ chọn tông ở góc dưới bên trái.
+   */
+  theme: 'matcha' as ThemeId,
   shortName: 'Một Ly',
   url: siteUrl.replace(/\/$/, ''),
 

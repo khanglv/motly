@@ -25,7 +25,7 @@ const FEATURES = [
   {
     key: 'outdoor',
     Icon: ChairIcon,
-    tone: 'bg-sakura text-matcha-950',
+    tone: 'bg-accent text-matcha-950',
     rotate: '-rotate-1'
   }
 ] as const;

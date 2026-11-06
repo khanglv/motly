@@ -9,6 +9,8 @@ import { siteConfig } from '@/config/site';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
+import { ThemeSwitcher } from '@/components/layout/ThemeSwitcher';
+import { THEMES } from '@/config/themes';
 import { QueryProvider } from '@/components/providers/QueryProvider';
 import { MotionProvider } from '@/components/providers/MotionProvider';
 
@@ -27,6 +29,10 @@ const sans = Be_Vietnam_Pro({
   display: 'swap'
 });
 
+/** Bộ chọn tông màu chỉ hiện khi dev, hoặc khi đặt NEXT_PUBLIC_THEME_PREVIEW=1 (ví dụ bản preview trên Vercel) */
+const SHOW_THEME_SWITCHER =
+  process.env.NODE_ENV !== 'production' || process.env.NEXT_PUBLIC_THEME_PREVIEW === '1';
+
 type Props = {
   children: ReactNode;
   params: Promise<{ locale: string }>;
@@ -37,7 +43,8 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0d3d1f'
+  // Màu thanh trình duyệt trên điện thoại, theo tông đang chọn
+  themeColor: THEMES.find((t) => t.id === siteConfig.theme)?.swatch[0] ?? '#1b552d'
 };
 
 export async function generateMetadata({
@@ -86,7 +93,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   const t = await getTranslations({ locale, namespace: 'nav' });
 
   return (
-    <html lang={locale} className={`${display.variable} ${sans.variable}`}>
+    <html
+      lang={locale}
+      data-theme={siteConfig.theme}
+      className={`${display.variable} ${sans.variable}`}
+    >
       <body id="top">
         <a
           href="#main"
@@ -103,6 +114,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               </main>
               <Footer locale={locale} />
               <ScrollToTop />
+              {SHOW_THEME_SWITCHER && <ThemeSwitcher />}
             </MotionProvider>
           </QueryProvider>
         </NextIntlClientProvider>

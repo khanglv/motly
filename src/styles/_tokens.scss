@@ -1,19 +1,20 @@
-// Design tokens cho SCSS. Giữ đồng bộ với @theme trong globals.css.
-$matcha-950: #082a14;
-$matcha-900: #0d3d1f;
-$matcha-800: #12562c;
-$matcha-700: #187538;
-$matcha-600: #22984a;
-$matcha-500: #3cac54;
-$matcha-400: #6fcb5e;
-$matcha-300: #a6e27f;
-$matcha-200: #cdf1b2;
-$matcha-100: #e5f7d8;
-$matcha-50: #f3fbec;
-$cream: #fbf8ef;
-$cream-dark: #efe9d8;
-$ink: #0c1d12;
-$sakura: #f6a8bb;
+// Design tokens cho SCSS: trỏ tới biến CSS trong globals.css / themes.css để đổi theo tông màu.
+// Vì là biến CSS nên dùng color-mix() thay cho rgba()/color.adjust().
+$matcha-950: var(--color-matcha-950);
+$matcha-900: var(--color-matcha-900);
+$matcha-800: var(--color-matcha-800);
+$matcha-700: var(--color-matcha-700);
+$matcha-600: var(--color-matcha-600);
+$matcha-500: var(--color-matcha-500);
+$matcha-400: var(--color-matcha-400);
+$matcha-300: var(--color-matcha-300);
+$matcha-200: var(--color-matcha-200);
+$matcha-100: var(--color-matcha-100);
+$matcha-50: var(--color-matcha-50);
+$cream: var(--color-cream);
+$cream-dark: var(--color-cream-dark);
+$ink: var(--color-ink);
+$accent: var(--color-accent);
 
 $bp-sm: 640px;
 $bp-md: 768px;

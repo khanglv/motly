@@ -1,16 +1,21 @@
 @import 'tailwindcss';
+@import './themes.css';
 
 /*
  * Design tokens - Một Ly Café & Matcha
- * Bảng màu dựng quanh màu xanh trong logo (#3CAC54): xanh matcha đậm, tươi.
  * Giữ đồng bộ với src/styles/_tokens.scss
  */
 @theme {
-  --color-matcha-950: #082a14;
-  --color-matcha-900: #0d3d1f;
-  --color-matcha-800: #12562c;
-  --color-matcha-700: #187538;
-  --color-matcha-600: #22984a;
+  /*
+   * Tông mặc định "matcha" (xanh tươi theo logo). 4 tông còn lại ở src/styles/themes.css,
+   * chọn trong src/config/site.ts → theme. Tên token giữ "matcha-*" cho mọi tông
+   * (đây là thang màu chủ đạo), "accent" là màu nhấn phụ.
+   */
+  --color-matcha-950: #123d20;
+  --color-matcha-900: #1b552d;
+  --color-matcha-800: #1e6534;
+  --color-matcha-700: #227a3d;
+  --color-matcha-600: #2a9448;
   --color-matcha-500: #3cac54;
   --color-matcha-400: #6fcb5e;
   --color-matcha-300: #a6e27f;
@@ -21,13 +26,13 @@
   --color-cream-dark: #efe9d8;
   --color-ink: #0c1d12;
   --color-ink-soft: #46574a;
-  --color-sakura: #f6a8bb;
+  --color-accent: #f6a8bb;
 
   --font-display: var(--font-baloo), 'Baloo 2', system-ui, sans-serif;
   --font-sans: var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif;
 
   --radius-card: 1.75rem;
-  --shadow-soft: 0 18px 40px -18px rgb(8 42 20 / 0.35);
+  --shadow-soft: 0 18px 40px -18px color-mix(in srgb, var(--color-matcha-950) 35%, transparent);
   --shadow-pop: 6px 6px 0 0 var(--color-matcha-900);
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
@@ -185,10 +190,10 @@
   @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-[background-color,color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 motion-reduce:hover:translate-y-0;
 }
 @utility btn-primary {
-  @apply btn bg-matcha-700 text-cream shadow-[0_8px_20px_-8px_rgb(24_117_56/0.7)] hover:bg-matcha-800;
+  @apply btn bg-matcha-700 text-cream shadow-[0_8px_20px_-8px_color-mix(in_srgb,var(--color-matcha-700)_70%,transparent)] hover:bg-matcha-800;
 }
 @utility btn-fresh {
-  @apply btn bg-matcha-400 text-matcha-950 shadow-[0_10px_30px_-10px_rgb(111_203_94/0.9)] hover:bg-matcha-300;
+  @apply btn bg-matcha-400 text-matcha-950 shadow-[0_10px_30px_-10px_color-mix(in_srgb,var(--color-matcha-400)_90%,transparent)] hover:bg-matcha-300;
 }
 @utility btn-outline {
   @apply btn border-2 border-matcha-700 text-matcha-800 hover:bg-matcha-100;

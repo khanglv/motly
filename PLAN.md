@@ -249,3 +249,9 @@ tests/{unit, e2e}
 - Dữ liệu mẫu: `src/data/featured.ts`, kiểu `FeaturedRecord` thiết kế sẵn như một collection CMS (menuItemId, headline, story, highlights, badge, image, theme, order, active, startsAt, endsAt).
 - API `/api/featured?locale=`, hook `useFeatured`, prefetch phía server như các section khác. Không có mục nào đang chạy thì ẩn cả section.
 - [ ] Khi có CMS: thay thân `getFeatured()` trong `src/lib/data-service.ts` bằng gọi CMS (nhớ giữ lọc active/thời gian nếu CMS không tự lọc).
+
+## Tông màu (06/11/2026)
+- Làm nhạt nền xanh đậm của tông mặc định: matcha-900 #0d3d1f → #1b552d, matcha-950 #082a14 → #123d20.
+- 5 tông chủ đạo: matcha, uji, mint, hojicha, sakura. Chọn trong `src/config/site.ts` → `theme`; bộ chọn xem trước hiện khi `pnpm dev` hoặc `NEXT_PUBLIC_THEME_PREVIEW=1`.
+- Màu nhấn phụ đổi tên token `sakura` → `accent` (mỗi tông có màu nhấn riêng). SCSS và bóng đổ dùng biến CSS nên đổi theo tông.
+- Test `tests/unit/themes.test.ts` kiểm tra mỗi tông khai báo đủ biến màu.
