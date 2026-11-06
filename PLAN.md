@@ -267,3 +267,7 @@ tests/{unit, e2e}
 - Bỏ viền đen 2px và bóng đổ cứng kiểu sticker, thay bằng bóng mềm (`shadow-soft`, `shadow-lift`) và viền mảnh.
 - Bố cục mới: Hero → dải chữ → Món nổi bật → Menu → Giới thiệu → Hình ảnh → Đánh giá → Đặt món. Thanh điều hướng đổi thứ tự theo.
 - Menu thành bảng tổng quan (menu board): mặc định tab "Tất cả", 3 cột Matcha / Cà phê / Bánh, mỗi món một dòng gọn (ảnh nhỏ, tên, giá dạng 45k, mô tả 1 dòng, nhãn). Bỏ thẻ món lớn `MenuCard`.
+
+## Đổi 3 tông cuối sang matcha + bơ (06/11/2026)
+- Bỏ `mint`, `hojicha`, `sakura`. Thêm `matcha-butter` (Matcha bơ sữa: matcha chủ đạo, nền vàng bơ), `avocado` (Xanh bơ: xanh vỏ quả bơ, nền màu ruột bơ), `butter` (Bơ & matcha: vàng bơ chủ đạo, nhấn matcha).
+- Đã kiểm tra tương phản các cặp màu chính (nút, chữ phụ, chữ nhấn, giá, nhãn) đều ≥ 4.5:1.

@@ -16,7 +16,7 @@ describe("tông màu", () => {
   const baseVars = colorVars(themeBlock);
 
   it("có đúng 5 tông và tông đang dùng hợp lệ", () => {
-    expect(THEMES.map((t) => t.id)).toEqual(["matcha", "uji", "mint", "hojicha", "sakura"]);
+    expect(THEMES.map((t) => t.id)).toEqual(["matcha", "uji", "matcha-butter", "avocado", "butter"]);
     expect(THEMES.map((t) => t.id)).toContain(siteConfig.theme);
   });
 

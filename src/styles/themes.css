@@ -31,80 +31,80 @@
   --color-surface-accent: #4a5e20;
 }
 
-/* Bạc hà: xanh ngọc mát */
-[data-theme='mint'] {
-  --color-matcha-950: #0b2e28;
-  --color-matcha-900: #16483f;
-  --color-matcha-800: #17564a;
-  --color-matcha-700: #186b5b;
-  --color-matcha-600: #1a856f;
-  --color-matcha-500: #26a488;
-  --color-matcha-400: #47bfa2;
-  --color-matcha-300: #7dd8c0;
-  --color-matcha-200: #b0ead9;
-  --color-matcha-100: #d6f5ec;
-  --color-matcha-50: #effbf8;
-  --color-cream: #fbfaf5;
-  --color-cream-dark: #ebe8dc;
-  --color-ink: #0b1f1b;
-  --color-ink-soft: #45605a;
-  --color-accent: #ffc48c;
-  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
-  --color-surface: #ade3d3;
-  --color-surface-deep: #8bd3be;
-  --color-on-surface: #0b2e28;
-  --color-on-surface-soft: #2b4f47;
-  --color-surface-accent: #155f51;
+/* Matcha bơ sữa: matcha chủ đạo, nền vàng bơ (cặp màu trend 2026) */
+[data-theme='matcha-butter'] {
+  --color-matcha-950: #1c2a19;
+  --color-matcha-900: #33492d;
+  --color-matcha-800: #3d5934;
+  --color-matcha-700: #4a6f3e;
+  --color-matcha-600: #5c8a4c;
+  --color-matcha-500: #74a662;
+  --color-matcha-400: #8bb673;
+  --color-matcha-300: #a9ca92;
+  --color-matcha-200: #cbdfba;
+  --color-matcha-100: #e4eedb;
+  --color-matcha-50: #f5f8ee;
+  --color-cream: #fdf9ec;
+  --color-cream-dark: #f1e8cf;
+  --color-ink: #1c2419;
+  --color-ink-soft: #56604f;
+  --color-accent: #f1d27a;
+  /* Nền các mảng lớn */
+  --color-surface: #f7e9b5;
+  --color-surface-deep: #efdb98;
+  --color-on-surface: #2a2a14;
+  --color-on-surface-soft: #554f2a;
+  --color-surface-accent: #4a6f3e;
 }
 
-/* Hojicha: trà rang, nâu ấm */
-[data-theme='hojicha'] {
-  --color-matcha-950: #2f1d13;
-  --color-matcha-900: #523525;
-  --color-matcha-800: #643f2a;
-  --color-matcha-700: #7a4b2f;
-  --color-matcha-600: #965f37;
-  --color-matcha-500: #b07544;
-  --color-matcha-400: #c68f61;
-  --color-matcha-300: #d8b28c;
-  --color-matcha-200: #e8d1b8;
-  --color-matcha-100: #f4e9dc;
-  --color-matcha-50: #fbf6f1;
-  --color-cream: #fcf8f2;
-  --color-cream-dark: #f0e6d8;
-  --color-ink: #22160f;
-  --color-ink-soft: #5e4c40;
-  --color-accent: #9cc16a;
-  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
-  --color-surface: #e6cdad;
-  --color-surface-deep: #d6b48c;
-  --color-on-surface: #2f1d13;
-  --color-on-surface-soft: #5a4232;
-  --color-surface-accent: #71452b;
+/* Xanh bơ: xanh vỏ quả bơ, nền màu ruột bơ */
+[data-theme='avocado'] {
+  --color-matcha-950: #1f2a0e;
+  --color-matcha-900: #34461a;
+  --color-matcha-800: #415a1f;
+  --color-matcha-700: #4f6e25;
+  --color-matcha-600: #63892e;
+  --color-matcha-500: #7ea33a;
+  --color-matcha-400: #9cbc4f;
+  --color-matcha-300: #bdd27a;
+  --color-matcha-200: #d9e5a8;
+  --color-matcha-100: #ecf2d2;
+  --color-matcha-50: #f7f9ea;
+  --color-cream: #fbfaee;
+  --color-cream-dark: #eeeccf;
+  --color-ink: #1d220f;
+  --color-ink-soft: #565c40;
+  --color-accent: #e2c48f;
+  /* Nền các mảng lớn */
+  --color-surface: #e2ecb6;
+  --color-surface-deep: #d2e09a;
+  --color-on-surface: #1f2a0e;
+  --color-on-surface-soft: #44522a;
+  --color-surface-accent: #4f6e25;
 }
 
-/* Sakura: hồng anh đào, nhấn xanh matcha */
-[data-theme='sakura'] {
-  --color-matcha-950: #43101f;
-  --color-matcha-900: #6f2440;
-  --color-matcha-800: #862846;
-  --color-matcha-700: #a12d4f;
-  --color-matcha-600: #c23a60;
-  --color-matcha-500: #db5577;
-  --color-matcha-400: #e97a95;
-  --color-matcha-300: #f2a5b7;
-  --color-matcha-200: #f8ccd7;
-  --color-matcha-100: #fbe5ea;
-  --color-matcha-50: #fdf3f5;
-  --color-cream: #fffaf8;
-  --color-cream-dark: #f6eae6;
-  --color-ink: #2a0f17;
-  --color-ink-soft: #6a4a53;
-  --color-accent: #9ed27a;
-  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
-  --color-surface: #f7c7d2;
-  --color-surface-deep: #f0a9ba;
-  --color-on-surface: #43101f;
-  --color-on-surface-soft: #6b3343;
-  --color-surface-accent: #952a4a;
+/* Bơ & matcha: vàng bơ chủ đạo, nhấn xanh matcha */
+[data-theme='butter'] {
+  --color-matcha-950: #2b2408;
+  --color-matcha-900: #4a3f12;
+  --color-matcha-800: #5c4f16;
+  --color-matcha-700: #6f601b;
+  --color-matcha-600: #8a7823;
+  --color-matcha-500: #a8932f;
+  --color-matcha-400: #cdb64a;
+  --color-matcha-300: #e3cf74;
+  --color-matcha-200: #f1e3a6;
+  --color-matcha-100: #f8f0d0;
+  --color-matcha-50: #fcf8e8;
+  --color-cream: #fffcf1;
+  --color-cream-dark: #f3ead2;
+  --color-ink: #2a2410;
+  --color-ink-soft: #5f5638;
+  --color-accent: #9cc27f;
+  /* Nền các mảng lớn */
+  --color-surface: #f6e6a6;
+  --color-surface-deep: #eed98a;
+  --color-on-surface: #2b2408;
+  --color-on-surface-soft: #5a4c1c;
+  --color-surface-accent: #6f601b;
 }

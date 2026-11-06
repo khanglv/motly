@@ -18,7 +18,7 @@ const mapQuery =
 export const siteConfig = {
   name: 'Một Ly Café & Matcha',
   /**
-   * Tông màu chủ đạo: 'matcha' | 'uji' | 'mint' | 'hojicha' | 'sakura'.
+   * Tông màu chủ đạo: 'matcha' | 'uji' | 'matcha-butter' | 'avocado' | 'butter'.
    * Xem trước các tông: chạy `pnpm dev`, dùng bộ chọn tông ở góc dưới bên trái.
    */
   theme: 'matcha' as ThemeId,
