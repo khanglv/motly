@@ -15,7 +15,10 @@
     "location": "Liên hệ",
     "order": "Đặt món",
     "openMenu": "Mở menu",
-    "closeMenu": "Đóng menu"
+    "closeMenu": "Đóng menu",
+    "openNow": "Đang mở cửa",
+    "closedNow": "Đã đóng cửa",
+    "hoursDaily": "{opens} – {closes} mỗi ngày"
   },
   "language": {
     "label": "Ngôn ngữ",

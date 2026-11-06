@@ -15,7 +15,10 @@
     "location": "Visit us",
     "order": "Order",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "openNow": "Open now",
+    "closedNow": "Closed now",
+    "hoursDaily": "{opens} – {closes} daily"
   },
   "language": {
     "label": "Language",

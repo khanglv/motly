@@ -334,3 +334,12 @@ tests/{unit, e2e}
 - Máy tính: mở trang quán ở tab mới. Ctrl/Cmd/chuột giữa giữ hành vi link thường.
 - Logic: `chooseGrabStrategy` trong `src/lib/grab.ts`. Test: unit `grab.test.ts`, E2E cho máy tính, iPhone, Android.
 - Chưa kiểm tra trên máy thật: cần thử trên iPhone và Android có và không có app Grab.
+
+## Header mới
+
+- Dải thông tin xanh đậm trên cùng (cuộn đi theo trang): chấm "Đang mở cửa / Đã đóng cửa" tính theo giờ Việt Nam (`useOpenStatus`), giờ mở cửa, địa chỉ (từ md) và số điện thoại bấm gọi được. Mobile rút gọn còn trạng thái, giờ và số điện thoại.
+- Logo kèm tên "Một Ly" và dòng nhỏ "Cafe's và Matcha".
+- Menu desktop (từ lg) có viên nền matcha trượt theo mục đang xem (`useActiveSection` + Framer Motion `layoutId`), `aria-current="location"` cho mục đang xem. Dưới lg dùng nút ☰.
+- Cuộn xuống: header thu gọn thành thanh nổi bo tròn, nền mờ, đổ bóng nhẹ. Chiều cao vùng header cố định nên không làm xô lệch nội dung (CLS 0.001).
+- Nút "Đặt món" có icon xe giao hàng. Thanh tiến độ cuộn chuyển màu từ matcha sang màu nhấn.
+- Lighthouse mobile (local): Performance 90, Accessibility 100.
