@@ -6,7 +6,7 @@ import { siteConfig } from '@/config/site';
 import type { Locale } from '@/types';
 import { ClockIcon, PhoneIcon } from '@/components/ui/icons';
 import { Leaf, Squiggle, Waves } from '@/components/ui/decor';
-import { Awning, MatchaBowl } from './HeroBackdrop';
+import { MatchaBowl } from './HeroBackdrop';
 import decor from '@/styles/decor.module.scss';
 
 /** Tách câu thành từng từ để hiện lần lượt (CSS animation, không cần JS) */
@@ -35,9 +35,8 @@ export async function Hero({ locale }: { locale: Locale }) {
         'relative isolate overflow-hidden bg-surface text-on-surface'
       )}
     >
-      <Awning />
 
-      <div className="container-page relative grid items-center gap-14 pt-20 pb-36 md:grid-cols-[1.15fr_0.85fr] md:pt-28 md:pb-44">
+      <div className="container-page relative grid items-center gap-14 pt-12 pb-36 md:grid-cols-[1.15fr_0.85fr] md:pt-20 md:pb-44">
         <div className="relative z-10">
           <p className="eyebrow bg-white/40 text-on-surface-soft ring-1 ring-on-surface/10 motion-safe:animate-fade-up">
             <Leaf className="h-3.5 w-3.5 text-surface-accent" />

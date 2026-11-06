@@ -44,7 +44,7 @@ export function Header() {
   return (
     <header
       className={clsx(
-        'sticky top-0 z-40 bg-cream/95 text-ink backdrop-blur-md transition-shadow duration-300',
+        'sticky top-0 z-40 border-b border-ink/5 bg-cream/95 text-ink backdrop-blur-md transition-shadow duration-300',
         scrolled && 'shadow-[0_10px_30px_-18px_rgb(0_0_0/0.35)]'
       )}
     >

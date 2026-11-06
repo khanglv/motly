@@ -294,3 +294,4 @@ tests/{unit, e2e}
 - Bỏ hoạ tiết icon lặp (`pattern-cafe.svg`). Đầu hero có mái hiên sọc matcha/kem với mép vỏ sò (`Awning`, CSS thuần, đổi màu theo tông).
 - Ảnh hero đặt trong khung cửa vòm, phía sau có một vòm lệch màu `surface-deep`. Bát matcha đặt trước góc dưới bên trái. Bỏ huy hiệu xoay và chiếc lá bay.
 - Header luôn có nền kem với chữ đậm, menu là link chữ có gạch chân khi rê chuột (bỏ khung viên thuốc). Header không còn trong suốt đè lên hero.
+- Bỏ mái hiên sọc: nhìn giống hàng răng, rối mắt. Hero chỉ còn nền matcha trơn với khung cửa vòm và bát matcha. Header có viền dưới mảnh.

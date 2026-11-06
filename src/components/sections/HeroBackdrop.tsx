@@ -52,19 +52,3 @@ export function MatchaBowl({ className }: { className?: string }) {
     </div>
   );
 }
-
-/**
- * Mái hiên sọc của quán, treo ngay dưới header ở đầu hero.
- * Sọc màu matcha / kem, mép dưới lượn vỏ sò. Màu theo tông đang chọn.
- */
-export function Awning() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-x-0 top-0 drop-shadow-[0_8px_10px_rgb(0_0_0/0.10)]"
-    >
-      <div className="h-1.5 bg-matcha-800" />
-      <div className={decor.awning} />
-    </div>
-  );
-}
