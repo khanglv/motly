@@ -8,13 +8,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { siteConfig } from '@/config/site';
 import { useActiveSection } from '@/hooks/useActiveSection';
-import { useOpenStatus } from '@/hooks/useOpenStatus';
-import {
-  BikeIcon,
-  ClockIcon,
-  MapPinIcon,
-  PhoneIcon
-} from '@/components/ui/icons';
+import { BikeIcon } from '@/components/ui/icons';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileNav } from './MobileNav';
 import { NAV_ITEMS } from './nav-items';
@@ -41,56 +35,6 @@ function ScrollProgress() {
   );
 }
 
-/** Dải thông tin mỏng trên cùng (cuộn đi theo trang): trạng thái mở cửa, giờ, địa chỉ, số điện thoại */
-function InfoStrip() {
-  const t = useTranslations('nav');
-  const { opens, closes } = siteConfig.hours;
-  const open = useOpenStatus(opens, closes);
-
-  return (
-    <div className="bg-matcha-900 text-cream">
-      <div className="container-page flex h-9 items-center justify-between gap-3 text-xs whitespace-nowrap sm:text-[0.8rem]">
-        <p className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2" aria-hidden>
-            {open && (
-              <span className="absolute inline-flex h-full w-full rounded-full bg-matcha-300 opacity-75 motion-safe:animate-ping" />
-            )}
-            <span
-              className={clsx(
-                'relative inline-flex h-2 w-2 rounded-full',
-                open === false ? 'bg-accent' : 'bg-matcha-300'
-              )}
-            />
-          </span>
-          {open !== null && (
-            <span className="font-semibold">{open ? t('openNow') : t('closedNow')}</span>
-          )}
-          <span className="flex items-center gap-1.5 text-cream/80">
-            <ClockIcon width={13} height={13} aria-hidden />
-            <span className="sm:hidden">
-              {opens} – {closes}
-            </span>
-            <span className="hidden sm:inline">{t('hoursDaily', { opens, closes })}</span>
-          </span>
-        </p>
-        <div className="flex items-center gap-5 text-cream/80">
-          <span className="hidden items-center gap-1.5 md:flex">
-            <MapPinIcon width={13} height={13} aria-hidden />
-            {siteConfig.address.street}, {siteConfig.address.district}
-          </span>
-          <a
-            href={`tel:${siteConfig.phone}`}
-            className="flex items-center gap-1.5 font-semibold text-cream hover:text-matcha-200"
-          >
-            <PhoneIcon width={13} height={13} aria-hidden />
-            {siteConfig.phoneDisplay}
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function Header() {
   const t = useTranslations('nav');
   const locale = useLocale();
@@ -104,11 +48,9 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Chiều cao header cố định (không làm xô lệch nội dung). Ở đầu trang: thanh nền giấy full chiều ngang;
+  // cuộn xuống: phần nhìn thấy thu gọn thành thanh nổi bo tròn, nằm đè lên trang.
   return (
-    <>
-    <InfoStrip />
-    {/* Chiều cao header cố định (không làm xô lệch nội dung). Ở đầu trang: thanh nền giấy full chiều ngang;
-        cuộn xuống: phần nhìn thấy thu gọn thành thanh nổi bo tròn, nằm đè lên trang. */}
     <header className="sticky top-0 z-40 h-16 text-ink sm:h-20">
       <div
         className={clsx(
@@ -209,6 +151,5 @@ export function Header() {
         </div>
       </div>
     </header>
-    </>
   );
 }
