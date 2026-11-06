@@ -31,10 +31,9 @@ export async function Hero({ locale }: { locale: Locale }) {
       aria-labelledby="hero-title"
       className={clsx(
         decor.grain,
-        'relative isolate overflow-hidden border-b border-ink/5 bg-cream text-ink'
+        'relative isolate overflow-hidden border-b border-ink/5 bg-paper text-ink'
       )}
     >
-
       <div className="container-page relative grid items-center gap-16 pt-14 pb-24 md:grid-cols-[1.1fr_0.9fr] md:pt-20 md:pb-28">
         <div className="relative z-10">
           <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.3em] text-matcha-700 uppercase motion-safe:animate-fade-up">
@@ -134,7 +133,6 @@ export async function Hero({ locale }: { locale: Locale }) {
           <Hanko className="absolute -right-4 -bottom-5 h-14 w-14 -rotate-6 text-lg sm:-right-7 sm:-bottom-7 sm:h-[4.5rem] sm:w-[4.5rem] sm:text-2xl" />
         </div>
       </div>
-
     </section>
   );
 }

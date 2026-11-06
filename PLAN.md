@@ -303,3 +303,14 @@ tests/{unit, e2e}
 - Thêm chữ dọc 抹茶一杯 ("một ly matcha") cạnh khung và con dấu hanko son khắc 一杯. Eyebrow thành dòng chữ thưa có gạch ngang, bỏ nét gạch lượn dưới tiêu đề.
 - Bỏ bát matcha, chổi tre và lớp sóng chạy cũ ở hero.
 - Bỏ dải sóng seigaiha ở chân hero (rối mắt). Hero ngăn với phần dưới bằng một đường viền mảnh.
+
+## Tách bạch 5 tông màu
+
+- Thêm 3 biến màu cho mọi tông: `paper` (giấy nền hero), `cta` và `on-cta` (nút hành động chính `btn-fresh`). Hero dùng `bg-paper`.
+- Mỗi tông có cá tính riêng:
+  - Matcha dịu: giấy xanh nhạt, nút xanh matcha, nhấn nâu mocha.
+  - Uji truyền thống: xanh rêu đậm (ceremonial), giấy ngà, nút xanh đậm chữ kem, nhấn vàng kim.
+  - Matcha bơ sữa: xanh tươi sáng, giấy bơ sữa, nút vàng bơ.
+  - Xanh bơ: xanh vỏ bơ ngả olive, giấy màu ruột bơ, nhấn nâu hạt bơ.
+  - Bơ & matcha: vàng bơ chủ đạo, giấy vàng bơ đậm, nút xanh matcha.
+- Đã kiểm tra 25 cặp chữ/nền chính ở cả 5 tông, tất cả ≥ 4.5:1.

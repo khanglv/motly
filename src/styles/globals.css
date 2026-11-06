@@ -33,13 +33,20 @@
   --color-on-surface: #1c2a19;
   --color-on-surface-soft: #44573b;
   --color-surface-accent: #3f5f33;
+  /* Giấy nền hero (kiểu washi): mỗi tông một màu giấy riêng để đổi tông là thấy khác ngay */
+  --color-paper: #eff3e4;
+  /* Nút hành động chính (btn-fresh): mỗi tông có thể dùng màu riêng, không bắt buộc là xanh */
+  --color-cta: #8bb673;
+  --color-on-cta: #1c2a19;
 
   --font-display: var(--font-baloo), 'Baloo 2', system-ui, sans-serif;
   --font-sans: var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif;
 
   --radius-card: 1.75rem;
-  --shadow-soft: 0 18px 40px -18px color-mix(in srgb, var(--color-matcha-950) 35%, transparent);
-  --shadow-lift: 0 24px 48px -20px color-mix(in srgb, var(--color-matcha-950) 40%, transparent);
+  --shadow-soft: 0 18px 40px -18px
+    color-mix(in srgb, var(--color-matcha-950) 35%, transparent);
+  --shadow-lift: 0 24px 48px -20px
+    color-mix(in srgb, var(--color-matcha-950) 40%, transparent);
   --shadow-pop: 6px 6px 0 0 var(--color-matcha-900);
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
@@ -191,7 +198,7 @@
   @apply btn bg-matcha-700 text-cream shadow-[0_8px_20px_-8px_color-mix(in_srgb,var(--color-matcha-700)_70%,transparent)] hover:bg-matcha-800;
 }
 @utility btn-fresh {
-  @apply btn bg-matcha-400 text-matcha-950 shadow-[0_10px_30px_-10px_color-mix(in_srgb,var(--color-matcha-400)_90%,transparent)] hover:bg-matcha-300;
+  @apply btn bg-cta text-on-cta shadow-[0_10px_30px_-10px_color-mix(in_srgb,var(--color-cta)_90%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-cta)_80%,white)];
 }
 @utility btn-outline {
   @apply btn border-2 border-matcha-700 text-matcha-800 hover:bg-matcha-100;

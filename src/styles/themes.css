@@ -3,87 +3,96 @@
  * Tông "matcha" là mặc định, khai báo trong @theme ở globals.css.
  * Mỗi tông ghi đè cùng một bộ biến, nên toàn bộ giao diện (Tailwind + SCSS) đổi theo.
  * Danh sách tông cho code: src/config/themes.ts (giữ đồng bộ với file này).
+ *
+ * Mỗi tông có cá tính riêng ở 4 chỗ dễ thấy nhất: thang xanh chủ đạo (matcha-*),
+ * giấy nền hero (paper), nút hành động chính (cta) và màu nhấn (accent).
  */
 
-/* Uji: matcha truyền thống, xanh rêu ngả vàng */
+/* Uji truyền thống: matcha ceremonial xanh rêu đậm, giấy ngà, nút xanh đậm chữ kem, nhấn vàng kim */
 [data-theme='uji'] {
-  --color-matcha-950: #24300f;
-  --color-matcha-900: #39491f;
-  --color-matcha-800: #435622;
-  --color-matcha-700: #536a25;
-  --color-matcha-600: #66802c;
-  --color-matcha-500: #7f9a3a;
-  --color-matcha-400: #9cb554;
-  --color-matcha-300: #bccd7c;
-  --color-matcha-200: #d8e2ae;
-  --color-matcha-100: #ebf0d6;
-  --color-matcha-50: #f6f8ec;
-  --color-cream: #faf7ee;
-  --color-cream-dark: #ede7d4;
-  --color-ink: #1a1f10;
-  --color-ink-soft: #545a45;
-  --color-accent: #e8b4b8;
-  /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
-  --color-surface: #d3dca4;
-  --color-surface-deep: #bcc97f;
-  --color-on-surface: #1f2a0c;
-  --color-on-surface-soft: #424d2c;
-  --color-surface-accent: #4a5e20;
+  --color-matcha-950: #172010;
+  --color-matcha-900: #243516;
+  --color-matcha-800: #2e441b;
+  --color-matcha-700: #3a5620;
+  --color-matcha-600: #4a6c28;
+  --color-matcha-500: #5f8636;
+  --color-matcha-400: #80a053;
+  --color-matcha-300: #a6bc7e;
+  --color-matcha-200: #ccd7ad;
+  --color-matcha-100: #e5ead2;
+  --color-matcha-50: #f3f5ea;
+  --color-cream: #f7f2e4;
+  --color-cream-dark: #e9e1cb;
+  --color-ink: #181d10;
+  --color-ink-soft: #4f563e;
+  --color-accent: #d9b56a;
+  --color-surface: #d6dcb6;
+  --color-surface-deep: #c1cb98;
+  --color-on-surface: #172010;
+  --color-on-surface-soft: #3c4a26;
+  --color-surface-accent: #3a5620;
+  --color-paper: #f2eadb;
+  --color-cta: #3a5620;
+  --color-on-cta: #f7f2e4;
 }
 
-/* Matcha bơ sữa: matcha chủ đạo, nền vàng bơ (cặp màu trend 2026) */
+/* Matcha bơ sữa: xanh matcha tươi sáng, giấy vàng bơ sữa, nút vàng bơ */
 [data-theme='matcha-butter'] {
-  --color-matcha-950: #1c2a19;
-  --color-matcha-900: #33492d;
-  --color-matcha-800: #3d5934;
-  --color-matcha-700: #4a6f3e;
-  --color-matcha-600: #5c8a4c;
-  --color-matcha-500: #74a662;
-  --color-matcha-400: #8bb673;
-  --color-matcha-300: #a9ca92;
-  --color-matcha-200: #cbdfba;
-  --color-matcha-100: #e4eedb;
-  --color-matcha-50: #f5f8ee;
-  --color-cream: #fdf9ec;
-  --color-cream-dark: #f1e8cf;
-  --color-ink: #1c2419;
-  --color-ink-soft: #56604f;
-  --color-accent: #f1d27a;
-  /* Nền các mảng lớn */
-  --color-surface: #f7e9b5;
-  --color-surface-deep: #efdb98;
-  --color-on-surface: #2a2a14;
-  --color-on-surface-soft: #554f2a;
-  --color-surface-accent: #4a6f3e;
+  --color-matcha-950: #13280f;
+  --color-matcha-900: #1d4018;
+  --color-matcha-800: #25501e;
+  --color-matcha-700: #2d6524;
+  --color-matcha-600: #3b822f;
+  --color-matcha-500: #55a243;
+  --color-matcha-400: #7cbd62;
+  --color-matcha-300: #a5d48e;
+  --color-matcha-200: #cae6bb;
+  --color-matcha-100: #e4f3dc;
+  --color-matcha-50: #f3faee;
+  --color-cream: #fdf8e9;
+  --color-cream-dark: #f2e7c8;
+  --color-ink: #1a2414;
+  --color-ink-soft: #4f5a44;
+  --color-accent: #f2cf5b;
+  --color-surface: #f8e8ad;
+  --color-surface-deep: #f0d98a;
+  --color-on-surface: #262712;
+  --color-on-surface-soft: #514b25;
+  --color-surface-accent: #2d6524;
+  --color-paper: #fbf1cf;
+  --color-cta: #f2cf5b;
+  --color-on-cta: #2a2410;
 }
 
-/* Xanh bơ: xanh vỏ quả bơ, nền màu ruột bơ */
+/* Xanh bơ: xanh vỏ quả bơ ngả olive, giấy màu ruột bơ, nhấn nâu hạt bơ */
 [data-theme='avocado'] {
-  --color-matcha-950: #1f2a0e;
-  --color-matcha-900: #34461a;
-  --color-matcha-800: #415a1f;
-  --color-matcha-700: #4f6e25;
-  --color-matcha-600: #63892e;
-  --color-matcha-500: #7ea33a;
-  --color-matcha-400: #9cbc4f;
-  --color-matcha-300: #bdd27a;
-  --color-matcha-200: #d9e5a8;
-  --color-matcha-100: #ecf2d2;
-  --color-matcha-50: #f7f9ea;
-  --color-cream: #fbfaee;
-  --color-cream-dark: #eeeccf;
-  --color-ink: #1d220f;
-  --color-ink-soft: #565c40;
-  --color-accent: #e2c48f;
-  /* Nền các mảng lớn */
-  --color-surface: #e2ecb6;
-  --color-surface-deep: #d2e09a;
-  --color-on-surface: #1f2a0e;
-  --color-on-surface-soft: #44522a;
-  --color-surface-accent: #4f6e25;
+  --color-matcha-950: #1a210b;
+  --color-matcha-900: #2a3713;
+  --color-matcha-800: #354617;
+  --color-matcha-700: #41571b;
+  --color-matcha-600: #536f22;
+  --color-matcha-500: #6b8c2b;
+  --color-matcha-400: #92ad44;
+  --color-matcha-300: #b6c96d;
+  --color-matcha-200: #d5e09d;
+  --color-matcha-100: #eaf0cb;
+  --color-matcha-50: #f6f8e5;
+  --color-cream: #fafaea;
+  --color-cream-dark: #ecebc9;
+  --color-ink: #1c200e;
+  --color-ink-soft: #53583b;
+  --color-accent: #c9996a;
+  --color-surface: #e0e8a6;
+  --color-surface-deep: #cfdb87;
+  --color-on-surface: #1a210b;
+  --color-on-surface-soft: #424d22;
+  --color-surface-accent: #41571b;
+  --color-paper: #eef1c8;
+  --color-cta: #92ad44;
+  --color-on-cta: #1a210b;
 }
 
-/* Bơ & matcha: vàng bơ chủ đạo, nhấn xanh matcha */
+/* Bơ & matcha: vàng bơ chủ đạo, giấy vàng bơ đậm, nút xanh matcha (đảo vai) */
 [data-theme='butter'] {
   --color-matcha-950: #2b2408;
   --color-matcha-900: #4a3f12;
@@ -96,15 +105,17 @@
   --color-matcha-200: #f1e3a6;
   --color-matcha-100: #f8f0d0;
   --color-matcha-50: #fcf8e8;
-  --color-cream: #fffcf1;
+  --color-cream: #fffbee;
   --color-cream-dark: #f3ead2;
   --color-ink: #2a2410;
   --color-ink-soft: #5f5638;
   --color-accent: #9cc27f;
-  /* Nền các mảng lớn */
   --color-surface: #f6e6a6;
   --color-surface-deep: #eed98a;
   --color-on-surface: #2b2408;
   --color-on-surface-soft: #5a4c1c;
   --color-surface-accent: #6f601b;
+  --color-paper: #f9e9ad;
+  --color-cta: #8cbc70;
+  --color-on-cta: #1c2a19;
 }

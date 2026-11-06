@@ -3,11 +3,11 @@
  * `swatch` chỉ dùng để hiển thị ô màu xem trước trong bộ chọn tông (chế độ dev).
  */
 export const THEMES = [
-  { id: 'matcha', name: 'Matcha dịu (trend)', swatch: ['#dce9cf', '#74a662', '#d6b48f'] },
-  { id: 'uji', name: 'Uji truyền thống', swatch: ['#d3dca4', '#7f9a3a', '#bccd7c'] },
-  { id: 'matcha-butter', name: 'Matcha bơ sữa', swatch: ['#f7e9b5', '#74a662', '#f1d27a'] },
-  { id: 'avocado', name: 'Xanh bơ', swatch: ['#e2ecb6', '#7ea33a', '#e2c48f'] },
-  { id: 'butter', name: 'Bơ & matcha', swatch: ['#f6e6a6', '#a8932f', '#9cc27f'] }
+  { id: 'matcha', name: 'Matcha dịu (trend)', swatch: ['#eff3e4', '#74a662', '#d6b48f'] },
+  { id: 'uji', name: 'Uji truyền thống', swatch: ['#f2eadb', '#3a5620', '#d9b56a'] },
+  { id: 'matcha-butter', name: 'Matcha bơ sữa', swatch: ['#fbf1cf', '#55a243', '#f2cf5b'] },
+  { id: 'avocado', name: 'Xanh bơ', swatch: ['#eef1c8', '#6b8c2b', '#c9996a'] },
+  { id: 'butter', name: 'Bơ & matcha', swatch: ['#f9e9ad', '#a8932f', '#8cbc70'] }
 ] as const;
 
 export type ThemeId = (typeof THEMES)[number]['id'];
