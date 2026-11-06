@@ -59,10 +59,9 @@ export function HeroBackdrop() {
   return (
     <div ref={ref} aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       {/* 1. Mesh gradient */}
-      <m.div
-        className={clsx(decor.mesh, 'absolute -inset-[10%] motion-safe:animate-mesh')}
-        style={still ? undefined : { x: meshX, y: meshY }}
-      />
+      <m.div className="absolute -inset-[10%]" style={still ? undefined : { x: meshX, y: meshY }}>
+        <div className={clsx(decor.mesh, 'absolute inset-0 motion-safe:animate-mesh')} />
+      </m.div>
 
       {/* 2. Lưới chấm */}
       <div className={clsx(decor.dots, 'absolute inset-0')} />
@@ -73,7 +72,7 @@ export function HeroBackdrop() {
         style={still ? undefined : { x: ringsX, y: ringsY }}
       >
         {/* đĩa matcha đặc ở giữa */}
-        <span className="absolute inset-[12%] rounded-full bg-[radial-gradient(circle_at_30%_30%,var(--color-matcha-200)_0%,var(--color-matcha-300)_40%,var(--color-matcha-500)_100%)] opacity-90 shadow-[0_40px_120px_-20px_color-mix(in_srgb,var(--color-matcha-500)_70%,transparent)]" />
+        <span className="absolute inset-[12%] rounded-full bg-[radial-gradient(circle_at_30%_30%,var(--color-matcha-200)_0%,var(--color-matcha-300)_40%,var(--color-matcha-500)_100%)] opacity-90" />
         <span className="absolute inset-[12%] rounded-full bg-[radial-gradient(circle_at_70%_80%,color-mix(in_srgb,var(--color-accent)_55%,transparent)_0%,transparent_55%)]" />
         {[0, 1, 2, 3].map((i) => (
           <span

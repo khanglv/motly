@@ -118,9 +118,9 @@
     }
   }
   @keyframes mesh {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 40%; }
-    100% { background-position: 30% 100%; }
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-4%, 3%, 0) scale(1.06); }
+    100% { transform: translate3d(3%, -2%, 0) scale(1.03); }
   }
   @keyframes blob {
     0%,

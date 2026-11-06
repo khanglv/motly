@@ -120,7 +120,7 @@
     radial-gradient(at 72% 92%, $accent 0, transparent 44%),
     radial-gradient(at 8% 88%, $matcha-200 0, transparent 40%),
     radial-gradient(at 50% 50%, $surface-deep 0, transparent 60%);
-  background-size: 140% 140%;
+  will-change: transform;
 }
 
 // Lưới chấm mờ dần ra mép
