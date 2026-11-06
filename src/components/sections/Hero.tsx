@@ -5,13 +5,8 @@ import { getTranslations } from 'next-intl/server';
 import { siteConfig } from '@/config/site';
 import type { Locale } from '@/types';
 import { ClockIcon, PhoneIcon } from '@/components/ui/icons';
-import {
-  Bubbles,
-  Leaf,
-  SpinningBadge,
-  Squiggle,
-  Waves
-} from '@/components/ui/decor';
+import { Leaf, SpinningBadge, Squiggle, Waves } from '@/components/ui/decor';
+import { HeroBackdrop } from './HeroBackdrop';
 import decor from '@/styles/decor.module.scss';
 
 /** Tách câu thành từng từ để hiện lần lượt (CSS animation, không cần JS) */
@@ -37,25 +32,10 @@ export async function Hero({ locale }: { locale: Locale }) {
       aria-labelledby="hero-title"
       className={clsx(
         decor.grain,
-        'relative -mt-16 overflow-hidden bg-surface pt-16 text-on-surface sm:-mt-20 sm:pt-20'
+        'relative isolate -mt-16 overflow-hidden bg-surface pt-16 text-on-surface sm:-mt-20 sm:pt-20'
       )}
     >
-      {/* vầng sáng */}
-      <span
-        aria-hidden
-        className={clsx(
-          decor.glow,
-          'top-[-10%] left-[-10%] h-[28rem] w-[28rem] bg-white/60'
-        )}
-      />
-      <span
-        aria-hidden
-        className={clsx(
-          decor.glow,
-          'right-[-8%] bottom-[5%] h-[30rem] w-[30rem] bg-matcha-400/30'
-        )}
-      />
-      <Bubbles />
+      <HeroBackdrop />
 
       <div className="container-page relative grid items-center gap-14 pt-10 pb-36 md:grid-cols-[1.15fr_0.85fr] md:pt-16 md:pb-44">
         <div className="relative z-10">
@@ -176,13 +156,6 @@ export async function Hero({ locale }: { locale: Locale }) {
             className="absolute -top-8 left-8 h-14 w-14 text-surface-accent motion-safe:animate-float-slow"
             style={{ '--r0': '-20deg', '--r1': '-5deg' } as CSSProperties}
           />
-          <span
-            aria-hidden
-            lang="ja"
-            className="absolute -right-2 bottom-16 font-display text-5xl font-extrabold text-on-surface/10 [writing-mode:vertical-rl] sm:-right-14 sm:text-6xl"
-          >
-            抹茶
-          </span>
         </div>
       </div>
 

@@ -271,3 +271,7 @@ tests/{unit, e2e}
 ## Đổi 3 tông cuối sang matcha + bơ (06/11/2026)
 - Bỏ `mint`, `hojicha`, `sakura`. Thêm `matcha-butter` (Matcha bơ sữa: matcha chủ đạo, nền vàng bơ), `avocado` (Xanh bơ: xanh vỏ quả bơ, nền màu ruột bơ), `butter` (Bơ & matcha: vàng bơ chủ đạo, nhấn matcha).
 - Đã kiểm tra tương phản các cặp màu chính (nút, chữ phụ, chữ nhấn, giá, nhãn) đều ≥ 4.5:1.
+
+## Nền hero mới (06/11/2026)
+- `src/components/sections/HeroBackdrop.tsx`: nền nhiều lớp theo tông màu: mesh gradient trôi chậm, lưới chấm mờ dần, đĩa matcha lớn sau ly với vòng gợn sóng lan ra, chữ "MATCHA · MỘT LY" khổng lồ dạng viền trượt theo cuộn, parallax nhẹ theo chuột.
+- Bỏ vầng sáng, bọt bay và chữ 抹茶 dọc cũ trong hero. Mọi chuyển động tắt khi bật "giảm chuyển động".

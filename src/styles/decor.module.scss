@@ -108,3 +108,51 @@
     background-position: -200% 0;
   }
 }
+
+// ---------- Nền hero ----------
+
+// Mesh gradient từ màu của tông đang chọn
+.mesh {
+  background-color: $surface;
+  background-image:
+    radial-gradient(at 12% 18%, $cream 0, transparent 42%),
+    radial-gradient(at 88% 22%, $matcha-300 0, transparent 46%),
+    radial-gradient(at 72% 92%, $accent 0, transparent 44%),
+    radial-gradient(at 8% 88%, $matcha-200 0, transparent 40%),
+    radial-gradient(at 50% 50%, $surface-deep 0, transparent 60%);
+  background-size: 140% 140%;
+}
+
+// Lưới chấm mờ dần ra mép
+.dots {
+  background-image: radial-gradient(color-mix(in srgb, $on-surface 16%, transparent) 1.2px, transparent 1.4px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 75%);
+}
+
+// Vòng gợn sóng lan ra
+.ripple {
+  border: 2px solid color-mix(in srgb, $matcha-600 60%, transparent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, $matcha-300 18%, transparent);
+  transform: scale(0.35);
+  opacity: 0;
+
+  @include motion-safe {
+    animation: ripple 6.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.35);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
