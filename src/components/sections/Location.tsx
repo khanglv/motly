@@ -37,7 +37,7 @@ function OrderOption({
       href={href}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       className={clsx(
-        'group flex items-center gap-4 rounded-3xl p-5 shadow-[5px_5px_0_0_var(--color-matcha-950)] ring-2 ring-matcha-950 transition-[translate,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[6px_8px_0_0_var(--color-matcha-950)] motion-reduce:transition-none',
+        'group flex items-center gap-4 rounded-3xl p-5 shadow-soft ring-1 ring-matcha-900/10 transition-[translate,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lift motion-reduce:transition-none',
         tone
       )}
     >

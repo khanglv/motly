@@ -19,14 +19,19 @@ describe("Menu section", () => {
   beforeEach(() => useUIStore.setState(initialUIState));
   afterEach(() => vi.unstubAllGlobals());
 
-  it("hiển thị skeleton khi đang tải rồi hiện món matcha", async () => {
+  it("mặc định hiện bảng tổng quan: mọi danh mục trên một màn hình", async () => {
     vi.stubGlobal("fetch", apiFetchMock());
     renderWithProviders(<Menu />);
 
     expect(screen.getAllByTestId("menu-skeleton").length).toBeGreaterThan(0);
     expect(await screen.findByRole("heading", { name: "Matcha Kem Muối" })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: "Matcha" })).toHaveAttribute("aria-selected", "true");
-    expect(screen.queryByRole("heading", { name: "Bạc Xỉu" })).not.toBeInTheDocument();
+    expect(screen.getByRole("tab", { name: "Tất cả" })).toHaveAttribute("aria-selected", "true");
+    // Mỗi danh mục là một cột có tiêu đề và số món
+    for (const name of [/^Matcha.*\d+ món$/, /^Cà phê.*\d+ món$/, /^Bánh.*\d+ món$/]) {
+      expect(screen.getByRole("region", { name })).toBeInTheDocument();
+    }
+    expect(screen.getByRole("heading", { name: "Bạc Xỉu" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Croissant Bơ" })).toBeInTheDocument();
   });
 
   it("bấm tab Bánh thì danh sách đổi sang món bánh", async () => {
@@ -42,11 +47,12 @@ describe("Menu section", () => {
     expect(useUIStore.getState().activeCategory).toBe("bakery");
   });
 
-  it("hiển thị giá VND và badge", async () => {
+  it("hiển thị giá gọn (45k), giá đầy đủ cho trình đọc màn hình, và nhãn", async () => {
     vi.stubGlobal("fetch", apiFetchMock());
     renderWithProviders(<Menu />);
     const card = (await screen.findByRole("heading", { name: "Matcha Latte" })).closest("article")!;
-    expect(within(card).getByText(/45\.000\s?₫/)).toBeInTheDocument();
+    expect(within(card).getByText("45k")).toBeInTheDocument();
+    expect(within(card).getByText(/45\.000\s?₫/)).toHaveClass("sr-only");
     expect(within(card).getByText("Signature")).toBeInTheDocument();
     expect(within(card).getByText("Bán chạy")).toBeInTheDocument();
   });

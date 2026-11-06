@@ -56,7 +56,7 @@ export async function About({ locale }: { locale: Locale }) {
             />
           </div>
           {/* Logo gấu như một sticker dán lên ảnh */}
-          <div className="absolute -right-3 -bottom-10 w-44 -rotate-6 rounded-[2rem] bg-cream p-3 shadow-[6px_6px_0_0_var(--color-matcha-900)] transition-[rotate] duration-300 hover:rotate-0 sm:-right-8 sm:w-52 motion-reduce:transition-none">
+          <div className="absolute -right-3 -bottom-10 w-44 -rotate-6 rounded-[2rem] bg-cream p-3 shadow-soft transition-[rotate] duration-300 hover:rotate-0 sm:-right-8 sm:w-52 motion-reduce:transition-none">
             <Image
               src={siteConfig.images.logo}
               alt={siteConfig.name}
@@ -88,7 +88,7 @@ export async function About({ locale }: { locale: Locale }) {
             <Reveal delay={i * 0.1} className="h-full">
               <div
                 className={clsx(
-                  'group h-full rounded-card p-7 shadow-[5px_5px_0_0_var(--color-matcha-950)] transition-[rotate,translate] duration-300 hover:-translate-y-1.5 hover:rotate-0 motion-reduce:transition-none',
+                  'group h-full rounded-card p-7 shadow-soft transition-[rotate,translate] duration-300 hover:-translate-y-1.5 hover:rotate-0 motion-reduce:transition-none',
                   tone,
                   rotate
                 )}

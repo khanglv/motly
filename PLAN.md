@@ -261,3 +261,9 @@ tests/{unit, e2e}
 - Nền đổi từ xanh đậm sang xanh matcha nhạt (tông matcha: #bcd88f), chữ trên nền chuyển sang màu đậm. Logo dùng bản nét đen.
 - Các chi tiết nhỏ (nút tab menu, nút lên đầu trang, avatar review…) vẫn giữ màu đậm để tạo điểm nhấn.
 - Lighthouse mobile (local): Performance 95, Accessibility 100.
+
+## Màu trend, bố cục và bảng menu tổng quan (06/11/2026)
+- Tông mặc định đổi sang matcha dịu theo xu hướng 2026: xanh xô thơm/pistachio, kem sữa yến mạch và nâu mocha (cặp "matcha + Mocha Mousse"). Màu chính #74A662, nền mảng lớn #DCE9CF, nền trang #F8F5EC, nhấn #D6B48F.
+- Bỏ viền đen 2px và bóng đổ cứng kiểu sticker, thay bằng bóng mềm (`shadow-soft`, `shadow-lift`) và viền mảnh.
+- Bố cục mới: Hero → dải chữ → Món nổi bật → Menu → Giới thiệu → Hình ảnh → Đánh giá → Đặt món. Thanh điều hướng đổi thứ tự theo.
+- Menu thành bảng tổng quan (menu board): mặc định tab "Tất cả", 3 cột Matcha / Cà phê / Bánh, mỗi món một dòng gọn (ảnh nhỏ, tên, giá dạng 45k, mô tả 1 dòng, nhãn). Bỏ thẻ món lớn `MenuCard`.

@@ -7,38 +7,39 @@
  */
 @theme {
   /*
-   * Tông mặc định "matcha" (xanh tươi theo logo). 4 tông còn lại ở src/styles/themes.css,
+   * Tông mặc định "matcha": xanh matcha dịu (trend 2026, gần #74A662) + kem sữa yến mạch + nhấn nâu mocha. 4 tông còn lại ở src/styles/themes.css,
    * chọn trong src/config/site.ts → theme. Tên token giữ "matcha-*" cho mọi tông
    * (đây là thang màu chủ đạo), "accent" là màu nhấn phụ.
    */
-  --color-matcha-950: #123d20;
-  --color-matcha-900: #1b552d;
-  --color-matcha-800: #1e6534;
-  --color-matcha-700: #227a3d;
-  --color-matcha-600: #2a9448;
-  --color-matcha-500: #3cac54;
-  --color-matcha-400: #6fcb5e;
-  --color-matcha-300: #a6e27f;
-  --color-matcha-200: #cdf1b2;
-  --color-matcha-100: #e5f7d8;
-  --color-matcha-50: #f3fbec;
-  --color-cream: #fbf8ef;
-  --color-cream-dark: #efe9d8;
-  --color-ink: #0c1d12;
-  --color-ink-soft: #46574a;
-  --color-accent: #f6a8bb;
+  --color-matcha-950: #1c2a19;
+  --color-matcha-900: #33492d;
+  --color-matcha-800: #3d5934;
+  --color-matcha-700: #4a6f3e;
+  --color-matcha-600: #5c8a4c;
+  --color-matcha-500: #74a662;
+  --color-matcha-400: #8bb673;
+  --color-matcha-300: #a9ca92;
+  --color-matcha-200: #cbdfba;
+  --color-matcha-100: #e4eedb;
+  --color-matcha-50: #f3f7ee;
+  --color-cream: #f8f5ec;
+  --color-cream-dark: #ece6d6;
+  --color-ink: #1c2419;
+  --color-ink-soft: #56604f;
+  --color-accent: #d6b48f;
   /* Nền các mảng lớn (hero, gallery, đặt món, footer): sáng như matcha latte, chữ đậm */
-  --color-surface: #bcd88f;
-  --color-surface-deep: #a3c773;
-  --color-on-surface: #14321c;
-  --color-on-surface-soft: #2f4f33;
-  --color-surface-accent: #1f5d2d;
+  --color-surface: #dce9cf;
+  --color-surface-deep: #c9dcb8;
+  --color-on-surface: #1c2a19;
+  --color-on-surface-soft: #44573b;
+  --color-surface-accent: #3f5f33;
 
   --font-display: var(--font-baloo), 'Baloo 2', system-ui, sans-serif;
   --font-sans: var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif;
 
   --radius-card: 1.75rem;
   --shadow-soft: 0 18px 40px -18px color-mix(in srgb, var(--color-matcha-950) 35%, transparent);
+  --shadow-lift: 0 24px 48px -20px color-mix(in srgb, var(--color-matcha-950) 40%, transparent);
   --shadow-pop: 6px 6px 0 0 var(--color-matcha-900);
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);

@@ -42,7 +42,7 @@ export function ScrollToTop() {
           whileHover={reduceMotion ? undefined : { y: -4 }}
           whileTap={reduceMotion ? undefined : { scale: 0.9 }}
           transition={{ type: 'spring', stiffness: 380, damping: 24 }}
-          className="group fixed right-4 bottom-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-matcha-900 text-matcha-300 shadow-[4px_4px_0_0_var(--color-matcha-400)] ring-2 ring-cream/80 hover:text-cream sm:right-6 sm:bottom-6"
+          className="group fixed right-4 bottom-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-matcha-900 text-matcha-300 shadow-soft ring-2 ring-cream/80 hover:text-cream sm:right-6 sm:bottom-6"
         >
           {/* Vòng tiến độ cuộn */}
           <svg aria-hidden viewBox="0 0 60 60" className="absolute inset-0 h-full w-full -rotate-90">

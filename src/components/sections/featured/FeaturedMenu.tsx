@@ -13,7 +13,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Leaf } from '@/components/ui/decor';
 import decor from '@/styles/decor.module.scss';
-import { formatPrice } from '../menu/MenuCard';
+import { formatPrice } from '@/lib/format';
 
 /** Màu của thẻ nổi bật theo `theme` (chọn trong CMS) */
 const THEME: Record<FeaturedTheme, { card: string; accent: string; chip: string; blob: string; muted: string }> = {
@@ -92,7 +92,7 @@ export function FeaturedMenu() {
                       exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -16, rotate: 1 }}
                       transition={{ duration: reduceMotion ? 0.15 : 0.45, ease: [0.22, 1, 0.36, 1] }}
                       className={clsx(
-                        'relative grid h-full overflow-hidden rounded-[2.5rem] shadow-[8px_8px_0_0_var(--color-matcha-950)] ring-2 ring-matcha-950 sm:grid-cols-[0.95fr_1.05fr]',
+                        'relative grid h-full overflow-hidden rounded-[2.5rem] shadow-soft ring-1 ring-matcha-900/10 sm:grid-cols-[0.95fr_1.05fr]',
                         theme.card
                       )}
                     >
@@ -118,7 +118,7 @@ export function FeaturedMenu() {
                           </div>
                         </div>
                         {current.badge && (
-                          <span className="absolute top-6 left-6 -rotate-6 rounded-full bg-matcha-950 px-4 py-1.5 font-display text-sm font-bold text-matcha-300 shadow-[3px_3px_0_0_var(--color-matcha-400)]">
+                          <span className="absolute top-6 left-6 -rotate-6 rounded-full bg-matcha-950 px-4 py-1.5 font-display text-sm font-bold text-matcha-300 shadow-soft">
                             {current.badge}
                           </span>
                         )}
@@ -150,7 +150,7 @@ export function FeaturedMenu() {
                           >
                             {t('viewMenu')}
                           </a>
-                          <a href="#order" className="btn-fresh px-6 py-3 ring-2 ring-matcha-950">
+                          <a href="#order" className="btn-fresh px-6 py-3 ring-1 ring-matcha-900/10">
                             {t('order')}
                           </a>
                         </div>
@@ -172,7 +172,7 @@ export function FeaturedMenu() {
                           className={clsx(
                             'group relative flex w-full items-center gap-4 overflow-hidden rounded-3xl p-3 pr-5 text-left ring-2 transition-[background-color,box-shadow,translate] duration-200 motion-reduce:transition-none',
                             active
-                              ? 'bg-matcha-950 text-cream shadow-[5px_5px_0_0_var(--color-matcha-400)] ring-matcha-950'
+                              ? 'bg-matcha-950 text-cream shadow-soft ring-matcha-950'
                               : 'bg-matcha-50 text-matcha-950 ring-matcha-100 hover:-translate-y-0.5 hover:ring-matcha-300'
                           )}
                         >

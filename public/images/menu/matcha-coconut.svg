@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="Matcha Dừa">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#E5F7D8"/>
-      <stop offset="1" stop-color="#6FCB5E"/>
+      <stop offset="0" stop-color="#F3F7EE"/>
+      <stop offset="1" stop-color="#CBDFBA"/>
     </linearGradient>
   </defs>
   <rect width="100%" height="100%" fill="url(#bg)"/>
   <circle cx="656" cy="144" r="120" fill="#ffffff" opacity="0.35"/>
-  <path transform="translate(64 656) rotate(-25) scale(1.8666666666666665)" d="M0 0 C 30 -40, 80 -40, 110 0 C 80 40, 30 40, 0 0 Z M 0 0 L 110 0" fill="#0D3D1F" stroke="#0D3D1F" stroke-width="2" opacity="0.35"/>
-  <path transform="translate(560 720) rotate(-50) scale(1.3333333333333333)" d="M0 0 C 30 -40, 80 -40, 110 0 C 80 40, 30 40, 0 0 Z M 0 0 L 110 0" fill="#0D3D1F" stroke="#0D3D1F" stroke-width="2" opacity="0.35"/>
+  <path transform="translate(64 656) rotate(-25) scale(1.8666666666666665)" d="M0 0 C 30 -40, 80 -40, 110 0 C 80 40, 30 40, 0 0 Z M 0 0 L 110 0" fill="#33492D" stroke="#33492D" stroke-width="2" opacity="0.35"/>
+  <path transform="translate(560 720) rotate(-50) scale(1.3333333333333333)" d="M0 0 C 30 -40, 80 -40, 110 0 C 80 40, 30 40, 0 0 Z M 0 0 L 110 0" fill="#33492D" stroke="#33492D" stroke-width="2" opacity="0.35"/>
   
   <g>
-    <ellipse cx="400" cy="533.5999999999999" rx="123.19999999999999" ry="18.666666666666664" fill="#0D3D1F" opacity="0.08"/>
+    <ellipse cx="400" cy="533.5999999999999" rx="123.19999999999999" ry="18.666666666666664" fill="#33492D" opacity="0.08"/>
     <path d="M 288 201.33333333333334 L 512 201.33333333333334 L 478.4 518.6666666666666 L 321.6 518.6666666666666 Z" fill="#ffffff" opacity="0.55"/>
-    <path d="M 297.3333333333333 312.4 L 502.6666666666667 312.4 L 478.4 511.2 L 321.6 511.2 Z" fill="#3CAC54"/>
+    <path d="M 297.3333333333333 312.4 L 502.6666666666667 312.4 L 478.4 511.2 L 321.6 511.2 Z" fill="#74A662"/>
     <path d="M 293.6 271.14666666666665 L 506.4 271.14666666666665 L 502.6666666666667 312.4 L 297.3333333333333 312.4 Z" fill="#FBF8F1"/>
-    <rect x="276.8" y="175.20000000000002" width="246.39999999999998" height="29.866666666666664" rx="14.933333333333332" fill="#0D3D1F" opacity="0.85"/>
-    <rect x="426.1333333333333" y="70.66666666666669" width="14.933333333333332" height="130.66666666666666" rx="7.466666666666666" fill="#0D3D1F" opacity="0.7" transform="rotate(12 433.6 201.33333333333334)"/>
+    <rect x="276.8" y="175.20000000000002" width="246.39999999999998" height="29.866666666666664" rx="14.933333333333332" fill="#33492D" opacity="0.85"/>
+    <rect x="426.1333333333333" y="70.66666666666669" width="14.933333333333332" height="130.66666666666666" rx="7.466666666666666" fill="#33492D" opacity="0.7" transform="rotate(12 433.6 201.33333333333334)"/>
   </g>
-  <text x="50%" y="656" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="53.33333333333333" fill="#0D3D1F">Matcha Dừa</text>
-  <text x="50%" y="709.3333333333334" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="26.666666666666664" letter-spacing="4" fill="#0D3D1F" opacity="0.6">PLACEHOLDER · 800×800</text>
+  <text x="50%" y="656" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="53.33333333333333" fill="#33492D">Matcha Dừa</text>
+  <text x="50%" y="709.3333333333334" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="26.666666666666664" letter-spacing="4" fill="#33492D" opacity="0.6">PLACEHOLDER · 800×800</text>
 </svg>

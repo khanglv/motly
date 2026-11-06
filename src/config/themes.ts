@@ -3,7 +3,7 @@
  * `swatch` chỉ dùng để hiển thị ô màu xem trước trong bộ chọn tông (chế độ dev).
  */
 export const THEMES = [
-  { id: 'matcha', name: 'Matcha tươi', swatch: ['#bcd88f', '#3cac54', '#a6e27f'] },
+  { id: 'matcha', name: 'Matcha dịu (trend)', swatch: ['#dce9cf', '#74a662', '#d6b48f'] },
   { id: 'uji', name: 'Uji truyền thống', swatch: ['#d3dca4', '#7f9a3a', '#bccd7c'] },
   { id: 'mint', name: 'Bạc hà', swatch: ['#ade3d3', '#26a488', '#7dd8c0'] },
   { id: 'hojicha', name: 'Hojicha', swatch: ['#e6cdad', '#b07544', '#d8b28c'] },

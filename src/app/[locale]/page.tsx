@@ -41,10 +41,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <JsonLd data={buildCafeJsonLd(locale, tMeta("description"))} />
       <Hero locale={locale} />
       <Marquee locale={locale} />
-      <About locale={locale} />
+      {/* Thứ tự: món nổi bật → menu → câu chuyện quán → hình ảnh → đánh giá → đặt món */}
       <HydrationBoundary state={dehydrate(queryClient)}>
         <FeaturedMenu />
         <Menu />
+        <About locale={locale} />
         <Gallery />
         <Reviews />
       </HydrationBoundary>

@@ -6,8 +6,8 @@ const state = () => useUIStore.getState();
 describe("ui-store", () => {
   beforeEach(() => useUIStore.setState(initialUIState));
 
-  it("mặc định chọn danh mục matcha, lightbox và menu mobile đóng", () => {
-    expect(state().activeCategory).toBe("matcha");
+  it("mặc định xem tất cả danh mục, lightbox và menu mobile đóng", () => {
+    expect(state().activeCategory).toBe("all");
     expect(state().lightboxIndex).toBeNull();
     expect(state().mobileNavOpen).toBe(false);
   });

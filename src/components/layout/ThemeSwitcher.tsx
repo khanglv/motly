@@ -32,7 +32,7 @@ export function ThemeSwitcher() {
       {open && (
         <div
           id="theme-switcher-panel"
-          className="mb-3 w-64 rounded-3xl bg-cream p-3 text-ink shadow-soft ring-2 ring-matcha-900"
+          className="mb-3 w-64 rounded-3xl bg-cream p-3 text-ink shadow-soft ring-1 ring-matcha-900/10"
         >
           <p className="px-2 pt-1 pb-2 text-xs font-semibold tracking-wider text-ink-soft uppercase">
             Tông màu (xem trước)
@@ -72,7 +72,7 @@ export function ThemeSwitcher() {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-controls="theme-switcher-panel"
-        className="flex h-12 items-center gap-2 rounded-full bg-cream px-3 text-sm font-semibold text-matcha-900 shadow-soft ring-2 ring-matcha-900"
+        className="flex h-12 items-center gap-2 rounded-full bg-cream px-3 text-sm font-semibold text-matcha-900 shadow-soft ring-1 ring-matcha-900/10"
       >
         <span className="flex overflow-hidden rounded-full">
           {THEMES.find((t) => t.id === theme)!.swatch.map((c) => (

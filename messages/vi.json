@@ -92,7 +92,7 @@
   "menu": {
     "eyebrow": "Menu",
     "title": "Matcha là món chính",
-    "subtitle": "Ngoài matcha còn có cà phê và bánh ăn kèm. Giá có thể thay đổi, vui lòng xem trên app hoặc hỏi tại quán.",
+    "subtitle": "Xem nhanh toàn bộ món. Bấm vào danh mục để lọc.",
     "filterLabel": "Lọc menu theo danh mục",
     "tabs": {
       "all": "Tất cả",
@@ -108,7 +108,9 @@
     "loading": "Đang tải menu…",
     "empty": "Chưa có món nào trong mục này.",
     "error": "Không tải được menu.",
-    "retry": "Thử lại"
+    "retry": "Thử lại",
+    "count": "{count} món",
+    "priceNote": "Giá đơn vị nghìn đồng (45k = 45.000 ₫). Giá có thể thay đổi, xem trên app hoặc hỏi tại quán."
   },
   "gallery": {
     "eyebrow": "Hình ảnh",

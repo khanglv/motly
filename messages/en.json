@@ -92,7 +92,7 @@
   "menu": {
     "eyebrow": "Menu",
     "title": "Matcha comes first",
-    "subtitle": "Besides matcha we also serve coffee and pastries. Prices may change, please check the delivery app or ask in store.",
+    "subtitle": "All our drinks and bakes at a glance. Tap a category to filter.",
     "filterLabel": "Filter menu by category",
     "tabs": {
       "all": "All",
@@ -108,7 +108,9 @@
     "loading": "Loading menu…",
     "empty": "No items in this category yet.",
     "error": "Couldn't load the menu.",
-    "retry": "Try again"
+    "retry": "Try again",
+    "count": "{count} items",
+    "priceNote": "Prices in thousand VND (45k = 45,000 ₫). Prices may change, check the app or ask in store."
   },
   "gallery": {
     "eyebrow": "Gallery",

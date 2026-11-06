@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-label="Gallery 06">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#A6E27F"/>
-      <stop offset="1" stop-color="#187538"/>
+      <stop offset="0" stop-color="#E4EEDB"/>
+      <stop offset="1" stop-color="#8BB673"/>
     </linearGradient>
   </defs>
   <rect width="100%" height="100%" fill="url(#bg)"/>
   <circle cx="820" cy="180" r="150" fill="#ffffff" opacity="0.35"/>
-  <path transform="translate(80 820) rotate(-25) scale(2.3333333333333335)" d="M0 0 C 30 -40, 80 -40, 110 0 C 80 40, 30 40, 0 0 Z M 0 0 L 110 0" fill="#082A14" stroke="#082A14" stroke-width="2" opacity="0.35"/>
-  <path transform="translate(700 900) rotate(-50) scale(1.6666666666666667)" d="M0 0 C 30 -40, 80 -40, 110 0 C 80 40, 30 40, 0 0 Z M 0 0 L 110 0" fill="#082A14" stroke="#082A14" stroke-width="2" opacity="0.35"/>
+  <path transform="translate(80 820) rotate(-25) scale(2.3333333333333335)" d="M0 0 C 30 -40, 80 -40, 110 0 C 80 40, 30 40, 0 0 Z M 0 0 L 110 0" fill="#1C2A19" stroke="#1C2A19" stroke-width="2" opacity="0.35"/>
+  <path transform="translate(700 900) rotate(-50) scale(1.6666666666666667)" d="M0 0 C 30 -40, 80 -40, 110 0 C 80 40, 30 40, 0 0 Z M 0 0 L 110 0" fill="#1C2A19" stroke="#1C2A19" stroke-width="2" opacity="0.35"/>
   
   <g>
-    <ellipse cx="500" cy="667" rx="154" ry="23.333333333333336" fill="#082A14" opacity="0.08"/>
+    <ellipse cx="500" cy="667" rx="154" ry="23.333333333333336" fill="#1C2A19" opacity="0.08"/>
     <path d="M 360 251.66666666666666 L 640 251.66666666666666 L 598 648.3333333333334 L 402 648.3333333333334 Z" fill="#ffffff" opacity="0.55"/>
-    <path d="M 371.6666666666667 390.5 L 628.3333333333334 390.5 L 598 639 L 402 639 Z" fill="#22984A"/>
+    <path d="M 371.6666666666667 390.5 L 628.3333333333334 390.5 L 598 639 L 402 639 Z" fill="#5C8A4C"/>
     <path d="M 367 338.93333333333334 L 633 338.93333333333334 L 628.3333333333334 390.5 L 371.6666666666667 390.5 Z" fill="#FBF8F1"/>
-    <rect x="346" y="219" width="308" height="37.333333333333336" rx="18.666666666666668" fill="#082A14" opacity="0.85"/>
-    <rect x="532.6666666666666" y="88.33333333333331" width="18.666666666666668" height="163.33333333333334" rx="9.333333333333334" fill="#082A14" opacity="0.7" transform="rotate(12 542 251.66666666666666)"/>
+    <rect x="346" y="219" width="308" height="37.333333333333336" rx="18.666666666666668" fill="#1C2A19" opacity="0.85"/>
+    <rect x="532.6666666666666" y="88.33333333333331" width="18.666666666666668" height="163.33333333333334" rx="9.333333333333334" fill="#1C2A19" opacity="0.7" transform="rotate(12 542 251.66666666666666)"/>
   </g>
-  <text x="50%" y="820" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="66.66666666666667" fill="#082A14">Gallery 06</text>
-  <text x="50%" y="886.6666666666666" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="33.333333333333336" letter-spacing="5" fill="#082A14" opacity="0.6">1000×1000</text>
+  <text x="50%" y="820" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="66.66666666666667" fill="#1C2A19">Gallery 06</text>
+  <text x="50%" y="886.6666666666666" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="33.333333333333336" letter-spacing="5" fill="#1C2A19" opacity="0.6">1000×1000</text>
 </svg>

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import type { MenuFilter } from "@/types";
 
-export const DEFAULT_MENU_FILTER: MenuFilter = "matcha";
+export const DEFAULT_MENU_FILTER: MenuFilter = "all";
 
 export interface UIState {
   /** Danh mục menu đang chọn */

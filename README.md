@@ -42,7 +42,7 @@ pnpm test:e2e       # E2E test (Playwright), lần đầu chạy: pnpm exec play
 
 **Thay ảnh và logo:** xem [`public/images/README.md`](public/images/README.md). Tóm tắt: chép ảnh mới vào `public/images/...` rồi sửa đường dẫn ở `src/config/site.ts` (logo, hero, about), `src/data/menu.ts` (ảnh món) hoặc `src/data/gallery.ts` (nhớ sửa `width`/`height`).
 
-**Đổi tông màu chủ đạo:** có 5 tông `matcha` (mặc định), `uji`, `mint`, `hojicha`, `sakura`. Sửa `theme` trong `src/config/site.ts`. Khi chạy `pnpm dev` có nút "Tông màu" ở góc dưới bên trái để xem trước (chỉ đổi trên trình duyệt của bạn). Muốn bật nút này trên bản deploy thử, đặt biến môi trường `NEXT_PUBLIC_THEME_PREVIEW=1`. Bảng màu nằm ở `src/styles/globals.css` (matcha) và `src/styles/themes.css` (4 tông còn lại). Màu nền các mảng lớn chỉnh ở nhóm biến `--color-surface*` trong cùng các file đó.
+**Đổi tông màu chủ đạo:** có 5 tông `matcha` (mặc định, matcha dịu theo trend 2026), `uji`, `mint`, `hojicha`, `sakura`. Sửa `theme` trong `src/config/site.ts`. Khi chạy `pnpm dev` có nút "Tông màu" ở góc dưới bên trái để xem trước (chỉ đổi trên trình duyệt của bạn). Muốn bật nút này trên bản deploy thử, đặt biến môi trường `NEXT_PUBLIC_THEME_PREVIEW=1`. Bảng màu nằm ở `src/styles/globals.css` (matcha) và `src/styles/themes.css` (4 tông còn lại). Màu nền các mảng lớn chỉnh ở nhóm biến `--color-surface*` trong cùng các file đó.
 
 **Sửa thông tin quán:** chỉ cần sửa `src/config/site.ts`. Header, footer, section Liên hệ, bản đồ, JSON-LD (Google) đều đọc từ file này. Điền `delivery.grabfood` / `delivery.shopeefood` thì nút đặt hàng tương ứng sẽ tự hiện.
 

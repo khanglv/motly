@@ -161,7 +161,7 @@ export async function Hero({ locale }: { locale: Locale }) {
 
           {/* Sticker nổi */}
           <span
-            className="absolute top-6 -right-3 rounded-2xl bg-accent px-4 py-2 font-display text-lg font-bold text-matcha-950 shadow-[4px_4px_0_0_var(--color-matcha-950)] motion-safe:animate-float sm:-right-8"
+            className="absolute top-6 -right-3 rounded-2xl bg-accent px-4 py-2 font-display text-lg font-bold text-matcha-950 shadow-soft motion-safe:animate-float sm:-right-8"
             style={
               {
                 '--r0': '8deg',

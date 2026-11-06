@@ -49,7 +49,7 @@ export function GrabFoodButton() {
       onClick={handleClick}
       data-testid="grabfood-button"
       data-merchant-id={merchantId}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] bg-[#00B14F] p-6 text-white shadow-[6px_6px_0_0_var(--color-matcha-950)] ring-2 ring-matcha-950 transition-[translate,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[8px_10px_0_0_var(--color-matcha-950)] motion-reduce:transition-none sm:p-8"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] bg-[#00B14F] p-6 text-white shadow-soft ring-1 ring-matcha-900/10 transition-[translate,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-lift motion-reduce:transition-none sm:p-8"
     >
       {/* vòng tròn trang trí */}
       <span

@@ -93,14 +93,14 @@ export function Reviews() {
                 <div
                   aria-hidden
                   className={clsx(
-                    'absolute inset-x-6 inset-y-4 rotate-3 rounded-card ring-2 ring-matcha-900',
+                    'absolute inset-x-6 inset-y-4 rotate-3 rounded-card ring-1 ring-matcha-900/10',
                     CARD_TONES[wrap(position + 2)]
                   )}
                 />
                 <div
                   aria-hidden
                   className={clsx(
-                    'absolute inset-x-4 inset-y-3 -rotate-2 rounded-card ring-2 ring-matcha-900',
+                    'absolute inset-x-4 inset-y-3 -rotate-2 rounded-card ring-1 ring-matcha-900/10',
                     CARD_TONES[wrap(position + 1)]
                   )}
                 />
@@ -145,7 +145,7 @@ export function Reviews() {
                     aria-roledescription="slide"
                     aria-label={`${position + 1} / ${total}`}
                     className={clsx(
-                      'relative cursor-grab rounded-card px-7 py-10 text-center shadow-[8px_8px_0_0_var(--color-matcha-900)] ring-2 ring-matcha-900 active:cursor-grabbing sm:px-12',
+                      'relative cursor-grab rounded-card px-7 py-10 text-center shadow-soft ring-1 ring-matcha-900/10 active:cursor-grabbing sm:px-12',
                       CARD_TONES[position % CARD_TONES.length]
                     )}
                   >
