@@ -78,13 +78,14 @@ export const siteConfig = {
        */
       merchantId: '5-C733R4BJRCBCJE',
       /**
-       * Trang web của quán trên food.grab.com, dùng cho máy tính hoặc điện thoại chưa cài Grab.
-       * Chưa có link chính xác nên đang dùng trang GrabFood chung (kèm dòng nhắc tìm tên quán).
-       * Khi có link dạng https://food.grab.com/vn/vi/restaurant/<ten-quan>-delivery/5-C733R4BJRCBCJE
-       * thì dán vào đây và đặt webUrlIsStorePage = true để ẩn dòng nhắc.
+       * Trang của quán trên food.grab.com (phần chữ "online-delivery" trong link Grab không bắt buộc đúng tên quán).
+       * Link này cũng là Universal Link / App Link của Grab: điện thoại có cài app sẽ mở thẳng app tới quán.
+       * Muốn quay về trang GrabFood chung: đặt 'https://food.grab.com/vn/vi/' và webUrlIsStorePage = false
+       * (sẽ hiện dòng nhắc tìm tên quán).
        */
-      webUrl: 'https://food.grab.com/vn/vi/',
-      webUrlIsStorePage: false
+      webUrl:
+        'https://food.grab.com/vn/vi/restaurant/online-delivery/5-C733R4BJRCBCJE',
+      webUrlIsStorePage: true
     },
     /** Để trống thì nút ShopeeFood sẽ ẩn. */
     shopeefood: ''

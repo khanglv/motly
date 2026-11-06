@@ -35,11 +35,13 @@ describe("Location", () => {
     const order = within(document.getElementById("order")!);
 
     const grab = order.getByRole("link", { name: /Đặt món trên GrabFood/ });
-    // href là link web (dự phòng khi chưa có JS); khi bấm, JS mở app Grab bằng mã cửa hàng
+    // href là link trang quán: Universal Link mở app Grab trên iPhone, link web khi chưa cài app hoặc chưa có JS
     expect(grab).toHaveAttribute("href", siteConfig.delivery.grabfood.webUrl);
     expect(grab).toHaveAttribute("data-merchant-id", "5-C733R4BJRCBCJE");
     expect(grab).toHaveAttribute("rel", "noopener noreferrer");
-    expect(order.getByText(/tìm “Một Ly”/)).toBeInTheDocument();
+    // Không mở tab mới bằng target (trình duyệt trong app Facebook/Zalo bỏ qua Universal Link khi mở tab mới)
+    expect(grab).not.toHaveAttribute("target");
+    expect(order.getByText(/mở thẳng trang quán trong app/)).toBeInTheDocument();
 
     expect(order.getByRole("link", { name: /Nhắn tin Facebook/ })).toHaveAttribute("href", siteConfig.social.facebook);
     expect(order.queryByRole("link", { name: "ShopeeFood" })).not.toBeInTheDocument();

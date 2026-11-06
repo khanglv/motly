@@ -148,6 +148,8 @@ test.describe('nút lên đầu trang', () => {
   });
 });
 
+const STORE_URL = "https://food.grab.com/vn/vi/restaurant/online-delivery/5-C733R4BJRCBCJE";
+
 test.describe("đặt món trên GrabFood", () => {
   // Chặn request ra Grab thật, chỉ kiểm tra trình duyệt điều hướng tới đúng link
   test.beforeEach(async ({ context }) => {
@@ -156,16 +158,16 @@ test.describe("đặt món trên GrabFood", () => {
     );
   });
 
-  test("máy tính: mở GrabFood web ở tab mới", async ({ page, context }) => {
+  test("máy tính: mở trang quán trên GrabFood ở tab mới", async ({ page, context }) => {
     await page.goto("/vi#order");
     const popupPromise = context.waitForEvent("page");
     await page.getByTestId("grabfood-button").click();
     const popup = await popupPromise;
-    expect(popup.url()).toContain("food.grab.com");
+    expect(popup.url()).toBe(STORE_URL);
     await expect(page).toHaveURL(/\/vi#order$/);
   });
 
-  test.describe("điện thoại", () => {
+  test.describe("iPhone", () => {
     test.use({
       hasTouch: true,
       isMobile: true,
@@ -173,16 +175,33 @@ test.describe("đặt món trên GrabFood", () => {
       userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148",
     });
 
-    // URL grab:// được kiểm tra ở tests/unit/grab.test.ts; trình duyệt test không có app Grab
-    // nên ở đây kiểm tra trang tự chuyển sang GrabFood web sau khi thử mở app.
-    test("thử mở app Grab, chưa cài app thì chuyển sang GrabFood web", async ({ page }) => {
+    // Trên iPhone thật, link này là Universal Link: đã cài Grab thì iOS mở app, chưa cài thì mở trang web.
+    test("mở link trang quán ngay trong tab, không gọi grab://", async ({ page }) => {
+      const requested: string[] = [];
+      page.on("request", (r) => requested.push(r.url()));
       await page.goto("/vi#order");
-      const started = Date.now();
       await page.getByTestId("grabfood-button").tap();
-      // Điều hướng grab:// bị Chromium huỷ (ERR_ABORTED) vì không có app, nên theo dõi URL thay vì waitForURL
-      await expect.poll(() => page.url(), { timeout: 6000 }).toContain("food.grab.com");
-      // Chuyển sang web phải chờ một lúc để app kịp mở
-      expect(Date.now() - started).toBeGreaterThan(1000);
+      await expect(page).toHaveURL(STORE_URL);
+      expect(requested.some((u) => u.startsWith("grab://"))).toBe(false);
+    });
+  });
+
+  test.describe("Android", () => {
+    test.use({
+      hasTouch: true,
+      isMobile: true,
+      viewport: { width: 412, height: 915 },
+      userAgent: "Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 Chrome/140.0 Mobile Safari/537.36",
+    });
+
+    test("dùng intent:// mở app Grab, có link trang quán dự phòng", async ({ page }) => {
+      await page.goto("/vi#order");
+      // Request không chứa phần sau dấu # (Intent;...;end), phần đó đã kiểm tra ở tests/unit/grab.test.ts
+      const failed = page.waitForEvent("requestfailed", { timeout: 5000 });
+      await page.getByTestId("grabfood-button").tap();
+      expect((await failed).url()).toBe("intent://open?screenType=GRABFOOD&merchantIDs=5-C733R4BJRCBCJE");
+      // Không tự chuyển sang trang web trong tab (Chrome tự làm việc đó khi chưa cài app)
+      await expect(page).toHaveURL(/\/vi#order$/);
     });
   });
 });

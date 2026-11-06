@@ -324,3 +324,13 @@ tests/{unit, e2e}
 
 - Ngăn kéo dùng nền giấy `paper` như hero, bỏ bọt trang trí. Mục menu cỡ chữ vừa (2xl thay 4xl), mỗi dòng có số thứ tự, mũi tên và đường kẻ mảnh ngăn cách.
 - Thêm giờ mở cửa và địa chỉ phía trên hai nút "Đặt món" và gọi điện.
+
+## Sửa nút đặt GrabFood
+
+- `webUrl` đổi từ trang GrabFood chung sang trang của quán: `https://food.grab.com/vn/vi/restaurant/online-delivery/5-C733R4BJRCBCJE`.
+- Grab khai báo đường dẫn `/*/*/restaurant/*/*` là Universal Link (apple-app-site-association) và App Link (assetlinks.json), nên một link này phục vụ cả app lẫn web.
+- iPhone/iPad: không gọi `grab://` nữa (Safari báo "địa chỉ không hợp lệ" khi chưa cài app). Nút để trình duyệt mở link quán: đã cài Grab thì iOS mở app, chưa cài thì mở trang web của quán. Bỏ `target="_blank"`.
+- Android: giữ `intent://` có `S.browser_fallback_url` là trang quán.
+- Máy tính: mở trang quán ở tab mới. Ctrl/Cmd/chuột giữa giữ hành vi link thường.
+- Logic: `chooseGrabStrategy` trong `src/lib/grab.ts`. Test: unit `grab.test.ts`, E2E cho máy tính, iPhone, Android.
+- Chưa kiểm tra trên máy thật: cần thử trên iPhone và Android có và không có app Grab.

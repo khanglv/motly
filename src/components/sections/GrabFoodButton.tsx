@@ -3,33 +3,31 @@
 import { useTranslations } from 'next-intl';
 import type { MouseEvent } from 'react';
 import { siteConfig } from '@/config/site';
-import { buildGrabLinks, openGrab } from '@/lib/grab';
+import { buildGrabLinks, chooseGrabStrategy } from '@/lib/grab';
 import { BikeIcon } from '@/components/ui/icons';
 
 const { merchantId, webUrl, webUrlIsStorePage } = siteConfig.delivery.grabfood;
 const links = buildGrabLinks(merchantId, webUrl);
 
 function handleClick(e: MouseEvent<HTMLAnchorElement>) {
-  e.preventDefault();
-  openGrab(links, {
+  // Chuột giữa / Ctrl / Cmd + click: để trình duyệt tự mở tab mới như link thường
+  if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+    return;
+
+  const strategy = chooseGrabStrategy({
     userAgent: navigator.userAgent,
-    isTouchDevice: window.matchMedia('(pointer: coarse)').matches,
-    navigate: (url) => {
-      window.location.href = url;
-    },
-    openNewTab: (url) => {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    },
-    isPageVisible: () => document.visibilityState === 'visible',
-    setTimeout: (fn, ms) => window.setTimeout(fn, ms),
-    onHidden: (fn) => {
-      const handler = () => {
-        if (document.visibilityState === 'hidden') fn();
-      };
-      document.addEventListener('visibilitychange', handler, { once: true });
-      window.addEventListener('pagehide', fn, { once: true });
-    }
+    isTouchDevice: window.matchMedia('(pointer: coarse)').matches
   });
+
+  if (strategy === 'android-intent') {
+    e.preventDefault();
+    window.location.href = links.androidIntentUrl;
+  } else if (strategy === 'web-new-tab') {
+    e.preventDefault();
+    window.open(links.webUrl, '_blank', 'noopener,noreferrer');
+  }
+  // 'native-link' (iPhone, iPad): không chặn, để Safari tự xử lý link của quán.
+  // Đã cài Grab thì iOS mở app (Universal Link), chưa cài thì mở trang web của quán.
 }
 
 /**
@@ -41,10 +39,11 @@ export function GrabFoodButton() {
   const t = useTranslations('location');
 
   return (
-    // href là link web để vẫn dùng được khi JS chưa chạy, hoặc khi mở bằng chuột giữa / "mở tab mới"
+    // href là link trang quán: dùng được khi JS chưa chạy, khi mở bằng chuột giữa / "mở tab mới",
+    // và trên iPhone là Universal Link mở thẳng app Grab. Không đặt target="_blank" vì
+    // một số trình duyệt trong app (Facebook, Zalo) bỏ qua Universal Link khi mở tab mới.
     <a
       href={links.webUrl}
-      target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
       data-testid="grabfood-button"
