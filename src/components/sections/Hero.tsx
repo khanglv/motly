@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import { siteConfig } from '@/config/site';
 import type { Locale } from '@/types';
 import { ClockIcon, PhoneIcon } from '@/components/ui/icons';
-import { Enso, Hanko, Seigaiha } from './HeroBackdrop';
+import { Enso, Hanko } from './HeroBackdrop';
 import decor from '@/styles/decor.module.scss';
 
 /** Tách câu thành từng từ để hiện lần lượt (CSS animation, không cần JS) */
@@ -31,11 +31,11 @@ export async function Hero({ locale }: { locale: Locale }) {
       aria-labelledby="hero-title"
       className={clsx(
         decor.grain,
-        'relative isolate overflow-hidden bg-cream text-ink'
+        'relative isolate overflow-hidden border-b border-ink/5 bg-cream text-ink'
       )}
     >
 
-      <div className="container-page relative grid items-center gap-16 pt-14 pb-32 md:grid-cols-[1.1fr_0.9fr] md:pt-20 md:pb-40">
+      <div className="container-page relative grid items-center gap-16 pt-14 pb-24 md:grid-cols-[1.1fr_0.9fr] md:pt-20 md:pb-28">
         <div className="relative z-10">
           <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.3em] text-matcha-700 uppercase motion-safe:animate-fade-up">
             <span aria-hidden className="h-px w-10 bg-matcha-600" />
@@ -135,7 +135,6 @@ export async function Hero({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <Seigaiha className="bottom-0" />
     </section>
   );
 }

@@ -53,17 +53,3 @@ export function Hanko({ className }: { className?: string }) {
     </span>
   );
 }
-
-/** Dải sóng seigaiha (青海波) mờ ở chân hero, phai dần lên trên */
-export function Seigaiha({ className }: { className?: string }) {
-  return (
-    <div
-      aria-hidden
-      className={clsx(
-        decor.seigaiha,
-        'pointer-events-none absolute inset-x-0',
-        className
-      )}
-    />
-  );
-}

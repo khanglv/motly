@@ -302,3 +302,4 @@ tests/{unit, e2e}
 - Ảnh đặt trong khung tranh viền trắng, có chú thích "Đánh tay mỗi ly". Phía sau là vòng ensō (円相) vẽ một nét cọ, tự vẽ khi tải trang (tắt khi bật giảm chuyển động).
 - Thêm chữ dọc 抹茶一杯 ("một ly matcha") cạnh khung và con dấu hanko son khắc 一杯. Eyebrow thành dòng chữ thưa có gạch ngang, bỏ nét gạch lượn dưới tiêu đề.
 - Bỏ bát matcha, chổi tre và lớp sóng chạy cũ ở hero.
+- Bỏ dải sóng seigaiha ở chân hero (rối mắt). Hero ngăn với phần dưới bằng một đường viền mảnh.
