@@ -20,7 +20,7 @@ export function MobileNav() {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
-        className="btn p-2.5 text-on-surface hover:translate-y-0 hover:bg-white/40 md:hidden"
+        className="btn p-2.5 text-ink hover:translate-y-0 hover:bg-matcha-100 md:hidden"
         aria-label={t('openMenu')}
       >
         <MenuIcon width={24} height={24} />

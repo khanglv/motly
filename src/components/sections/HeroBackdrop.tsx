@@ -35,10 +35,11 @@ function Chasen({ className }: { className?: string }) {
 /**
  * Bát matcha nhìn từ trên xuống + chổi tre: vật trang trí đặt cạnh ảnh ly ở hero.
  * Vành gốm màu kem, mặt matcha có lớp bọt mịn. Màu theo tông đang chọn.
+ * Truyền `className` có `absolute` để đặt vị trí; mặc định là `relative`.
  */
 export function MatchaBowl({ className }: { className?: string }) {
   return (
-    <div aria-hidden className={clsx('relative aspect-square', className)}>
+    <div aria-hidden className={clsx('aspect-square', className ?? 'relative')}>
       <div className={clsx(decor.matchaBowl, 'absolute inset-0 rounded-full')}>
         <div
           className={clsx(
@@ -53,16 +54,17 @@ export function MatchaBowl({ className }: { className?: string }) {
 }
 
 /**
- * Nền hero (tĩnh, aria-hidden): hoạ tiết icon café lặp kiểu giấy gói của quán
- * (ly mang đi, hạt cà phê, lá trà, chổi tre, bát, bánh), mờ dần về phía phần chữ bên trái.
+ * Mái hiên sọc của quán, treo ngay dưới header ở đầu hero.
+ * Sọc màu matcha / kem, mép dưới lượn vỏ sò. Màu theo tông đang chọn.
  */
-export function HeroBackdrop() {
+export function Awning() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden [mask-image:linear-gradient(90deg,transparent_25%,#000_70%)]"
+      className="pointer-events-none absolute inset-x-0 top-0 drop-shadow-[0_8px_10px_rgb(0_0_0/0.10)]"
     >
-      <div className={clsx(decor.cafePattern, 'absolute inset-0')} />
+      <div className="h-1.5 bg-matcha-800" />
+      <div className={decor.awning} />
     </div>
   );
 }

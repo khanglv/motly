@@ -111,12 +111,24 @@
 
 // ---------- Nền hero ----------
 
-// Hoạ tiết icon café lặp (mask từ public/images/pattern-cafe.svg). Lớp bọc ngoài làm mờ dần.
-.cafePattern {
-  background-color: color-mix(in srgb, $matcha-700 13%, transparent);
-  mask: url("/images/pattern-cafe.svg") 0 0 / 260px 260px repeat;
-  -webkit-mask: url("/images/pattern-cafe.svg") 0 0 / 260px 260px repeat;
+// Mái hiên sọc: mỗi sọc rộng --s, mép dưới là dãy vỏ sò khớp với từng sọc
+.awning {
+  --s: 30px;
+  height: 34px;
+  background: repeating-linear-gradient(90deg, $matcha-500 0 var(--s), $cream var(--s) calc(var(--s) * 2));
+  mask:
+    linear-gradient(#000 0 0) top / 100% calc(100% - var(--s) / 2) no-repeat,
+    radial-gradient(circle at 50% 0, #000 calc(var(--s) / 2 - 0.5px), transparent calc(var(--s) / 2)) 0 100% / var(--s) calc(var(--s) / 2) repeat-x;
+  -webkit-mask:
+    linear-gradient(#000 0 0) top / 100% calc(100% - var(--s) / 2) no-repeat,
+    radial-gradient(circle at 50% 0, #000 calc(var(--s) / 2 - 0.5px), transparent calc(var(--s) / 2)) 0 100% / var(--s) calc(var(--s) / 2) repeat-x;
+
+  @media (min-width: 640px) {
+    --s: 44px;
+    height: 50px;
+  }
 }
+
 
 // Bát gốm: vành màu kem, đổ bóng mềm
 .matchaBowl {

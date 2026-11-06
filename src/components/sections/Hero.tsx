@@ -5,8 +5,8 @@ import { getTranslations } from 'next-intl/server';
 import { siteConfig } from '@/config/site';
 import type { Locale } from '@/types';
 import { ClockIcon, PhoneIcon } from '@/components/ui/icons';
-import { Leaf, SpinningBadge, Squiggle, Waves } from '@/components/ui/decor';
-import { HeroBackdrop, MatchaBowl } from './HeroBackdrop';
+import { Leaf, Squiggle, Waves } from '@/components/ui/decor';
+import { Awning, MatchaBowl } from './HeroBackdrop';
 import decor from '@/styles/decor.module.scss';
 
 /** Tách câu thành từng từ để hiện lần lượt (CSS animation, không cần JS) */
@@ -32,12 +32,12 @@ export async function Hero({ locale }: { locale: Locale }) {
       aria-labelledby="hero-title"
       className={clsx(
         decor.grain,
-        'relative isolate -mt-16 overflow-hidden bg-surface pt-16 text-on-surface sm:-mt-20 sm:pt-20'
+        'relative isolate overflow-hidden bg-surface text-on-surface'
       )}
     >
-      <HeroBackdrop />
+      <Awning />
 
-      <div className="container-page relative grid items-center gap-14 pt-10 pb-36 md:grid-cols-[1.15fr_0.85fr] md:pt-16 md:pb-44">
+      <div className="container-page relative grid items-center gap-14 pt-20 pb-36 md:grid-cols-[1.15fr_0.85fr] md:pt-28 md:pb-44">
         <div className="relative z-10">
           <p className="eyebrow bg-white/40 text-on-surface-soft ring-1 ring-on-surface/10 motion-safe:animate-fade-up">
             <Leaf className="h-3.5 w-3.5 text-surface-accent" />
@@ -108,11 +108,13 @@ export async function Hero({ locale }: { locale: Locale }) {
           </p>
         </div>
 
-        {/* Ảnh hero trong khung "giọt matcha" biến hình */}
-        <div className="relative mx-auto w-full max-w-sm md:max-w-md">
-          {/* Bát matcha + chổi tre đặt cạnh ly */}
-          <MatchaBowl className="absolute -right-6 -bottom-8 z-10 w-36 sm:-right-16 sm:w-48" />
-          <div className="relative aspect-[4/5] overflow-hidden bg-matcha-700 shadow-lift ring-8 ring-cream [border-radius:58%_42%_52%_48%/46%_56%_44%_54%] motion-safe:animate-blob">
+        {/* Ảnh hero trong khung cửa vòm của quán, bát matcha đặt phía trước */}
+        <div className="relative mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md">
+          <div
+            aria-hidden
+            className="absolute inset-0 translate-x-4 translate-y-4 rounded-t-full rounded-b-[2rem] bg-surface-deep sm:translate-x-6 sm:translate-y-6"
+          />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-[2rem] bg-matcha-700 shadow-lift ring-8 ring-cream">
             <Image
               src={siteConfig.images.hero}
               alt={t('imageAlt')}
@@ -123,23 +125,10 @@ export async function Hero({ locale }: { locale: Locale }) {
             />
           </div>
 
-          {/* Huy hiệu chữ xoay với mặt gấu ở giữa */}
-          <SpinningBadge
-            text={t('badge')}
-            className="absolute -bottom-10 -left-6 h-32 w-32 rounded-full bg-cream text-matcha-800 shadow-soft sm:-left-12 sm:h-40 sm:w-40"
-          >
-            <Image
-              src="/icon.png"
-              alt=""
-              width={72}
-              height={72}
-              className="h-14 w-14 rounded-full sm:h-[4.5rem] sm:w-[4.5rem]"
-            />
-          </SpinningBadge>
+          <MatchaBowl className="absolute -bottom-10 -left-8 z-10 w-32 sm:-bottom-14 sm:-left-24 sm:w-44" />
 
-          {/* Sticker nổi */}
           <span
-            className="absolute top-6 -right-3 rounded-2xl bg-accent px-4 py-2 font-display text-lg font-bold text-matcha-950 shadow-soft motion-safe:animate-float sm:-right-8"
+            className="absolute top-10 -right-3 rounded-2xl bg-accent px-4 py-2 font-display text-lg font-bold text-matcha-950 shadow-soft motion-safe:animate-float sm:-right-8"
             style={
               {
                 '--r0': '8deg',
@@ -150,10 +139,6 @@ export async function Hero({ locale }: { locale: Locale }) {
           >
             {t('sticker')}
           </span>
-          <Leaf
-            className="absolute -top-8 left-8 h-14 w-14 text-surface-accent motion-safe:animate-float-slow"
-            style={{ '--r0': '-20deg', '--r1': '-5deg' } as CSSProperties}
-          />
         </div>
       </div>
 

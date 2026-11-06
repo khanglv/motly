@@ -288,3 +288,9 @@ tests/{unit, e2e}
 - Bỏ nền hero nhiều lớp động (mesh, lưới chấm, gợn sóng, chữ khổng lồ, parallax). Thay bằng nền tĩnh: hoạ tiết icon của quán (`public/images/pattern-cafe.svg`: ly mang đi, hạt cà phê, lá trà, chổi tre, bát, bánh) lặp như giấy gói, mờ dần về phía chữ.
 - Thêm `MatchaBowl` cạnh ảnh ly: bát matcha nhìn từ trên với lớp bọt và chổi tre (chasen). Màu bọt lấy theo tông đang chọn.
 - Lighthouse mobile (local): Performance 82–86, Accessibility 100. LCP là đoạn mô tả hero do hiệu ứng hiện chữ có độ trễ 0.55s. Desktop: Performance 99.
+
+## Nền hero v3 và header mới
+
+- Bỏ hoạ tiết icon lặp (`pattern-cafe.svg`). Đầu hero có mái hiên sọc matcha/kem với mép vỏ sò (`Awning`, CSS thuần, đổi màu theo tông).
+- Ảnh hero đặt trong khung cửa vòm, phía sau có một vòm lệch màu `surface-deep`. Bát matcha đặt trước góc dưới bên trái. Bỏ huy hiệu xoay và chiếc lá bay.
+- Header luôn có nền kem với chữ đậm, menu là link chữ có gạch chân khi rê chuột (bỏ khung viên thuốc). Header không còn trong suốt đè lên hero.

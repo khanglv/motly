@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { m, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
-import { Link, usePathname } from '@/i18n/navigation';
+import { Link } from '@/i18n/navigation';
 import { siteConfig } from '@/config/site';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileNav } from './MobileNav';
@@ -32,11 +32,7 @@ function ScrollProgress() {
 export function Header() {
   const t = useTranslations('nav');
   const locale = useLocale();
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-
-  // Trang chủ có hero nền xanh đậm nên header trong suốt lúc ở đầu trang; trang khác luôn có nền.
-  const solid = scrolled || pathname !== '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -48,10 +44,8 @@ export function Header() {
   return (
     <header
       className={clsx(
-        'sticky top-0 z-40 text-on-surface transition-[background-color,box-shadow,backdrop-filter] duration-300',
-        solid
-          ? 'bg-surface/90 shadow-[0_10px_30px_-15px_rgb(0_0_0/0.5)] backdrop-blur-md'
-          : 'bg-transparent'
+        'sticky top-0 z-40 bg-cream/95 text-ink backdrop-blur-md transition-shadow duration-300',
+        scrolled && 'shadow-[0_10px_30px_-18px_rgb(0_0_0/0.35)]'
       )}
     >
       <div className="container-page flex h-16 items-center justify-between gap-4 sm:h-20">
@@ -72,12 +66,12 @@ export function Header() {
         </Link>
 
         <nav aria-label={t('main')} className="hidden md:block">
-          <ul className="flex items-center gap-1 rounded-full bg-white/40 p-1 ring-1 ring-on-surface/10">
+          <ul className="flex items-center gap-1 lg:gap-3">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
                 <a
                   href={`/${locale}#${item.id}`}
-                  className="block rounded-full px-4 py-2 text-sm font-medium text-on-surface-soft transition-colors hover:bg-white/40 hover:text-on-surface"
+                  className="relative block px-3 py-2 text-[0.95rem] font-semibold text-ink-soft transition-colors after:absolute after:inset-x-3 after:bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-matcha-500 after:transition-transform hover:text-ink hover:after:scale-x-100 motion-reduce:after:transition-none"
                 >
                   {t(item.labelKey)}
                 </a>
@@ -87,7 +81,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
-          <LanguageSwitcher className="text-on-surface hover:bg-white/40 data-[state=open]:bg-white/40" />
+          <LanguageSwitcher className="text-ink hover:bg-matcha-100 data-[state=open]:bg-matcha-100" />
           <a
             href={`/${locale}#order`}
             className="btn-fresh hidden px-5 py-2.5 md:inline-flex"
