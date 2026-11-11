@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
-    // Ảnh upload từ CMS lên Cloudinary
-    remotePatterns: [{ protocol: 'https', hostname: 'res.cloudinary.com' }]
+    // Ảnh upload từ CMS lên Neon Object Storage
+    remotePatterns: [{ protocol: 'https', hostname: '**.aws.neon.tech' }]
   },
   // CMS (/admin) gọi API NestJS qua /cms-api để cookie đăng nhập là cookie cùng domain với web
   async rewrites() {

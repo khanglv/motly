@@ -5,7 +5,7 @@ Website của quán (song ngữ vi/en) và trang CMS để nhập nội dung. G�
 | Thư mục | Nội dung | Công nghệ | Host |
 | --- | --- | --- | --- |
 | [`web/`](web) | Website + trang CMS `/admin` | Next.js 15, React Query, Zustand, Tailwind, Radix, next-intl | Vercel |
-| [`api/`](api) | API nội dung + đăng nhập CMS | NestJS 12, Prisma 7, PostgreSQL | Render (free) + Neon (free) |
+| [`api/`](api) | API nội dung + đăng nhập CMS | NestJS 12, Prisma 7, PostgreSQL | Render (free) + Neon (database + lưu ảnh, free) |
 
 Mỗi project có `package.json`, lockfile, `.env` và lệnh riêng. Hai bên chỉ nói chuyện qua HTTP:
 
@@ -66,7 +66,7 @@ E2E của web luôn chạy với dữ liệu mẫu (không cần API). Lần đ�
 | Thông tin quán | Điện thoại, địa chỉ, giờ mở cửa, Facebook, GrabFood, ShopeeFood |
 | Tài khoản | Đổi mật khẩu |
 
-**Ảnh:** đặt `CLOUDINARY_*` trong `api/.env` thì CMS có nút **Tải ảnh lên** (ảnh đi thẳng lên Cloudinary, API chỉ ký chữ ký upload). Chưa đặt thì chỉ dán được link `/images/...` (ảnh có sẵn trong `web/public/images`) hoặc link Cloudinary.
+**Ảnh:** lưu trên Neon Object Storage (cùng project với database, free 5 GB). Đặt các biến `AWS_*` và `STORAGE_BUCKET` trong `api/.env` thì CMS có nút **Tải ảnh lên**: API ký một link upload hết hạn sau 5 phút, trình duyệt gửi ảnh thẳng lên Neon (khoá truy cập không ra tới trình duyệt). Chỉ nhận JPG, PNG, WebP, AVIF, GIF, tối đa 8 MB. Chưa đặt biến thì chỉ dán được link `/images/...` (ảnh có sẵn trong `web/public/images`). Neon Object Storage đang ở bản beta.
 
 **Bảo mật:** 1 tài khoản admin, mật khẩu bcrypt, phiên JWT 7 ngày trong cookie httpOnly (SameSite=Lax, Secure khi production), giới hạn 5 lần đăng nhập/phút/IP, dữ liệu gửi lên được kiểm tra chặt (sai trường hoặc thừa trường đều bị từ chối). Trang `/admin` không cho Google index.
 
@@ -74,13 +74,17 @@ E2E của web luôn chạy với dữ liệu mẫu (không cần API). Lần đ�
 
 Làm theo thứ tự: database → API → web.
 
-**1. Neon (database, free)**
-1. Tạo tài khoản tại [neon.tech](https://neon.tech), tạo project, chọn region Singapore.
-2. Trong **Connection details** lấy 2 chuỗi: **Pooled connection** (→ `DATABASE_URL`) và **Direct connection** (→ `DIRECT_URL`).
+**1. Neon (database + lưu ảnh, free)**
+1. Tạo project tại [neon.tech](https://neon.tech), region **AWS Asia Pacific (Singapore)** (vùng có Object Storage).
+2. **Connection details**: chuỗi có `-pooler` trong host → `DATABASE_URL`; cùng chuỗi bỏ `-pooler` → `DIRECT_URL`. Nên đổi `sslmode=require` thành `sslmode=verify-full`.
+3. Tab **Object storage** của nhánh `main` → **New bucket**, tên `motly-images`, Access **public_read** (không đổi được sau khi tạo).
+4. Tạo credential có quyền `storage:read` và `storage:write` (Neon CLI: `neon credentials create --scope storage:read --scope storage:write`). Credential chỉ hiện một lần, lưu lại ngay: `token_id` → `AWS_ACCESS_KEY_ID`, `s3_secret_access_key` → `AWS_SECRET_ACCESS_KEY`.
+5. Lấy endpoint của nhánh (`neon env pull` hoặc trang Object storage) → `AWS_ENDPOINT_URL_S3`, `AWS_REGION=ap-southeast-1`.
+6. Link ảnh gắn với nhánh `main`: không xoá hay reset nhánh này, nếu không link ảnh cũ sẽ hỏng.
 
 **2. Render (API, free)**
 1. Tạo tài khoản tại [render.com](https://render.com) → **New → Blueprint** → chọn repo. Render đọc `render.yaml`.
-2. Nhập các biến: `DATABASE_URL`, `DIRECT_URL`, `WEB_URL` (domain web), `REVALIDATE_SECRET` (chuỗi ngẫu nhiên, ví dụ `openssl rand -hex 24`), `CLOUDINARY_*` (nếu có). `JWT_SECRET` Render tự tạo.
+2. Nhập các biến: `DATABASE_URL`, `DIRECT_URL`, `WEB_URL` (domain web), `REVALIDATE_SECRET` (chuỗi ngẫu nhiên, ví dụ `openssl rand -hex 24`), `AWS_ENDPOINT_URL_S3`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`. `JWT_SECRET` Render tự tạo.
 3. Sau khi deploy xong, tạo tài khoản admin và dữ liệu mẫu một lần, chạy trên máy:
    ```bash
    cd api
@@ -88,10 +92,7 @@ Làm theo thứ tự: database → API → web.
    ```
 4. Gói free tự ngủ sau 15 phút không có truy cập, lần gọi đầu mất 30–50 giây. Trang chủ không bị ảnh hưởng (web có cache), chỉ lần mở CMS đầu tiên bị chậm.
 
-**3. Cloudinary (ảnh, free, không bắt buộc)**
-Tạo tài khoản tại [cloudinary.com](https://cloudinary.com), vào **Settings → API Keys** lấy Cloud name, API key, API secret, rồi đặt vào biến `CLOUDINARY_*` trên Render.
-
-**4. Vercel (web)**
+**3. Vercel (web)**
 1. **Add New → Project**, import repo, đặt **Root Directory** = `web`.
 2. Biến môi trường: `NEXT_PUBLIC_SITE_URL` (domain chính thức), `API_URL` (URL Render, ví dụ `https://motly-api.onrender.com`), `REVALIDATE_SECRET` (giống bên Render).
 3. Deploy. Gắn domain xong, gửi `https://<domain>/sitemap.xml` lên Google Search Console.
@@ -121,7 +122,7 @@ Tạo tài khoản tại [cloudinary.com](https://cloudinary.com), vào **Settin
 | `src/content/` | `GET /public/content`, `GET /health`, gọi revalidate web |
 | `src/admin/` | CRUD cho CMS (`/admin/menu`, `featured`, `gallery`, `reviews`, `settings`) |
 | `src/auth/` | `/auth/login`, `logout`, `me`, `password` |
-| `src/uploads/` | Ký upload Cloudinary |
+| `src/uploads/` | Ký link upload ảnh lên Neon Object Storage |
 
 **Đổi tông màu:** sửa `theme` trong `web/src/config/site.ts` (`matcha`, `uji`, `matcha-butter`, `avocado`, `butter`). Khi `pnpm dev` có nút "Tông màu" góc dưới trái để xem trước.
 

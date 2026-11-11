@@ -372,3 +372,4 @@ tests/{unit, e2e}
 - Ảnh chỉ nhận `/images/...` hoặc `https://res.cloudinary.com/...` (khớp `images.remotePatterns` của web).
 - Đã kiểm tra trên máy: API qua curl (đăng nhập, 401, 409, 404, kiểm tra dữ liệu, giới hạn đăng nhập 429), luồng CMS bằng Playwright (đăng nhập, sửa giá → trang chủ cập nhật, sửa giờ đóng cửa → trang chủ cập nhật, đăng xuất). Web: lint, typecheck, 59 unit test, 12 E2E.
 - Chưa làm: deploy thật (cần tài khoản Neon, Render, Cloudinary của chủ quán).
+- Ảnh chuyển từ Cloudinary sang Neon Object Storage (bucket public_read `motly-images`, link upload ký sẵn hết hạn 5 phút, chỉ nhận ảnh ≤ 8 MB). Database production đã migrate + seed trên Neon (Singapore).

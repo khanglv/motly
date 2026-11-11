@@ -100,7 +100,7 @@ function GalleryForm({
 
   async function onImage({ url, width, height }: { url: string; width?: number; height?: number }) {
     setD((prev) => ({ ...prev, src: url }));
-    // Kích thước đúng giúp ảnh không bị nhảy bố cục: lấy từ Cloudinary hoặc đọc từ link
+    // Kích thước đúng giúp ảnh không bị nhảy bố cục: đọc từ file khi upload hoặc từ link
     const size = width && height ? { width, height } : url ? await readImageSize(url) : null;
     if (size) setD((prev) => (prev.src === url ? { ...prev, ...size } : prev));
   }

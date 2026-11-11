@@ -5,12 +5,10 @@ import { useId, useState } from 'react';
 import { cmsFetch } from './api';
 import { Button, inputClass } from './ui';
 
-interface Signature {
-  timestamp: number;
-  folder: string;
-  signature: string;
-  apiKey: string;
+interface Presigned {
   uploadUrl: string;
+  headers: Record<string, string>;
+  publicUrl: string;
 }
 
 export interface ImageInfo {
@@ -20,6 +18,17 @@ export interface ImageInfo {
 }
 
 const MAX_MB = 8;
+const ACCEPT = ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif'];
+
+/** Kích thước ảnh từ file trên máy (trước khi upload) */
+async function readFileSize(file: File) {
+  const url = URL.createObjectURL(file);
+  try {
+    return await readImageSize(url);
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
 
 /** Đọc kích thước ảnh từ link (dùng cho gallery khi dán link) */
 export function readImageSize(url: string): Promise<{ width: number; height: number } | null> {
@@ -32,8 +41,8 @@ export function readImageSize(url: string): Promise<{ width: number; height: num
 }
 
 /**
- * Chọn ảnh: upload lên Cloudinary (nếu API đã cấu hình) hoặc dán link.
- * Link hợp lệ: /images/... (ảnh có sẵn trong web) hoặc https://res.cloudinary.com/...
+ * Chọn ảnh: upload lên Neon Object Storage (nếu API đã cấu hình) hoặc dán link.
+ * Link hợp lệ: /images/... (ảnh có sẵn trong web) hoặc link ảnh đã tải lên Neon Storage.
  */
 export function ImageField({
   label,
@@ -59,27 +68,20 @@ export function ImageField({
 
   async function upload(file: File) {
     setError(null);
-    if (!file.type.startsWith('image/')) return setError('Chỉ chọn được file ảnh');
+    if (!ACCEPT.includes(file.type)) return setError('Chỉ nhận ảnh JPG, PNG, WebP, AVIF hoặc GIF');
     if (file.size > MAX_MB * 1024 * 1024) return setError(`Ảnh tối đa ${MAX_MB} MB`);
 
     setUploading(true);
     try {
-      const sig = await cmsFetch<Signature>('/admin/uploads/signature', { method: 'POST' });
-      const form = new FormData();
-      form.append('file', file);
-      form.append('api_key', sig.apiKey);
-      form.append('timestamp', String(sig.timestamp));
-      form.append('folder', sig.folder);
-      form.append('signature', sig.signature);
-      const res = await fetch(sig.uploadUrl, { method: 'POST', body: form });
-      const data = (await res.json()) as {
-        secure_url?: string;
-        width?: number;
-        height?: number;
-        error?: { message: string };
-      };
-      if (!res.ok || !data.secure_url) throw new Error(data.error?.message ?? 'Upload thất bại');
-      onChange({ url: data.secure_url, width: data.width, height: data.height });
+      const size = await readFileSize(file);
+      const sig = await cmsFetch<Presigned>('/admin/uploads/presign', {
+        method: 'POST',
+        body: { contentType: file.type, size: file.size }
+      });
+      // Gửi file thẳng lên Neon Storage bằng link đã ký (không đi qua API)
+      const res = await fetch(sig.uploadUrl, { method: 'PUT', headers: sig.headers, body: file });
+      if (!res.ok) throw new Error(`Tải ảnh lên thất bại (${res.status})`);
+      onChange({ url: sig.publicUrl, width: size?.width, height: size?.height });
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Upload thất bại');
     } finally {
@@ -110,14 +112,14 @@ export function ImageField({
             className={inputClass}
             value={value}
             required={required}
-            placeholder="/images/... hoặc https://res.cloudinary.com/..."
+            placeholder="/images/... hoặc link ảnh Neon Storage"
             onChange={(e) => onChange({ url: e.target.value.trim() })}
           />
           {status.data?.enabled ? (
             <label className="inline-flex">
               <input
                 type="file"
-                accept="image/*"
+                accept={ACCEPT.join(',')}
                 className="sr-only"
                 disabled={uploading}
                 onChange={(e) => {
@@ -138,7 +140,7 @@ export function ImageField({
           ) : (
             status.isSuccess && (
               <p className="text-xs text-ink-soft">
-                Chưa cấu hình Cloudinary nên chỉ dán được link ảnh.
+                Chưa cấu hình Neon Storage nên chỉ dán được link ảnh.
               </p>
             )
           )}
