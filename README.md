@@ -1,62 +1,128 @@
-# Tech
+# Một Ly Cafe's và Matcha
 
-- Sử dụng Nextjs
-- Zustand, react query,
-- Tailwind, radix, scss, lib animation ...
-- Call api with fetch
+Website của quán (song ngữ vi/en) và trang CMS để nhập nội dung. Gồm hai project độc lập:
 
-# Chạy project
+| Thư mục | Nội dung | Công nghệ | Host |
+| --- | --- | --- | --- |
+| [`web/`](web) | Website + trang CMS `/admin` | Next.js 15, React Query, Zustand, Tailwind, Radix, next-intl | Vercel |
+| [`api/`](api) | API nội dung + đăng nhập CMS | NestJS 12, Prisma 7, PostgreSQL | Render (free) + Neon (free) |
 
-Yêu cầu: Node.js >= 20.19 (Vitest 5 / Vite 8 cần bản này) và pnpm. Copy `.env.example` thành `.env.local` nếu muốn đặt domain.
+Mỗi project có `package.json`, lockfile, `.env` và lệnh riêng. Hai bên chỉ nói chuyện qua HTTP:
 
-```bash
-pnpm install        # cài thư viện
-pnpm dev            # chạy dev tại http://localhost:3000
-pnpm build          # build production
-pnpm start          # chạy bản build
-pnpm lint           # kiểm tra lint
-pnpm typecheck      # kiểm tra TypeScript
-pnpm test           # unit test (Vitest)
-pnpm test:e2e       # E2E test (Playwright), lần đầu chạy: pnpm exec playwright install chromium
+```
+Trình duyệt ──► web (Vercel) ──server──► api  GET /public/content   (cache, tag "content")
+   │                ▲                     │
+   │  /admin        └── POST /api/revalidate (khi CMS lưu)
+   └──► /cms-api/* ──rewrite──► api  /auth/*, /admin/*   (cookie đăng nhập httpOnly)
 ```
 
-> **Lỗi `SELF_SIGNED_CERT_IN_CHAIN` khi build (không tải được Google Fonts)?** Mạng đang dùng proxy/VPN kiểm tra SSL.
-> Cho Node dùng kho chứng chỉ của macOS: `NODE_OPTIONS=--use-system-ca pnpm build` (cần Node 22.15+ / 23.8+).
-> Không tắt kiểm tra SSL (`NODE_TLS_REJECT_UNAUTHORIZED=0`). Trên Vercel không gặp lỗi này.
+- Web đọc nội dung từ API phía server và cache. CMS lưu xong thì API gọi `/api/revalidate` của web, trang chủ cập nhật sau vài giây.
+- Chưa đặt `API_URL` hoặc API lỗi thì web dùng dữ liệu mẫu trong `web/src/data`, nên web vẫn chạy độc lập.
 
-# Cấu trúc chính
+Yêu cầu: Node.js ≥ 22.15, pnpm, Docker (để chạy Postgres khi dev).
 
-| Đường dẫn                                        | Nội dung                                                                                    |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| `src/config/site.ts`                             | Tên quán, địa chỉ, giờ mở cửa, SĐT, Facebook, link GrabFood/ShopeeFood, đường dẫn logo/hero |
-| `src/data/menu.ts` · `featured.ts` · `reviews.ts` · `gallery.ts` | Dữ liệu menu, đánh giá, gallery (song ngữ)                                                  |
-| `messages/vi.json` · `en.json`                   | Toàn bộ chữ trên giao diện                                                                  |
-| `src/app/api/*`                                  | Mock API: `/api/menu?locale=&category=`, `/api/reviews?locale=`, `/api/gallery?locale=`     |
-| `src/lib/data-service.ts`                        | Lớp đọc dữ liệu dùng chung cho API và prefetch phía server                                  |
-| `src/components/sections/*`                      | Các section của trang                                                                       |
-| `src/store/ui-store.ts`                          | Zustand: danh mục menu đang chọn, lightbox, menu mobile                                     |
-| `src/styles/`                                    | Tailwind tokens (`globals.css`), SCSS (`_tokens.scss`, `decor.module.scss`)                 |
-| `public/images/`                                 | Logo và ảnh placeholder, xem `public/images/README.md`                                      |
+> Mạng có proxy kiểm tra SSL (lỗi `SELF_SIGNED_CERT_IN_CHAIN`)? Thêm `NODE_OPTIONS=--use-system-ca` trước các lệnh `pnpm build`, `prisma`. Không tắt kiểm tra SSL.
 
-# Hướng dẫn chỉnh sửa
+## Chạy trên máy
 
-**Thay ảnh và logo:** xem [`public/images/README.md`](public/images/README.md). Tóm tắt: chép ảnh mới vào `public/images/...` rồi sửa đường dẫn ở `src/config/site.ts` (logo, hero, about), `src/data/menu.ts` (ảnh món) hoặc `src/data/gallery.ts` (nhớ sửa `width`/`height`).
+```bash
+# 1. API + database
+cd api
+cp .env.example .env          # đổi JWT_SECRET, ADMIN_PASSWORD, REVALIDATE_SECRET
+pnpm install
+pnpm db:up                    # Postgres trong Docker (cổng 5433)
+pnpm db:migrate               # tạo bảng
+pnpm db:seed                  # dữ liệu mẫu + tài khoản admin
+pnpm dev                      # http://localhost:4000
 
-**Đổi tông màu chủ đạo:** có 5 tông `matcha` (mặc định, matcha dịu theo trend 2026), `uji`, `matcha-butter` (matcha bơ sữa), `avocado` (xanh bơ), `butter` (bơ & matcha). Sửa `theme` trong `src/config/site.ts`. Khi chạy `pnpm dev` có nút "Tông màu" ở góc dưới bên trái để xem trước (chỉ đổi trên trình duyệt của bạn). Muốn bật nút này trên bản deploy thử, đặt biến môi trường `NEXT_PUBLIC_THEME_PREVIEW=1`. Bảng màu nằm ở `src/styles/globals.css` (matcha) và `src/styles/themes.css` (4 tông còn lại). Màu nền các mảng lớn chỉnh ở nhóm biến `--color-surface*` trong cùng các file đó.
+# 2. Web (terminal khác)
+cd web
+cp .env.example .env.local    # API_URL=http://localhost:4000, REVALIDATE_SECRET giống bên api
+pnpm install
+pnpm dev                      # http://localhost:3000 · CMS: http://localhost:3000/admin
+```
 
-**Sửa thông tin quán:** chỉ cần sửa `src/config/site.ts`. Header, footer, section Liên hệ, bản đồ, JSON-LD (Google) đều đọc từ file này. Điền `delivery.grabfood` / `delivery.shopeefood` thì nút đặt hàng tương ứng sẽ tự hiện.
+Đăng nhập CMS bằng `ADMIN_EMAIL` / `ADMIN_PASSWORD` trong `api/.env`. Đổi mật khẩu trong CMS → **Tài khoản**.
 
-**Menu nổi bật:** sửa `src/data/featured.ts` (dữ liệu mẫu, sau này nhập từ CMS). Mỗi mục trỏ tới một món qua `menuItemId` và có tiêu đề, câu chuyện, điểm nổi bật, nhãn, màu thẻ (`matcha` / `sakura` / `cream`), thứ tự `order`, bật/tắt `active`, thời gian chạy `startsAt` / `endsAt`. API: `/api/featured?locale=`. Khi có CMS, chỉ cần đổi thân hàm `getFeatured()` trong `src/lib/data-service.ts`.
+## Lệnh
 
-**Sửa menu:** thêm/sửa phần tử trong `src/data/menu.ts`. Mỗi món có `name` và `description` cho cả `vi` và `en`, `price` tính bằng VND, `tags` là `signature`, `best-seller` hoặc `new`.
+| | `web/` | `api/` |
+| --- | --- | --- |
+| Dev | `pnpm dev` | `pnpm dev` |
+| Build / chạy | `pnpm build` · `pnpm start` | `pnpm build` · `pnpm start` |
+| Kiểm tra | `pnpm lint` · `pnpm typecheck` · `pnpm test` · `pnpm test:e2e` | `pnpm typecheck` |
+| Database | | `pnpm db:migrate` (tạo migration khi sửa schema) · `pnpm db:deploy` (áp dụng trên production) · `pnpm db:seed` · `pnpm db:studio` |
 
-**Sửa chữ / thêm bản dịch:** sửa cùng một key trong cả `messages/vi.json` và `messages/en.json`. Test `tests/unit/messages.test.ts` sẽ báo lỗi nếu hai file lệch key. Thêm ngôn ngữ mới: thêm mã vào `LOCALES` trong `src/types/index.ts`, tạo `messages/<mã>.json`, thêm bản dịch trong `src/data/*` và `site.ts`.
+E2E của web luôn chạy với dữ liệu mẫu (không cần API). Lần đầu chạy: `pnpm exec playwright install chromium`.
 
-**Chuyển sang API thật:** sửa phần thân các hàm trong `src/lib/data-service.ts` (hoặc trỏ `apiFetch` trong hooks sang URL mới). Giao diện không cần đổi.
+## CMS (`/admin`)
 
-# Deploy lên Vercel
+| Trang | Sửa được |
+| --- | --- |
+| Menu | Thêm/sửa/xoá món, giá, ảnh, nhãn, ẩn/hiện, thứ tự trong nhóm |
+| Món nổi bật | Gắn với một món, tiêu đề, câu chuyện, điểm nổi bật, nhãn, màu thẻ, hẹn ngày bắt đầu/kết thúc |
+| Hình ảnh | Ảnh gallery, mô tả, thứ tự, ẩn/hiện |
+| Đánh giá | Tên khách, số sao, nội dung, ngày, nguồn |
+| Thông tin quán | Điện thoại, địa chỉ, giờ mở cửa, Facebook, GrabFood, ShopeeFood |
+| Tài khoản | Đổi mật khẩu |
 
-1. Đẩy code lên GitHub/GitLab.
-2. Trên [vercel.com](https://vercel.com) chọn **Add New → Project**, import repo. Vercel tự nhận Next.js và pnpm.
-3. Thêm biến môi trường `NEXT_PUBLIC_SITE_URL` = domain chính thức (ví dụ `https://motly.vn`). Nếu chưa có domain có thể bỏ trống.
-4. Bấm **Deploy**. Sau khi gắn domain, vào Google Search Console gửi `https://<domain>/sitemap.xml`.
+**Ảnh:** đặt `CLOUDINARY_*` trong `api/.env` thì CMS có nút **Tải ảnh lên** (ảnh đi thẳng lên Cloudinary, API chỉ ký chữ ký upload). Chưa đặt thì chỉ dán được link `/images/...` (ảnh có sẵn trong `web/public/images`) hoặc link Cloudinary.
+
+**Bảo mật:** 1 tài khoản admin, mật khẩu bcrypt, phiên JWT 7 ngày trong cookie httpOnly (SameSite=Lax, Secure khi production), giới hạn 5 lần đăng nhập/phút/IP, dữ liệu gửi lên được kiểm tra chặt (sai trường hoặc thừa trường đều bị từ chối). Trang `/admin` không cho Google index.
+
+## Deploy
+
+Làm theo thứ tự: database → API → web.
+
+**1. Neon (database, free)**
+1. Tạo tài khoản tại [neon.tech](https://neon.tech), tạo project, chọn region Singapore.
+2. Trong **Connection details** lấy 2 chuỗi: **Pooled connection** (→ `DATABASE_URL`) và **Direct connection** (→ `DIRECT_URL`).
+
+**2. Render (API, free)**
+1. Tạo tài khoản tại [render.com](https://render.com) → **New → Blueprint** → chọn repo. Render đọc `render.yaml`.
+2. Nhập các biến: `DATABASE_URL`, `DIRECT_URL`, `WEB_URL` (domain web), `REVALIDATE_SECRET` (chuỗi ngẫu nhiên, ví dụ `openssl rand -hex 24`), `CLOUDINARY_*` (nếu có). `JWT_SECRET` Render tự tạo.
+3. Sau khi deploy xong, tạo tài khoản admin và dữ liệu mẫu một lần, chạy trên máy:
+   ```bash
+   cd api
+   DIRECT_URL="<Direct connection Neon>" ADMIN_EMAIL="..." ADMIN_PASSWORD="..." pnpm db:seed
+   ```
+4. Gói free tự ngủ sau 15 phút không có truy cập, lần gọi đầu mất 30–50 giây. Trang chủ không bị ảnh hưởng (web có cache), chỉ lần mở CMS đầu tiên bị chậm.
+
+**3. Cloudinary (ảnh, free, không bắt buộc)**
+Tạo tài khoản tại [cloudinary.com](https://cloudinary.com), vào **Settings → API Keys** lấy Cloud name, API key, API secret, rồi đặt vào biến `CLOUDINARY_*` trên Render.
+
+**4. Vercel (web)**
+1. **Add New → Project**, import repo, đặt **Root Directory** = `web`.
+2. Biến môi trường: `NEXT_PUBLIC_SITE_URL` (domain chính thức), `API_URL` (URL Render, ví dụ `https://motly-api.onrender.com`), `REVALIDATE_SECRET` (giống bên Render).
+3. Deploy. Gắn domain xong, gửi `https://<domain>/sitemap.xml` lên Google Search Console.
+
+## Cấu trúc chính
+
+**web/**
+
+| Đường dẫn | Nội dung |
+| --- | --- |
+| `src/config/site.ts` | Tên quán, tông màu, logo, ảnh hero |
+| `src/config/settings.ts` | Kiểu và giá trị mặc định của thông tin quán (bản thật sửa trong CMS) |
+| `src/lib/content-source.ts` | Đọc nội dung từ API (cache theo tag), dự phòng bằng dữ liệu mẫu |
+| `src/lib/data-service.ts` | Chọn ngôn ngữ, lọc, sắp xếp dữ liệu cho giao diện |
+| `src/data/*` | Dữ liệu mẫu (dùng khi không có API và trong test) |
+| `src/app/admin/*` · `src/admin/*` | Trang CMS |
+| `src/app/api/revalidate` | Nhận tín hiệu làm mới cache từ API |
+| `messages/vi.json` · `en.json` | Chữ trên giao diện website |
+| `src/styles/` | Tailwind tokens, 5 tông màu (`themes.css`), SCSS |
+
+**api/**
+
+| Đường dẫn | Nội dung |
+| --- | --- |
+| `prisma/schema.prisma` | Bảng: Admin, MenuItem, Featured, GalleryImage, Review, SiteSettings |
+| `prisma/seed.ts` · `prisma/seed-data/*.json` | Dữ liệu ban đầu + tài khoản admin |
+| `src/content/` | `GET /public/content`, `GET /health`, gọi revalidate web |
+| `src/admin/` | CRUD cho CMS (`/admin/menu`, `featured`, `gallery`, `reviews`, `settings`) |
+| `src/auth/` | `/auth/login`, `logout`, `me`, `password` |
+| `src/uploads/` | Ký upload Cloudinary |
+
+**Đổi tông màu:** sửa `theme` trong `web/src/config/site.ts` (`matcha`, `uji`, `matcha-butter`, `avocado`, `butter`). Khi `pnpm dev` có nút "Tông màu" góc dưới trái để xem trước.
+
+**Sửa chữ trên giao diện:** sửa cùng key trong `web/messages/vi.json` và `en.json` (test báo lỗi nếu lệch key).

@@ -1,0 +1,22 @@
+# Postgres cho môi trường dev. Chạy (trong thư mục api): pnpm db:up
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: motly-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: motly
+      POSTGRES_PASSWORD: motly
+      POSTGRES_DB: motly
+    ports:
+      - "5433:5432"
+    volumes:
+      - motly-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U motly -d motly"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  motly-db:

@@ -1,0 +1,116 @@
+// Nội dung website Một Ly Cafe's và Matcha.
+// Các trường có bản dịch (vi/en) lưu dạng JSON: { "vi": "...", "en": "..." }.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum MenuCategory {
+  matcha
+  coffee
+  bakery
+}
+
+enum FeaturedTheme {
+  matcha
+  sakura
+  cream
+}
+
+enum ReviewSource {
+  Google
+  Facebook
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model MenuItem {
+  /// Mã món dạng slug, ví dụ "matcha-latte"
+  id          String       @id
+  category    MenuCategory
+  /// { vi, en }
+  name        Json
+  /// { vi, en }
+  description Json
+  /// Giá theo VND
+  price       Int
+  image       String
+  /// "signature" | "best-seller" | "new"
+  tags        String[]
+  order       Int          @default(0)
+  active      Boolean      @default(true)
+  featured    Featured[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([category, order])
+}
+
+model Featured {
+  id         String        @id @default(cuid())
+  menuItem   MenuItem      @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+  menuItemId String
+  /// { vi, en }
+  headline   Json
+  /// { vi, en }
+  story      Json
+  /// { vi: string[], en: string[] }
+  highlights Json
+  /// { vi, en } hoặc null
+  badge      Json?
+  /// Ảnh riêng; null thì dùng ảnh của món
+  image      String?
+  theme      FeaturedTheme @default(matcha)
+  order      Int           @default(0)
+  active     Boolean       @default(true)
+  startsAt   DateTime?
+  endsAt     DateTime?
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  src       String
+  /// { vi, en }
+  alt       Json
+  width     Int
+  height    Int
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Review {
+  id        String       @id @default(cuid())
+  author    String
+  /// 1 – 5
+  rating    Int
+  /// { vi, en }
+  content   Json
+  date      DateTime     @db.Date
+  source    ReviewSource
+  active    Boolean      @default(true)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+/// Thông tin quán (một dòng duy nhất, id = 1)
+model SiteSettings {
+  id        Int      @id @default(1)
+  data      Json
+  updatedAt DateTime @updatedAt
+}

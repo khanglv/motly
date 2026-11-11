@@ -343,3 +343,32 @@ tests/{unit, e2e}
 - Nút "Đặt món" có icon xe giao hàng. Thanh tiến độ cuộn chuyển màu từ matcha sang màu nhấn.
 - Lighthouse mobile (local): Performance 90, Accessibility 100.
 - Đã bỏ dải thông tin "Đang mở cửa" trên cùng theo yêu cầu (header trở lại một thanh).
+
+---
+
+# Giai đoạn 2: Backend (NestJS) + CMS
+
+## Quyết định
+- **Cấu trúc:** pnpm workspace. Web Next.js giữ ở gốc (Vercel không đổi). API NestJS ở `api/`.
+- **DB:** PostgreSQL. Dev: Docker (`docker-compose.yml`). Production: **Neon** gói free (0,5 GB, không tự tạm dừng như Supabase free).
+- **ORM:** Prisma 7 (driver adapter `@prisma/adapter-pg`).
+- **CMS:** trang `/admin` trong app Next. Gọi API qua proxy `/cms-api/*` (rewrite của Next) để cookie đăng nhập là cookie cùng domain.
+- **Đăng nhập:** 1 tài khoản admin (tạo bằng seed từ `ADMIN_EMAIL` / `ADMIN_PASSWORD`). Mật khẩu bcrypt, JWT trong cookie httpOnly, giới hạn số lần đăng nhập.
+- **Ảnh:** upload từ CMS thẳng lên **Cloudinary** (API ký chữ ký upload, không lộ API secret). Chưa cấu hình Cloudinary thì CMS cho dán link ảnh.
+- **Nội dung CMS:** Menu, Món nổi bật, Hình ảnh, Đánh giá, Thông tin quán (điện thoại, địa chỉ, giờ mở cửa, Facebook, GrabFood, ShopeeFood).
+- **Web ↔ API:** web đọc `GET /public/content` phía server, cache theo tag `content`. CMS lưu xong, API gọi `POST /api/revalidate` của web (có secret) để làm mới. Không có `API_URL` hoặc API lỗi thì web dùng dữ liệu mẫu trong `src/data` (test và bản chạy thử vẫn hoạt động).
+- **Host API:** Render gói free (ngủ sau 15 phút, lần gọi đầu chậm 30–50 giây; trang chủ không bị ảnh hưởng nhờ cache).
+
+## Việc cần làm
+1. Workspace + scaffold NestJS, Prisma schema, Docker Postgres, migration, seed từ dữ liệu mẫu.
+2. API: auth, public content, CRUD admin cho 4 loại nội dung, settings, chữ ký upload Cloudinary, gọi revalidate web.
+3. Web: lớp lấy dữ liệu từ API (có dự phòng), settings động thay cho các trường trong `siteConfig`, endpoint revalidate, rewrite `/cms-api`.
+4. CMS `/admin`: đăng nhập, 5 trang quản lý, upload ảnh.
+5. Cấu hình deploy (`render.yaml`, biến môi trường), README hướng dẫn Neon / Render / Cloudinary.
+
+## Trạng thái giai đoạn 2
+- Tách thành 2 project độc lập: `web/` (Next.js) và `api/` (NestJS), mỗi bên có package.json, lockfile, .env riêng. API không import code của web (dữ liệu mẫu cho seed nằm ở `api/prisma/seed-data/*.json`).
+- Đã xong: schema + migration, seed, auth, CRUD 5 loại nội dung, ký upload Cloudinary, revalidate web, CMS `/admin` (6 trang), `render.yaml`, README hướng dẫn Neon / Render / Cloudinary / Vercel.
+- Ảnh chỉ nhận `/images/...` hoặc `https://res.cloudinary.com/...` (khớp `images.remotePatterns` của web).
+- Đã kiểm tra trên máy: API qua curl (đăng nhập, 401, 409, 404, kiểm tra dữ liệu, giới hạn đăng nhập 429), luồng CMS bằng Playwright (đăng nhập, sửa giá → trang chủ cập nhật, sửa giờ đóng cửa → trang chủ cập nhật, đăng xuất). Web: lint, typecheck, 59 unit test, 12 E2E.
+- Chưa làm: deploy thật (cần tài khoản Neon, Render, Cloudinary của chủ quán).

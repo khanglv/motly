@@ -1,0 +1,35 @@
+# Render Blueprint cho API NestJS (gói free). Render → New → Blueprint → chọn repo này.
+# Biến có sync: false cần nhập tay trên Render (không commit secret vào git).
+services:
+  - type: web
+    name: motly-api
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: api
+    buildCommand: pnpm install --frozen-lockfile && pnpm build && pnpm db:deploy
+    startCommand: pnpm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: DATABASE_URL # Neon: Pooled connection
+        sync: false
+      - key: DIRECT_URL # Neon: Direct connection (dùng cho migration)
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: WEB_URL # Ví dụ https://motly.vercel.app
+        sync: false
+      - key: REVALIDATE_SECRET # Trùng với REVALIDATE_SECRET bên Vercel
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_FOLDER
+        value: motly
