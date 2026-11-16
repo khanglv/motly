@@ -373,3 +373,4 @@ tests/{unit, e2e}
 - Đã kiểm tra trên máy: API qua curl (đăng nhập, 401, 409, 404, kiểm tra dữ liệu, giới hạn đăng nhập 429), luồng CMS bằng Playwright (đăng nhập, sửa giá → trang chủ cập nhật, sửa giờ đóng cửa → trang chủ cập nhật, đăng xuất). Web: lint, typecheck, 59 unit test, 12 E2E.
 - Chưa làm: deploy thật (cần tài khoản Neon, Render, Cloudinary của chủ quán).
 - Ảnh chuyển từ Cloudinary sang Neon Object Storage (bucket public_read `motly-images`, link upload ký sẵn hết hạn 5 phút, chỉ nhận ảnh ≤ 8 MB). Database production đã migrate + seed trên Neon (Singapore).
+- Ảnh Neon không đi qua bộ tối ưu ảnh của Vercel (Neon trả lỗi OPTIMIZED_EXTERNAL_IMAGE_REQUEST_UNAUTHORIZED): `next/image` dùng `unoptimized` cho ảnh https. CMS nén ảnh trước khi upload (cạnh dài tối đa 1600px, WebP 0.82).

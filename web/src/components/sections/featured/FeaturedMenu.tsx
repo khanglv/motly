@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { isRemoteImage } from '@/lib/image';
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -109,7 +110,7 @@ export function FeaturedMenu() {
                           />
                           <div className="absolute inset-5 overflow-hidden ring-4 ring-cream [border-radius:46%_54%_44%_56%/56%_44%_56%_44%] motion-safe:animate-blob">
                             <Image
-                              src={current.image}
+                              src={current.image} unoptimized={isRemoteImage(current.image)}
                               alt={current.item.name}
                               fill
                               sizes="(min-width: 1024px) 18rem, 70vw"
@@ -184,7 +185,7 @@ export function FeaturedMenu() {
                             />
                           )}
                           <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-matcha-100">
-                            <Image src={f.image} alt="" fill sizes="4rem" className="object-cover" />
+                            <Image src={f.image} unoptimized={isRemoteImage(f.image)} alt="" fill sizes="4rem" className="object-cover" />
                           </span>
                           <span className="min-w-0 flex-1">
                             <span className={clsx('block text-xs font-semibold', active ? 'text-matcha-300' : 'text-matcha-700')}>

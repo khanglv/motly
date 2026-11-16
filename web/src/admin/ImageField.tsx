@@ -20,15 +20,36 @@ export interface ImageInfo {
 const MAX_MB = 8;
 const ACCEPT = ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif'];
 
-/** Kích thước ảnh từ file trên máy (trước khi upload) */
-async function readFileSize(file: File) {
-  const url = URL.createObjectURL(file);
-  try {
-    return await readImageSize(url);
-  } finally {
-    URL.revokeObjectURL(url);
+/** Cạnh dài tối đa sau khi nén (đủ nét cho ảnh toàn màn hình) */
+const MAX_SIDE = 1600;
+
+/**
+ * Thu nhỏ ảnh về tối đa ${MAX_SIDE}px và chuyển sang WebP trước khi upload.
+ * Ảnh trên Neon được web tải thẳng (không qua bộ tối ưu của Vercel) nên cần nhẹ sẵn.
+ * GIF giữ nguyên để không mất ảnh động.
+ */
+async function compressImage(file: File): Promise<{ blob: Blob; type: string; width: number; height: number }> {
+  const bitmap = await createImageBitmap(file);
+  const scale = Math.min(1, MAX_SIDE / Math.max(bitmap.width, bitmap.height));
+  const width = Math.round(bitmap.width * scale);
+  const height = Math.round(bitmap.height * scale);
+  if (file.type === 'image/gif') {
+    bitmap.close();
+    return { blob: file, type: file.type, width, height };
   }
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  canvas.getContext('2d')!.drawImage(bitmap, 0, 0, width, height);
+  bitmap.close();
+  const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', 0.82));
+  // Trình duyệt không hỗ trợ WebP hoặc nén ra file to hơn: dùng file gốc
+  if (!blob || blob.type !== 'image/webp' || blob.size >= file.size) {
+    return { blob: file, type: file.type, width, height };
+  }
+  return { blob, type: 'image/webp', width, height };
 }
+
 
 /** Đọc kích thước ảnh từ link (dùng cho gallery khi dán link) */
 export function readImageSize(url: string): Promise<{ width: number; height: number } | null> {
@@ -69,19 +90,20 @@ export function ImageField({
   async function upload(file: File) {
     setError(null);
     if (!ACCEPT.includes(file.type)) return setError('Chỉ nhận ảnh JPG, PNG, WebP, AVIF hoặc GIF');
-    if (file.size > MAX_MB * 1024 * 1024) return setError(`Ảnh tối đa ${MAX_MB} MB`);
+    if (file.size > 40 * 1024 * 1024) return setError('Ảnh gốc quá lớn (tối đa 40 MB)');
 
     setUploading(true);
     try {
-      const size = await readFileSize(file);
+      const image = await compressImage(file);
+      if (image.blob.size > MAX_MB * 1024 * 1024) throw new Error(`Ảnh sau khi nén vẫn lớn hơn ${MAX_MB} MB`);
       const sig = await cmsFetch<Presigned>('/admin/uploads/presign', {
         method: 'POST',
-        body: { contentType: file.type, size: file.size }
+        body: { contentType: image.type, size: image.blob.size }
       });
       // Gửi file thẳng lên Neon Storage bằng link đã ký (không đi qua API)
-      const res = await fetch(sig.uploadUrl, { method: 'PUT', headers: sig.headers, body: file });
+      const res = await fetch(sig.uploadUrl, { method: 'PUT', headers: sig.headers, body: image.blob });
       if (!res.ok) throw new Error(`Tải ảnh lên thất bại (${res.status})`);
-      onChange({ url: sig.publicUrl, width: size?.width, height: size?.height });
+      onChange({ url: sig.publicUrl, width: image.width, height: image.height });
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Upload thất bại');
     } finally {

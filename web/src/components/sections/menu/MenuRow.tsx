@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { isRemoteImage } from '@/lib/image';
 import { useLocale, useTranslations } from 'next-intl';
 import clsx from 'clsx';
 import { formatPrice, formatPriceShort } from '@/lib/format';
@@ -21,7 +22,7 @@ export function MenuRow({ item }: { item: MenuItem }) {
     <article className="group flex items-start gap-3.5 rounded-2xl p-2 transition-colors hover:bg-matcha-50 sm:gap-4">
       <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-matcha-100 sm:h-16 sm:w-16">
         <Image
-          src={item.image}
+          src={item.image} unoptimized={isRemoteImage(item.image)}
           alt=""
           fill
           sizes="4rem"

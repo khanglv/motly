@@ -2,6 +2,7 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
+import { isRemoteImage } from '@/lib/image';
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import type { KeyboardEvent } from "react";
@@ -61,7 +62,7 @@ export function Lightbox({ images }: { images: GalleryImage[] }) {
                   className="relative flex max-h-[75vh] w-full items-center justify-center"
                 >
                   <Image
-                    src={image.src}
+                    src={image.src} unoptimized={isRemoteImage(image.src)}
                     alt={image.alt}
                     width={image.width}
                     height={image.height}

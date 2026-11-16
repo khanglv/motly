@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { isRemoteImage } from '@/lib/image';
 import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 import { useGallery } from '@/hooks/useGallery';
@@ -99,7 +100,7 @@ export function Gallery() {
                       >
                         <span className="block overflow-hidden rounded-xl">
                           <Image
-                            src={img.src}
+                            src={img.src} unoptimized={isRemoteImage(img.src)}
                             alt={img.alt}
                             width={img.width}
                             height={img.height}
